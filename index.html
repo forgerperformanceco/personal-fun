@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Riviera Maya — Excellence Riviera Cancun</title>
-<meta name="description" content="Our family vacation companion & day-by-day planner for Excellence Riviera Cancun, July 18–24.">
+<meta name="description" content="Our family vacation companion & day planner for Excellence Riviera Cancun, July 18–24.">
 <meta name="theme-color" content="#0C6E62">
 </head>
 <body>
@@ -261,6 +261,8 @@ li.item label { display: flex; align-items: center; gap: 12px; flex: 1; cursor: 
 li.item .tick { width: 21px; height: 21px; }
 li.item .txt { font-size: 15px; }
 li.item.checked .txt { color: var(--faint); text-decoration: line-through; text-decoration-color: color-mix(in srgb, var(--faint) 55%, transparent); }
+li.item .qty { margin-left: auto; font-size: 12px; font-weight: 700; color: var(--faint); font-variant-numeric: tabular-nums; background: var(--paper-2); border-radius: 999px; padding: 2px 9px; white-space: nowrap; }
+li.item.checked .qty { opacity: .5; }
 li.item .del { opacity: 0; border: none; background: none; color: var(--faint); cursor: pointer; font-size: 17px; padding: 2px 6px; border-radius: 6px; }
 li.item:hover .del { opacity: 1; }
 li.item .del:hover { color: var(--hibiscus); }
@@ -460,23 +462,24 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
       { n: "Xel-Há", dur: "Full day", w: "wet", d: "An all-inclusive natural snorkeling lagoon and water park." }
     ]}
   ];
+  // items: [label, recommended quantity for 6 nights]
   var PEOPLE = [
     { key: "shared", name: "Shared", sw: "--sea", cats: [
-      { name: "Documents & Money", items: ["Passports (all travelers)", "Flight confirmations", "Hotel / transfer confirmation", "Travel insurance", "Credit / debit cards", "Small US bills for tips", "Some pesos for excursions", "Photocopies of passports"] },
-      { name: "Health & Beach", items: ["Reef-safe sunscreen (lots)", "After-sun / aloe", "Insect repellent", "Lip balm with SPF", "First-aid kit", "Pepto / Imodium", "Electrolyte packets", "Motion-sickness pills (boat days)", "Snorkel masks (or rent)", "Dry bag for phones"] },
-      { name: "Tech", items: ["Phone chargers", "Power bank", "Camera / GoPro", "Headphones", "Charging cables"] }
+      { name: "Documents & Money", items: [["Passports","×4"],["Flight confirmations","1 set"],["Hotel / transfer confirmation","1"],["Travel insurance","1"],["Credit / debit cards","2–3"],["Small US bills for tips","$60–80"],["Pesos for excursions","$50–100"],["Photocopies of passports","×4"]] },
+      { name: "Health & Beach", items: [["Reef-safe sunscreen","2–3 bottles"],["After-sun / aloe","1"],["Insect repellent","1–2"],["Lip balm with SPF","1–2"],["First-aid kit","1"],["Pepto / Imodium","1 each"],["Electrolyte packets","6–8"],["Motion-sickness pills (boat day)","1 pack"],["Snorkel masks (or rent there)","optional"],["Dry bag for phones","1–2"]] },
+      { name: "Tech", items: [["Phone chargers","×4"],["Power bank","1–2"],["Camera / GoPro","1"],["Headphones","×4"],["Charging cables","4–5"]] }
     ]},
     { key: "me", name: "Bobby", sw: "--sea", cats: [
-      { name: "Clothing", items: ["T-shirts", "Shorts", "Swim trunks (x2)", "Linen / collared shirts (dinner)", "Long pants for dinner", "Underwear (x8)", "Flip-flops", "Dress sandals / loafers", "Sneakers", "Sun hat", "Sunglasses", "Light rain shell"] },
-      { name: "Toiletries", items: ["Toothbrush & paste", "Deodorant", "Razor", "Shampoo / body wash", "Contacts / glasses"] }
+      { name: "Clothing", items: [["T-shirts","×5"],["Shorts","×4"],["Swim trunks","×2"],["Collared / linen shirts (dinner)","×4"],["Long pants for dinner","×2"],["Underwear","×8"],["Socks","×3"],["Flip-flops","×1"],["Dress sandals / loafers","×1"],["Sneakers","×1"],["Sun hat","×1"],["Sunglasses","×1"],["Light rain shell","×1"]] },
+      { name: "Toiletries", items: [["Toothbrush & paste","1"],["Deodorant","1"],["Razor","1"],["Shampoo / body wash","1"],["Contacts / glasses","1"]] }
     ]},
     { key: "wife", name: "Vanessa", sw: "--hibiscus", cats: [
-      { name: "Clothing", items: ["Sundresses", "Swimsuits (x2)", "Beach cover-up", "Shorts", "Tops", "Dinner dress / nice pants", "Sandals", "Wedges / nicer shoes", "Sun hat", "Sunglasses", "Light cardigan"] },
-      { name: "Toiletries", items: ["Makeup", "Skincare", "Toothbrush & paste", "Hairbrush & ties", "Feminine products", "Perfume"] }
+      { name: "Clothing", items: [["Sundresses","×4"],["Swimsuits","×3"],["Beach cover-up","×2"],["Shorts","×3"],["Tops","×5"],["Dinner dresses / nice pants","×3"],["Sandals","×2"],["Wedges / nicer shoes","×1"],["Sun hat","×1"],["Sunglasses","×2"],["Light cardigan","×1"]] },
+      { name: "Toiletries", items: [["Makeup","1 kit"],["Skincare","1 set"],["Toothbrush & paste","1"],["Hairbrush & ties","1"],["Feminine products","as needed"],["Perfume","1"]] }
     ]},
     { key: "kid", name: "Ella", sw: "--sun", cats: [
-      { name: "Clothing", items: ["Swimsuits (x3)", "Beach cover-up", "Sun hat", "Tops & shorts / dresses", "Dinner / going-out outfits", "Underwear", "Pajamas", "Sandals", "Sneakers", "Sunglasses"] },
-      { name: "Essentials", items: ["Sunscreen", "Phone charger", "Camera / GoPro", "Headphones", "Skincare & makeup", "Toiletries", "Reusable water bottle", "Any meds"] }
+      { name: "Clothing", items: [["Swimsuits","×3"],["Beach cover-up","×2"],["Sun hat","×1"],["Tops & shorts / dresses","5–6"],["Dinner / going-out outfits","×4"],["Underwear","×8"],["Pajamas","×2"],["Sandals","×2"],["Sneakers","×1"],["Sunglasses","×2"]] },
+      { name: "Essentials", items: [["Sunscreen","1"],["Phone charger","1"],["Camera / GoPro","1"],["Headphones","1"],["Skincare & makeup","1 set"],["Toiletries","1 set"],["Reusable water bottle","1"],["Any meds","as needed"]] }
     ]}
   ];
   var FACTS = [
@@ -545,9 +548,9 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
 
   function packItems(person, cat) {
     var out = [];
-    cat.items.forEach(function (label) { var id="pack::"+person.key+"::"+slug(cat.name)+"::"+slug(label); if(!state.removed[id]) out.push({id:id,label:label,custom:false}); });
+    cat.items.forEach(function (item) { var label=item[0], qty=item[1]||""; var id="pack::"+person.key+"::"+slug(cat.name)+"::"+slug(label); if(!state.removed[id]) out.push({id:id,label:label,qty:qty,custom:false}); });
     var ck = person.key+"::"+slug(cat.name);
-    (state.custom[ck]||[]).forEach(function(c){ out.push({id:c.id,label:c.label,custom:true}); });
+    (state.custom[ck]||[]).forEach(function(c){ out.push({id:c.id,label:c.label,qty:"",custom:true}); });
     return out;
   }
   function personStats(p){ var t=0,d=0; p.cats.forEach(function(c){ packItems(p,c).forEach(function(it){ t++; if(state.checked[it.id])d++; }); }); return {total:t,done:d}; }
@@ -708,7 +711,7 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
   }
 
   function pak(w){
-    w.appendChild(leadBlock("Six days, one carry-on","<em>Packing</em>, sorted","One list each, plus a shared bag for documents and beach gear. Tick as you go — it saves automatically, so everyone can pack from their own phone."));
+    w.appendChild(leadBlock("Six nights, one carry-on","<em>Packing</em>, sorted","One list each, plus a shared bag for documents and beach gear. The grey badges are suggested quantities, sized for six nights with no laundry — re-wear pants and shoes, and the resort has paid laundry if you overrun. Tick as you go; it all saves on your phone."));
     var seg=el("div","seg r");
     PEOPLE.forEach(function(p){ var s=personStats(p); var b=el("button","segbtn"); b.setAttribute("aria-selected", activePerson===p.key?"true":"false"); b.style.setProperty("--sw","var("+p.sw+")"); b.appendChild(el("span","sw")); b.appendChild(el("span",null,state.names[p.key]||p.name)); b.appendChild(el("span","c",s.done+"/"+s.total)); b.addEventListener("click", function(){ activePerson=p.key; pak(clearWrap(w)); observeReveals(); }); seg.appendChild(b); });
     w.appendChild(seg);
@@ -728,7 +731,7 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
   function packRow(person,cat,it){
     var li=el("li","item"+(state.checked[it.id]?" checked":""));
     var cb=el("input","cb"); cb.type="checkbox"; cb.id="cb-"+it.id; cb.checked=!!state.checked[it.id];
-    var lab=document.createElement("label"); lab.setAttribute("for",cb.id); var t=el("span","tick"); t.appendChild(tickSvg()); lab.appendChild(t); lab.appendChild(el("span","txt",it.label));
+    var lab=document.createElement("label"); lab.setAttribute("for",cb.id); var t=el("span","tick"); t.appendChild(tickSvg()); lab.appendChild(t); lab.appendChild(el("span","txt",it.label)); if(it.qty) lab.appendChild(el("span","qty",it.qty));
     cb.addEventListener("change", function(){ if(cb.checked)state.checked[it.id]=true; else delete state.checked[it.id]; save(); li.classList.toggle("checked",cb.checked); refreshPack(person); });
     var del=el("button","del"); del.innerHTML="&times;"; del.setAttribute("aria-label","Remove "+it.label);
     del.addEventListener("click", function(){ if(it.custom){ var ck=person.key+"::"+slug(cat.name); state.custom[ck]=(state.custom[ck]||[]).filter(function(c){return c.id!==it.id;}); } else state.removed[it.id]=true; delete state.checked[it.id]; save(); pak(clearWrap(viewEl.querySelector(".wrap"))); observeReveals(); });
