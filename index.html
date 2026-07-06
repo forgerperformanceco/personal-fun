@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Riviera Maya — Excellence Riviera Cancun</title>
-<meta name="description" content="Our family vacation companion for Excellence Riviera Cancun, July 18–24 — itinerary, dining, excursions, packing and resort info.">
+<meta name="description" content="Our family vacation companion & day-by-day planner for Excellence Riviera Cancun, July 18–24.">
 <meta name="theme-color" content="#0C6E62">
 </head>
 <body>
@@ -296,6 +296,38 @@ input.cb:focus-visible + label .tick { outline: 2px solid var(--sea); outline-of
 .tl .slot:first-child { border-top: none; padding-top: 2px; }
 .tl .slot .lbl { font-size: 11px; text-transform: uppercase; letter-spacing: .14em; font-weight: 700; color: var(--sea); padding-top: 3px; }
 .tl .slot .txt { font-size: 14.5px; color: var(--ink); line-height: 1.55; }
+/* planner controls */
+.planbar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 26px; margin-bottom: 22px; }
+.pstat { display: flex; align-items: baseline; gap: 8px; }
+.pstat .n { font-family: var(--f-display); font-size: 27px; font-weight: 400; color: var(--sea); line-height: 1; font-variant-numeric: tabular-nums; }
+.pstat .l { font-size: 12px; text-transform: uppercase; letter-spacing: .1em; font-weight: 700; color: var(--faint); }
+.planreset { margin-left: auto; border: 1px solid var(--line-strong); background: none; color: var(--muted); border-radius: 999px; padding: 7px 15px; font: inherit; font-weight: 700; font-size: 12.5px; cursor: pointer; transition: color .2s ease, border-color .2s ease; }
+.planreset:hover { color: var(--hibiscus); border-color: var(--hibiscus); }
+.nudge { background: color-mix(in srgb, var(--sun) 12%, var(--paper)); border: 1px solid color-mix(in srgb, var(--sun) 32%, var(--line)); border-radius: 12px; padding: 11px 15px; font-size: 13.5px; color: var(--ink); margin-bottom: 18px; line-height: 1.5; }
+.nudge b { color: var(--sun); }
+.reorder { display: flex; align-items: center; gap: 5px; margin-top: 12px; }
+.drag { cursor: grab; color: var(--line-strong); font-size: 17px; line-height: 1; user-select: none; padding-right: 2px; }
+.drag:hover { color: var(--muted); }
+.drag:active { cursor: grabbing; }
+.movebtn { width: 27px; height: 27px; border: 1px solid var(--line-strong); background: var(--paper); color: var(--muted); border-radius: 8px; cursor: pointer; font-size: 13px; line-height: 1; display: grid; place-items: center; transition: color .15s ease, border-color .15s ease; }
+.movebtn:hover:not(:disabled) { color: var(--sea); border-color: var(--sea); }
+.movebtn:disabled { opacity: .3; cursor: default; }
+.day.dragging { opacity: .45; }
+.day.dragover { border-color: var(--sea); box-shadow: 0 0 0 2px color-mix(in srgb, var(--sea) 32%, transparent), var(--shadow); }
+.dplans { margin-top: 16px; border-top: 1px dashed var(--line); padding-top: 14px; }
+.plabel { font-size: 11px; text-transform: uppercase; letter-spacing: .16em; font-weight: 700; color: var(--faint); margin-bottom: 10px; }
+.assigned { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 13px; }
+.assigned .empty { color: var(--faint); font-size: 13.5px; font-style: italic; }
+.pchip { display: inline-flex; align-items: center; gap: 8px; background: var(--paper-2); border: 1px solid var(--line); border-radius: 999px; padding: 6px 8px 6px 12px; font-size: 13.5px; font-weight: 600; }
+.pchip.dine { background: color-mix(in srgb, var(--sea) 10%, var(--paper-2)); }
+.pchip .wdot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+.wdot.dry { background: var(--good); } .wdot.opt { background: var(--sun); } .wdot.wet { background: var(--wave); }
+.pchip .dico { font-size: 12px; }
+.pchip .px { border: none; background: none; cursor: pointer; color: var(--faint); font-size: 16px; line-height: 1; padding: 0 3px; border-radius: 5px; }
+.pchip .px:hover { color: var(--hibiscus); }
+.pickers { display: flex; flex-wrap: wrap; gap: 10px; }
+.psel { appearance: none; -webkit-appearance: none; border: 1px solid var(--line-strong); background: var(--paper); color: var(--ink); border-radius: 10px; padding: 8px 32px 8px 13px; font: inherit; font-size: 13.5px; font-weight: 600; cursor: pointer; max-width: 100%; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%237E8A82' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 11px center; }
+.psel:focus { outline: none; border-color: var(--sea); box-shadow: 0 0 0 2px color-mix(in srgb, var(--sea) 22%, transparent); }
 
 /* ---------- PHRASES ---------- */
 .phrases { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px,1fr)); gap: 10px; }
@@ -462,35 +494,40 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
   ];
   var PHRASES = [["Hola","Hello"],["Gracias","Thank you"],["Por favor","Please"],["Salud","Cheers"],["La cuenta, por favor","The check, please"],["¿Cuánto cuesta?","How much?"],["Dos cervezas","Two beers"],["¿Dónde está el baño?","Where's the bathroom?"],["Buenos días","Good morning"]];
 
-  var ITINERARY = [
-    { kind:"travel", dow:"Fri", date:"Jul 18", key:"d18", title:"Arrival", note:"Land at Cancún, take the ~30-minute transfer, check in and unpack. Keep it easy — a first dinner at The Kitchen Table and a nightcap at the Martini Bar. Nothing planned." },
-    { kind:"day", dow:"Sat", date:"Jul 19", key:"d19", tag:"Resort day", tk:"sea", theme:"Ease into resort life", slots:[
-      ["Morning","Sleep in, a long breakfast, claim your pool chairs. Book spa treatments now — mid-morning slots fill first."],
-      ["Afternoon","Pool and beach. Ride out the afternoon storm with a swim-up cocktail, or a shaded lounger and a book."],
-      ["Evening","Dinner at The Lobster House, then the nightly theater show."]
+  var DATES = [["Sat","Jul 19"],["Sun","Jul 20"],["Mon","Jul 21"],["Tue","Jul 22"],["Wed","Jul 23"]];
+  var TRAVEL_DAYS = {
+    arrive: { dow:"Fri", date:"Jul 18", title:"Arrival", note:"Land at Cancún, take the ~30-minute transfer, check in and unpack. Keep it easy — a first dinner at The Kitchen Table and a nightcap at the Martini Bar. Nothing planned." },
+    depart: { dow:"Thu", date:"Jul 24", title:"Departure", note:"Breakfast, one last dip, check out and transfer back to Cancún for the flight home. Nothing planned — just the goodbye." }
+  };
+  var PLANS = [
+    { key:"d19", tag:"Resort day", tk:"sea", theme:"Settle in & unwind", slots:[
+      ["Morning","Land-day recovery — sleep in, a long breakfast, claim your pool chairs, and book the week's spa treatments before the good slots go."],
+      ["Afternoon","Pool, beach and the swim-up bar; wander the grounds and scope out the restaurants."],
+      ["Evening","An easy first dinner at The Kitchen Table, then drinks at the Martini Bar."]
     ]},
-    { kind:"day", dow:"Sun", date:"Jul 20", key:"d20", tag:"Swim-free", tk:"good", theme:"Jungle ruins morning", slots:[
-      ["Morning","Early start for Cobá and the newly reopened Nohoch Mul pyramid, then wild spider monkeys at Punta Laguna — jungle shade, no water."],
+    { key:"d20", tag:"Swim-free", tk:"good", theme:"Jungle ruins morning", slots:[
+      ["Morning","One easy outing, all together: Cobá and the newly reopened Nohoch Mul pyramid, then wild spider monkeys at Punta Laguna — jungle shade, no water."],
       ["Afternoon","Back by mid-afternoon; cool off at the pool or the Miilé Spa hydrotherapy circuit."],
       ["Evening","Spice — grab seats at the teppanyaki counter for the show."]
     ]},
-    { kind:"day", dow:"Mon", date:"Jul 21", key:"d21", tag:"Group splits", tk:"sea", theme:"Whale sharks & spa", slots:[
-      ["Morning","The swimmers — Vanessa, Ella & friend — head out for the whale-shark tour (July is peak). Bobby takes it dry: the Aktun Chen cave walk, or a slow resort morning."],
-      ["Afternoon","The boat crew returns; regroup at the pool. Spa time for Bobby."],
-      ["Evening","Dress up for Chez Isabelle."]
+    { key:"d21", tag:"All together", tk:"sea", theme:"Family day out — whale sharks (or dry)", slots:[
+      ["Morning","Everyone goes together for the whale-shark tour (July is peak). Vanessa and the girls snorkel; Bobby rides along on the boat — no need to get in the water to watch. Not into the boat? Swap it for a dry family day: Croco Cun, the Aktun Chen cave, or another pool day."],
+      ["Afternoon","Back to the resort to dry off, regroup at the pool."],
+      ["Evening","Dress up together for Chez Isabelle."]
     ]},
-    { kind:"day", dow:"Tue", date:"Jul 22", key:"d22", tag:"Your call", tk:"sea", theme:"Cliffs & town, or pure rest", slots:[
-      ["Morning","Pick your speed: Tulum's clifftop ruins (dry — go early), or a proper do-nothing pool morning."],
-      ["Afternoon","Puerto Morelos town for seafood and the leaning lighthouse. If it storms, duck into a tequila tasting or a Yucatecan cooking class."],
-      ["Evening","A casual night at Oregano, or Agave for Mexican."]
+    { key:"d22", tag:"Resort day", tk:"sea", theme:"A whole day at the resort", slots:[
+      ["Morning","No alarms. Breakfast, then the pool or the Miilé Spa hydrotherapy circuit."],
+      ["Afternoon","Beach, a long lunch, water aerobics or just a lounger and a book."],
+      ["Evening","The Lobster House, then the nightly show or the silent party."]
     ]},
-    { kind:"day", dow:"Wed", date:"Jul 23", key:"d23", tag:"Grand finale", tk:"sun", theme:"Last full day — make it count", slots:[
-      ["Morning","Head to Xcaret for the day — a huge, swim-optional park the whole group can enjoy (or Croco Cun next door if you'd rather stay close and slow)."],
-      ["Afternoon","Wander Xcaret's jungle trails, wildlife and Maya village; or a final pool-and-spa afternoon back at the resort."],
-      ["Evening","Xcaret's “México Espectacular” night show — or a farewell dinner at Chez Isabelle and the silent party back at home base."]
-    ]},
-    { kind:"travel", dow:"Thu", date:"Jul 24", key:"d24", title:"Departure", note:"Breakfast, one last dip, check out and transfer back to Cancún for the flight home. Nothing planned — just the goodbye." }
+    { key:"d23", tag:"Your call", tk:"sun", theme:"Last day — big finish or one more by the pool", slots:[
+      ["Morning","Go out with a bang at Xcaret — a huge, swim-optional park the whole family can do together — or keep it slow with one last resort morning and Croco Cun next door."],
+      ["Afternoon","Xcaret's jungle trails and wildlife, or a final spa-and-pool afternoon."],
+      ["Evening","Xcaret's “México Espectacular” night show, or a farewell dinner at Agave."]
+    ]}
   ];
+  var ALLEXC = (function(){ var a=[{name:DRY_HERO.name,w:"opt"},{name:WET_HERO.name,w:"wet"}]; EXCURSIONS.forEach(function(g){ g.items.forEach(function(it){ if(!a.some(function(x){return x.name===it.n;})) a.push({name:it.n,w:it.w}); }); }); return a; })();
+  var EXW = {}, EXBYSLUG = {}; ALLEXC.forEach(function(e){ EXW[e.name]=e.w; EXBYSLUG[slug(e.name)]=e.name; });
 
   var SECTIONS = [
     { key: "overview", label: "Overview" }, { key: "itin", label: "Itinerary" }, { key: "dining", label: "Dining" },
@@ -498,7 +535,7 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
     { key: "pack", label: "Packing" }, { key: "info", label: "Good to Know" }
   ];
 
-  var state = load(); var activeSection = "overview"; var activePerson = "shared"; var exFilter = "all";
+  var state = load(); var activeSection = "overview"; var activePerson = "shared"; var exFilter = "all"; var dragFrom = null;
   function load() { try { var r = localStorage.getItem(STORE_KEY); if (r) return JSON.parse(r); } catch (e) {} return { checked:{}, star:{}, names:{}, custom:{}, removed:{} }; }
   function save() { try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) {} }
   function slug(s) { return s.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,""); }
@@ -713,37 +750,103 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
     renderNav();
   }
 
+  function planState(){ if(!state.plan)state.plan={}; var keys=PLANS.map(function(p){return p.key;}); var o=state.plan.order; if(!o||!o.length){ o=keys.slice(); } else { o=o.filter(function(k){return keys.indexOf(k)>=0;}); keys.forEach(function(k){ if(o.indexOf(k)<0)o.push(k); }); } state.plan.order=o; if(!state.plan.acts)state.plan.acts={}; if(!state.plan.dinner)state.plan.dinner={}; return state.plan; }
+  function planByKey(k){ for(var i=0;i<PLANS.length;i++) if(PLANS[i].key===k) return PLANS[i]; return PLANS[0]; }
+  function excCatalog(){ var out=[]; EXCURSIONS.forEach(function(g){ var items=g.items.map(function(it){return {n:it.n,w:it.w};}); if(g.group.indexOf("Eco-parks")===0) items.unshift({n:DRY_HERO.name,w:"opt"}); out.push({group:g.group,items:items}); }); return out; }
+  function planStats(){ var ps=planState(),exc=0,sf=0,din=0; PLANS.forEach(function(p){ var a=ps.acts[p.key]||[]; exc+=a.length; a.forEach(function(n){ if((EXW[n]||"")==="dry")sf++; }); if(ps.dinner[p.key])din++; }); return {exc:exc,swimfree:sf,dinners:din}; }
+  function scheduledSlugs(){ var s={},ps=planState(); PLANS.forEach(function(p){ (ps.acts[p.key]||[]).forEach(function(n){ s[slug(n)]=true; }); }); return s; }
+  function shortlistedNames(){ var out=[]; for(var k in state.checked){ if(state.checked[k]&&k.indexOf("exc::")===0){ var nm=EXBYSLUG[k.slice(5)]; if(nm)out.push(nm); } } return out; }
+  function rerenderItin(){ var wrap=viewEl.querySelector(".wrap"); if(wrap){ itin(clearWrap(wrap)); observeReveals(); } }
+  function movePlan(i,dir){ var o=planState().order,j=i+dir; if(j<0||j>=o.length)return; var t=o[i];o[i]=o[j];o[j]=t; save(); rerenderItin(); }
+  function reorderPlan(from,to){ if(from===to||from==null)return; var o=planState().order; var it=o.splice(from,1)[0]; o.splice(to,0,it); save(); rerenderItin(); }
+
+  function dayWhen(dow,date){ var wc=el("div","d-when"); wc.appendChild(el("div","dow",dow)); wc.appendChild(el("div","date",date)); return wc; }
+  function planStat(n,label){ var s=el("div","pstat"); s.appendChild(el("span","n",String(n))); s.appendChild(el("span","l",label)); return s; }
+
   function itin(w){
-    w.appendChild(leadBlock("Seven days, loosely held","A plan for <em>the week</em>","A suggested rhythm you can shuffle: do the outdoor things in the cooler mornings, let the afternoon storms chase you to the pool, spa or an air-conditioned lunch, and keep evenings for dinner and a show. Travel days are a wash — nothing scheduled. Where the group splits over the water, it's noted. Tap “Lock in” once a day feels set."));
+    planState();
+    w.appendChild(leadBlock("Seven days, your way","Build <em>your week</em>","A relaxed starting plan — plenty of pool days, the whole family together, only a couple of easy mornings out. Add excursions and dinners to any day, drag the handle or tap the arrows to reshuffle, and lean into the resort as much as you like. Travel days stay a wash."));
+    var st=planStats();
+    var bar=el("div","planbar r");
+    bar.appendChild(planStat(st.exc,"excursions")); bar.appendChild(planStat(st.swimfree,"swim-free")); bar.appendChild(planStat(st.dinners,"dinners"));
+    var reset=el("button","planreset","Reset plan"); reset.addEventListener("click",function(){ if(confirm("Reset the day order and everything you've added to days?")){ state.plan={order:PLANS.map(function(p){return p.key;}),acts:{},dinner:{}}; save(); rerenderItin(); } });
+    bar.appendChild(reset); w.appendChild(bar);
+    var sched=scheduledSlugs(); var uns=shortlistedNames().filter(function(n){return !sched[slug(n)];});
+    if(uns.length){ var nd=el("div","nudge r"); nd.appendChild(el("b",null,"Shortlisted, not on a day yet: ")); nd.appendChild(document.createTextNode(uns.join(", ")+" — drop them onto a day below.")); w.appendChild(nd); }
     var days=el("div","days");
-    ITINERARY.forEach(function(d){ days.appendChild(d.kind==="travel"?travelCard(d):dayCard(d)); });
+    days.appendChild(travelCard(TRAVEL_DAYS.arrive));
+    for(var i=0;i<DATES.length;i++) days.appendChild(planCardAt(i));
+    days.appendChild(travelCard(TRAVEL_DAYS.depart));
     w.appendChild(days);
     stagger([].slice.call(days.children));
   }
-  function dayWhen(d){ var wc=el("div","d-when"); wc.appendChild(el("div","dow",d.dow)); wc.appendChild(el("div","date",d.date)); return wc; }
-  function dayCard(d){
-    var id="day::"+d.key, set=!!state.checked[id];
-    var card=el("div","day"+(set?" set":""));
-    card.appendChild(dayWhen(d));
+
+  function planCardAt(i){
+    var ps=planState(), key=ps.order[i], p=planByKey(key), d=DATES[i];
+    var id="day::"+key, set=!!state.checked[id];
+    var card=el("div","day"+(set?" set":"")); card.dataset.i=i;
+    var wc=dayWhen(d[0],d[1]);
+    var rc=el("div","reorder");
+    var handle=el("div","drag"); handle.textContent="⠿"; handle.setAttribute("aria-hidden","true"); handle.draggable=true; handle.title="Drag to move this day";
+    handle.addEventListener("dragstart",function(e){ dragFrom=i; card.classList.add("dragging"); try{e.dataTransfer.effectAllowed="move";e.dataTransfer.setData("text/plain",String(i));}catch(_){}});
+    handle.addEventListener("dragend",function(){ card.classList.remove("dragging"); [].forEach.call(viewEl.querySelectorAll(".day.dragover"),function(n){n.classList.remove("dragover");}); dragFrom=null; });
+    var up=el("button","movebtn","↑"); up.setAttribute("aria-label","Move to an earlier day"); up.disabled=(i===0); up.addEventListener("click",function(){ movePlan(i,-1); });
+    var dn=el("button","movebtn","↓"); dn.setAttribute("aria-label","Move to a later day"); dn.disabled=(i===DATES.length-1); dn.addEventListener("click",function(){ movePlan(i,1); });
+    rc.appendChild(handle); rc.appendChild(up); rc.appendChild(dn); wc.appendChild(rc);
+    card.appendChild(wc);
+    card.addEventListener("dragover",function(e){ if(dragFrom==null)return; e.preventDefault(); card.classList.add("dragover"); });
+    card.addEventListener("dragleave",function(){ card.classList.remove("dragover"); });
+    card.addEventListener("drop",function(e){ e.preventDefault(); card.classList.remove("dragover"); reorderPlan(dragFrom,parseInt(card.dataset.i,10)); dragFrom=null; });
     var body=el("div","d-body");
-    var head=el("div","d-head"); head.appendChild(chip(d.tag, d.tk||"sea"));
-    var btn=el("button","dayset"); btn.textContent=set?"✓ Locked in":"Lock in";
-    btn.addEventListener("click", function(){ if(state.checked[id]) delete state.checked[id]; else state.checked[id]=true; save(); var on=!!state.checked[id]; card.classList.toggle("set",on); btn.textContent=on?"✓ Locked in":"Lock in"; });
-    head.appendChild(btn); body.appendChild(head);
-    body.appendChild(el("h3",null,d.theme));
-    var tl=el("ul","tl");
-    d.slots.forEach(function(s){ var li=el("li","slot"); li.appendChild(el("span","lbl",s[0])); li.appendChild(el("span","txt",s[1])); tl.appendChild(li); });
-    body.appendChild(tl); card.appendChild(body);
+    var head=el("div","d-head"); head.appendChild(chip(p.tag,p.tk||"sea"));
+    var lock=el("button","dayset"); lock.textContent=set?"✓ Locked in":"Lock in";
+    lock.addEventListener("click",function(){ if(state.checked[id])delete state.checked[id]; else state.checked[id]=true; save(); var on=!!state.checked[id]; card.classList.toggle("set",on); lock.textContent=on?"✓ Locked in":"Lock in"; });
+    head.appendChild(lock); body.appendChild(head);
+    body.appendChild(el("h3",null,p.theme));
+    var tl=el("ul","tl"); p.slots.forEach(function(s){ var li=el("li","slot"); li.appendChild(el("span","lbl",s[0])); li.appendChild(el("span","txt",s[1])); tl.appendChild(li); }); body.appendChild(tl);
+    body.appendChild(planStrip(p));
+    card.appendChild(body);
     return card;
   }
+
+  function planStrip(p){
+    var ps=planState(), wrap=el("div","dplans");
+    wrap.appendChild(el("div","plabel","Your plans"));
+    var chips=el("div","assigned");
+    var acts=ps.acts[p.key]||[]; acts.forEach(function(name){ chips.appendChild(planChip(p,name,"exc")); });
+    if(ps.dinner[p.key]) chips.appendChild(planChip(p,ps.dinner[p.key],"dine"));
+    if(!acts.length && !ps.dinner[p.key]) chips.appendChild(el("span","empty","Nothing added yet — build the day below."));
+    wrap.appendChild(chips);
+    var pick=el("div","pickers"); pick.appendChild(excSelect(p)); pick.appendChild(dineSelect(p)); wrap.appendChild(pick);
+    return wrap;
+  }
+  function planChip(p,name,type){
+    var c=el("span","pchip"+(type==="dine"?" dine":""));
+    if(type==="exc"){ c.appendChild(el("span","wdot "+(EXW[name]||"wet"))); } else { c.appendChild(el("span","dico","🍽")); }
+    c.appendChild(el("span",null,name));
+    var x=el("button","px"); x.innerHTML="&times;"; x.setAttribute("aria-label","Remove "+name);
+    x.addEventListener("click",function(){ var ps=planState(); if(type==="exc") ps.acts[p.key]=(ps.acts[p.key]||[]).filter(function(n){return n!==name;}); else delete ps.dinner[p.key]; save(); rerenderItin(); });
+    c.appendChild(x); return c;
+  }
+  function excSelect(p){
+    var sel=document.createElement("select"); sel.className="psel"; sel.setAttribute("aria-label","Add an excursion to this day");
+    sel.appendChild(new Option("＋ Add excursion",""));
+    var flag={dry:"🟢",opt:"🟡",wet:"🔵"};
+    excCatalog().forEach(function(g){ var og=document.createElement("optgroup"); og.label=g.group; g.items.forEach(function(it){ og.appendChild(new Option((flag[it.w]||"")+" "+it.n,it.n)); }); sel.appendChild(og); });
+    sel.addEventListener("change",function(){ var name=sel.value; if(!name)return; var ps=planState(); if(!ps.acts[p.key])ps.acts[p.key]=[]; if(ps.acts[p.key].indexOf(name)<0){ ps.acts[p.key].push(name); state.checked["exc::"+slug(name)]=true; } save(); rerenderItin(); });
+    return sel;
+  }
+  function dineSelect(p){
+    var sel=document.createElement("select"); sel.className="psel"; sel.setAttribute("aria-label","Set dinner for this day");
+    sel.appendChild(new Option("🍽 Set dinner",""));
+    RESTAURANTS.forEach(function(r){ sel.appendChild(new Option(r.name,r.name)); });
+    sel.addEventListener("change",function(){ var name=sel.value; if(!name)return; var ps=planState(); ps.dinner[p.key]=name; state.star["dine::"+slug(name)]=true; save(); rerenderItin(); });
+    return sel;
+  }
   function travelCard(d){
-    var card=el("div","day travel");
-    card.appendChild(dayWhen(d));
-    var body=el("div","d-body");
-    var head=el("div","d-head"); head.appendChild(chip("Travel day","")); body.appendChild(head);
-    body.appendChild(el("h3",null,d.title));
-    body.appendChild(el("p",null,d.note));
-    card.appendChild(body); return card;
+    var card=el("div","day travel"); card.appendChild(dayWhen(d.dow,d.date));
+    var body=el("div","d-body"); var head=el("div","d-head"); head.appendChild(chip("Travel day","")); body.appendChild(head);
+    body.appendChild(el("h3",null,d.title)); body.appendChild(el("p",null,d.note)); card.appendChild(body); return card;
   }
 
   function inf(w){
