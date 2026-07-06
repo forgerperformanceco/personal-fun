@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Riviera Maya — Excellence Riviera Cancun</title>
-<meta name="description" content="Our family vacation companion for Excellence Riviera Cancun, July 18–24 — dining, excursions, packing and resort info.">
+<meta name="description" content="Our family vacation companion for Excellence Riviera Cancun, July 18–24 — itinerary, dining, excursions, packing and resort info.">
 <meta name="theme-color" content="#0C6E62">
 </head>
 <body>
@@ -272,6 +272,31 @@ li.item .del:hover { color: var(--hibiscus); }
 .additem button:disabled { opacity: .35; cursor: default; }
 input.cb:focus-visible + label .tick { outline: 2px solid var(--sea); outline-offset: 2px; }
 
+/* ---------- ITINERARY ---------- */
+.days { display: flex; flex-direction: column; gap: 16px; }
+.day { position: relative; background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 22px 24px; box-shadow: var(--shadow); display: grid; grid-template-columns: 128px 1fr; gap: 6px 28px; transition: border-color .3s ease, box-shadow .3s ease; }
+@media (max-width: 680px) { .day { grid-template-columns: 1fr; gap: 12px; padding: 20px; } }
+.day.set { border-color: color-mix(in srgb, var(--sea) 45%, var(--line)); box-shadow: 0 0 0 1px color-mix(in srgb, var(--sea) 28%, transparent), var(--shadow); }
+.day.travel { background: transparent; border-style: dashed; box-shadow: none; }
+.d-when .dow { font-family: var(--f-display); font-size: 25px; font-weight: 560; line-height: 1; }
+.d-when .date { color: var(--faint); font-size: 12px; font-weight: 700; margin-top: 4px; text-transform: uppercase; letter-spacing: .1em; }
+.day.travel .d-when .dow { color: var(--muted); }
+.d-body { min-width: 0; }
+.d-head { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+.d-head h3 { flex: 1; }
+.d-body h3 { font-size: 20px; font-weight: 520; }
+.day.travel .d-body p { color: var(--muted); font-size: 14.5px; margin: 6px 0 0; line-height: 1.6; }
+.day.travel .chip { background: color-mix(in srgb, var(--muted) 13%, transparent); color: var(--muted); }
+.dayset { appearance: none; cursor: pointer; border: 1px solid var(--line-strong); background: none; color: var(--muted); font-family: var(--f-body); font-weight: 700; font-size: 12px; letter-spacing: .02em; padding: 5px 13px; border-radius: 999px; white-space: nowrap; transition: color .2s ease, border-color .2s ease, background .2s ease; }
+.dayset:hover { color: var(--sea); border-color: var(--sea); }
+.day.set .dayset { background: var(--sea); border-color: var(--sea); color: #fff; }
+.tl { list-style: none; margin: 8px 0 0; padding: 0; }
+.tl .slot { display: grid; grid-template-columns: 92px 1fr; gap: 16px; padding: 9px 0; border-top: 1px solid var(--line); }
+@media (max-width: 520px) { .tl .slot { grid-template-columns: 1fr; gap: 2px; } }
+.tl .slot:first-child { border-top: none; padding-top: 2px; }
+.tl .slot .lbl { font-size: 11px; text-transform: uppercase; letter-spacing: .14em; font-weight: 700; color: var(--sea); padding-top: 3px; }
+.tl .slot .txt { font-size: 14.5px; color: var(--ink); line-height: 1.55; }
+
 /* ---------- PHRASES ---------- */
 .phrases { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px,1fr)); gap: 10px; }
 .phrase { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 12px 16px; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; }
@@ -437,8 +462,38 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
   ];
   var PHRASES = [["Hola","Hello"],["Gracias","Thank you"],["Por favor","Please"],["Salud","Cheers"],["La cuenta, por favor","The check, please"],["¿Cuánto cuesta?","How much?"],["Dos cervezas","Two beers"],["¿Dónde está el baño?","Where's the bathroom?"],["Buenos días","Good morning"]];
 
+  var ITINERARY = [
+    { kind:"travel", dow:"Fri", date:"Jul 18", key:"d18", title:"Arrival", note:"Land at Cancún, take the ~30-minute transfer, check in and unpack. Keep it easy — a first dinner at The Kitchen Table and a nightcap at the Martini Bar. Nothing planned." },
+    { kind:"day", dow:"Sat", date:"Jul 19", key:"d19", tag:"Resort day", tk:"sea", theme:"Ease into resort life", slots:[
+      ["Morning","Sleep in, a long breakfast, claim your pool chairs. Book spa treatments now — mid-morning slots fill first."],
+      ["Afternoon","Pool and beach. Ride out the afternoon storm with a swim-up cocktail, or a shaded lounger and a book."],
+      ["Evening","Dinner at The Lobster House, then the nightly theater show."]
+    ]},
+    { kind:"day", dow:"Sun", date:"Jul 20", key:"d20", tag:"Swim-free", tk:"good", theme:"Jungle ruins morning", slots:[
+      ["Morning","Early start for Cobá and the newly reopened Nohoch Mul pyramid, then wild spider monkeys at Punta Laguna — jungle shade, no water."],
+      ["Afternoon","Back by mid-afternoon; cool off at the pool or the Miilé Spa hydrotherapy circuit."],
+      ["Evening","Spice — grab seats at the teppanyaki counter for the show."]
+    ]},
+    { kind:"day", dow:"Mon", date:"Jul 21", key:"d21", tag:"Group splits", tk:"sea", theme:"Whale sharks & spa", slots:[
+      ["Morning","The swimmers — Vanessa, Ella & friend — head out for the whale-shark tour (July is peak). Bobby takes it dry: the Aktun Chen cave walk, or a slow resort morning."],
+      ["Afternoon","The boat crew returns; regroup at the pool. Spa time for Bobby."],
+      ["Evening","Dress up for Chez Isabelle."]
+    ]},
+    { kind:"day", dow:"Tue", date:"Jul 22", key:"d22", tag:"Your call", tk:"sea", theme:"Cliffs & town, or pure rest", slots:[
+      ["Morning","Pick your speed: Tulum's clifftop ruins (dry — go early), or a proper do-nothing pool morning."],
+      ["Afternoon","Puerto Morelos town for seafood and the leaning lighthouse. If it storms, duck into a tequila tasting or a Yucatecan cooking class."],
+      ["Evening","A casual night at Oregano, or Agave for Mexican."]
+    ]},
+    { kind:"day", dow:"Wed", date:"Jul 23", key:"d23", tag:"Grand finale", tk:"sun", theme:"Last full day — make it count", slots:[
+      ["Morning","Head to Xcaret for the day — a huge, swim-optional park the whole group can enjoy (or Croco Cun next door if you'd rather stay close and slow)."],
+      ["Afternoon","Wander Xcaret's jungle trails, wildlife and Maya village; or a final pool-and-spa afternoon back at the resort."],
+      ["Evening","Xcaret's “México Espectacular” night show — or a farewell dinner at Chez Isabelle and the silent party back at home base."]
+    ]},
+    { kind:"travel", dow:"Thu", date:"Jul 24", key:"d24", title:"Departure", note:"Breakfast, one last dip, check out and transfer back to Cancún for the flight home. Nothing planned — just the goodbye." }
+  ];
+
   var SECTIONS = [
-    { key: "overview", label: "Overview" }, { key: "dining", label: "Dining" },
+    { key: "overview", label: "Overview" }, { key: "itin", label: "Itinerary" }, { key: "dining", label: "Dining" },
     { key: "do", label: "The Resort" }, { key: "excursions", label: "Excursions" },
     { key: "pack", label: "Packing" }, { key: "info", label: "Good to Know" }
   ];
@@ -494,7 +549,7 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
   function render(){
     renderNav(); viewEl.innerHTML = "";
     var host = el("section","section"); var wrap = el("div","wrap"); host.appendChild(wrap); viewEl.appendChild(host);
-    ({ overview:ovw, dining:din, do:doo, excursions:exc, pack:pak, info:inf })[activeSection](wrap);
+    ({ overview:ovw, itin:itin, dining:din, do:doo, excursions:exc, pack:pak, info:inf })[activeSection](wrap);
     observeReveals();
   }
 
@@ -656,6 +711,39 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
     person.cats.forEach(function(cat,i){ var list=packItems(person,cat); var d=list.filter(function(it){return state.checked[it.id];}).length; var gc=groups[i]&&groups[i].querySelector(".gc"); if(gc)gc.textContent=d+"/"+list.length; });
     var segs=viewEl.querySelectorAll(".segbtn .c"); PEOPLE.forEach(function(p,i){ var s=personStats(p); if(segs[i])segs[i].textContent=s.done+"/"+s.total; });
     renderNav();
+  }
+
+  function itin(w){
+    w.appendChild(leadBlock("Seven days, loosely held","A plan for <em>the week</em>","A suggested rhythm you can shuffle: do the outdoor things in the cooler mornings, let the afternoon storms chase you to the pool, spa or an air-conditioned lunch, and keep evenings for dinner and a show. Travel days are a wash — nothing scheduled. Where the group splits over the water, it's noted. Tap “Lock in” once a day feels set."));
+    var days=el("div","days");
+    ITINERARY.forEach(function(d){ days.appendChild(d.kind==="travel"?travelCard(d):dayCard(d)); });
+    w.appendChild(days);
+    stagger([].slice.call(days.children));
+  }
+  function dayWhen(d){ var wc=el("div","d-when"); wc.appendChild(el("div","dow",d.dow)); wc.appendChild(el("div","date",d.date)); return wc; }
+  function dayCard(d){
+    var id="day::"+d.key, set=!!state.checked[id];
+    var card=el("div","day"+(set?" set":""));
+    card.appendChild(dayWhen(d));
+    var body=el("div","d-body");
+    var head=el("div","d-head"); head.appendChild(chip(d.tag, d.tk||"sea"));
+    var btn=el("button","dayset"); btn.textContent=set?"✓ Locked in":"Lock in";
+    btn.addEventListener("click", function(){ if(state.checked[id]) delete state.checked[id]; else state.checked[id]=true; save(); var on=!!state.checked[id]; card.classList.toggle("set",on); btn.textContent=on?"✓ Locked in":"Lock in"; });
+    head.appendChild(btn); body.appendChild(head);
+    body.appendChild(el("h3",null,d.theme));
+    var tl=el("ul","tl");
+    d.slots.forEach(function(s){ var li=el("li","slot"); li.appendChild(el("span","lbl",s[0])); li.appendChild(el("span","txt",s[1])); tl.appendChild(li); });
+    body.appendChild(tl); card.appendChild(body);
+    return card;
+  }
+  function travelCard(d){
+    var card=el("div","day travel");
+    card.appendChild(dayWhen(d));
+    var body=el("div","d-body");
+    var head=el("div","d-head"); head.appendChild(chip("Travel day","")); body.appendChild(head);
+    body.appendChild(el("h3",null,d.title));
+    body.appendChild(el("p",null,d.note));
+    card.appendChild(body); return card;
   }
 
   function inf(w){
