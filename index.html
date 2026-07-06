@@ -61,6 +61,10 @@
   --shadow-lg: 0 2px 6px rgba(0,0,0,.35), 0 26px 64px rgba(0,0,0,.5);
 }
 
+:root { --wave: #2C7DA0; }
+@media (prefers-color-scheme: dark) { :root { --wave: #6FB3D6; } }
+:root[data-theme="light"] { --wave: #2C7DA0; }
+:root[data-theme="dark"] { --wave: #6FB3D6; }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; background: var(--ivory); color: var(--ink); font-family: var(--f-body); line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
@@ -170,6 +174,7 @@ main { min-height: 60vh; }
 .chip.sun { background: color-mix(in srgb, var(--sun) 20%, transparent); color: var(--sun); }
 .chip.club { background: color-mix(in srgb, var(--hibiscus) 14%, transparent); color: var(--hibiscus); }
 .chip.good { background: color-mix(in srgb, var(--good) 16%, transparent); color: var(--good); }
+.chip.wave { background: color-mix(in srgb, var(--wave) 15%, transparent); color: var(--wave); }
 
 .aside { border-left: 2px solid var(--sun); padding: 4px 0 4px 20px; }
 .aside .kicker { color: var(--sun); }
@@ -352,23 +357,50 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
     { h: "Stay active", k: "Free", p: "A 24-hour gym plus complimentary yoga, Pilates and water aerobics. Daytime: beach & pool volleyball, water polo, tennis, archery, billiards, cooking & cocktail demos, dance and Spanish lessons." },
     { h: "After dark", k: "Nightly", p: "Outdoor theater shows — acrobats, fire dancers, live music — strolling mariachi in the plaza, and rotating theme nights. Casino night and a silent headphone party are regulars. Check the daily program." }
   ];
-  var EX_FEATURE = { name: "Whale shark snorkel", dur: "Full day · 6–10 hrs", desc: "Swim alongside the world's largest fish in the open Caribbean off Isla Mujeres. July sits in the very heart of the season — roughly 95% sighting odds. If you book one thing, book this." };
+  var DRY_HERO = { name: "Xcaret", dur: "Full day + night show · ~40 min", tagline: "★ Swim-free friendly — for everyone", desc: "The region's great eco-park, and the underground-river swims are completely optional. Even staying dry you get butterfly pavilions, jaguars and flamingos, a Maya village, and the jaw-dropping “México Espectacular” night show with 300 performers. The best big day out if you'd rather not get in the water." };
+  var WET_HERO = { name: "Whale shark snorkel", dur: "Full day · 6–10 hrs", tagline: "★ In season now — July peak", desc: "Swim alongside the world's largest fish off Isla Mujeres. July is the very heart of the season — roughly 95% sighting odds. The region's signature trip for the swimmers in the group." };
+  // w: "dry" (no swimming) · "opt" (water skippable) · "wet" (water is the point)
   var EXCURSIONS = [
-    { group: "On the water", items: [
-      { name: "Isla Mujeres catamaran", dur: "6–8h", desc: "Sail and snorkel to the little island north of Cancún — beach club, reef stop, open bar." },
-      { name: "Puerto Morelos reef snorkel", dur: "2–3h", desc: "The closest adventure — the world's 2nd-largest reef sits ~15 min offshore. Several departures daily." },
-      { name: "Cozumel day", dur: "Full day", desc: "Ferry via Playa del Carmen to Mexico's top snorkel & dive island." }
+    { group: "Ruins & culture", items: [
+      { n: "Chichén Itzá + Valladolid", dur: "Full day · ~11h", w: "dry", d: "El Castillo, the great ball court and observatory, plus a stop in colonial Valladolid. The bucket-list day — book an early start; it's long, hot and busy." },
+      { n: "Tulum ruins", dur: "Half day · ~4h", w: "dry", d: "A compact Maya city on a cliff over the Caribbean. Walk the grounds up top — the little cove swim below is optional." },
+      { n: "Cobá + Nohoch Mul", dur: "Half–full day · ~5h", w: "dry", d: "Jungle-shrouded ruins you explore on foot or by bike — and the big pyramid reopened for climbing in late 2025." },
+      { n: "Ek Balam", dur: "Half day", w: "dry", d: "A quieter site with a still-climbable acropolis and beautifully preserved stucco carvings. Pairs well with Valladolid." },
+      { n: "Valladolid & Izamal", dur: "Half–full day", w: "dry", d: "Colonial “Pueblos Mágicos” — shady plazas, colored facades and Izamal's all-yellow streets." }
     ]},
-    { group: "Ruins & cenotes", items: [
-      { name: "Cenotes — Ruta de los Cenotes", dur: "~4h", desc: "Puerto Morelos is the gateway. Swim and cliff-jump freshwater sinkholes; combos with ziplines & ATVs." },
-      { name: "Tulum ruins + cenote", dur: "6–8h", desc: "Clifftop Maya ruins over the Caribbean, paired with a cenote swim." },
-      { name: "Cobá ruins", dur: "Half–full day", desc: "Jungle Maya site with a climbable pyramid; often combined with cenotes." },
-      { name: "Chichén Itzá", dur: "Full day · ~12h", desc: "The UNESCO wonder. A long drive each way, usually with a cenote and Valladolid stop." }
+    { group: "Wildlife & jungle", items: [
+      { n: "Croco Cun Zoo", dur: "~1.5h · 5 min away", w: "dry", d: "A guided, hands-on walk among crocodiles, spider monkeys and parrots — right next door to the resort. A great low-effort morning." },
+      { n: "Punta Laguna monkeys", dur: "Half day", w: "dry", d: "A jungle walk to spot wild spider and howler monkeys, plus lagoon canoeing. Ziplines and cenote are optional add-ons." },
+      { n: "Botanical Garden, Puerto Morelos", dur: "~2h · 5 min away", w: "dry", d: "Shaded jungle boardwalks, a Maya chicle-camp exhibit and resident wild spider monkeys, minutes from the resort." }
     ]},
-    { group: "Adventure parks", items: [
-      { name: "Xcaret", dur: "Full day", desc: "Eco-archaeological park — underground rivers, wildlife, and a huge evening show." },
-      { name: "Xel-Há", dur: "Full day", desc: "All-inclusive natural snorkeling lagoon and water park." },
-      { name: "Xplor", dur: "Full day", desc: "Ziplines, amphibious vehicles and underground river rafting." }
+    { group: "Land adventure", items: [
+      { n: "Aktun Chen dry cave walk", dur: "~1.5h · ~50 min", w: "dry", d: "A guided walk through a five-million-year-old dry stalactite cavern — the one underground river where swimming is banned, so zero water pressure. A genuine “dry but wow.”" },
+      { n: "Selvatica zip & ATV", dur: "Half day · ~15 min", w: "opt", d: "Jungle ziplines and off-road ATVs in the Puerto Morelos jungle. A cenote dip comes bundled but is easy to sit out — the rides are all dry." },
+      { n: "ATV / dune-buggy jungle tour", dur: "Half day", w: "dry", d: "Off-road buggies through the jungle and Ruta de los Cenotes. (July rain means mud, not swimming.)" },
+      { n: "Horseback on the beach", dur: "2–4h", w: "dry", d: "Beach-and-jungle trail rides from ranches near Puerto Morelos." },
+      { n: "Skydive Playa del Carmen", dur: "~2–3h · ~40 min", w: "dry", d: "A tandem jump over the coastline with a beach landing — not a water landing. Book a morning slot; afternoon storms scrub jumps." }
+    ]},
+    { group: "Eco-parks & shows", items: [
+      { n: "Xoximilco", dur: "Evening · ~4.5h", w: "dry", d: "A festive night on decorated trajinera boats — mariachi, tacos and open bar, seated the whole time. No swimming, all party." },
+      { n: "Xenses sensory park", dur: "Half day · ~40 min", w: "opt", d: "A playful optical-illusion park: a giant-and-dwarf village, mirror mazes and sensory trails. A dry half plus a muddy/water half you can skip." }
+    ]},
+    { group: "Towns, food & leisure", items: [
+      { n: "Puerto Morelos town", dur: "A few hours · in town", w: "dry", d: "The leaning lighthouse, the square, an artisan market and a terrific low-key seafood scene." },
+      { n: "Isla Mujeres by golf cart", dur: "Full day", w: "dry", d: "Ferry over from Cancún and loop the island by golf cart — Punta Sur cliffs, town and viewpoints, no snorkel boat required." },
+      { n: "Sian Ka'an biosphere (Muyil)", dur: "Half–full day · ~1.5h", w: "opt", d: "A UNESCO reserve: dry Muyil ruins and a jungle boardwalk, then a boat through mangrove lagoons for wildlife. The lazy-river float is optional." },
+      { n: "Tequila tasting or cooking class", dur: "2–4h", w: "dry", d: "Hands-on Yucatecan cooking or a guided tequila/mezcal tasting — air-conditioned and ideal for a hot, rainy afternoon." },
+      { n: "Golf at Mayakoba", dur: "Half day · ~20 min", w: "dry", d: "Tee off at El Camaleón, a former PGA Tour host, or another nearby course. Play early to beat the storms." },
+      { n: "Playa del Carmen — Fifth Ave", dur: "Half day · ~30 min", w: "dry", d: "A long pedestrian shopping-and-dining strip — an easy afternoon of browsing and people-watching." },
+      { n: "Las Coloradas pink lakes", dur: "Very long day · 3h+ each way", w: "dry", d: "Boat views of neon-pink salt lagoons and flamingos. Spectacular, but a brutal round-trip drive — only if the group loves a photo mission." }
+    ]},
+    { group: "Water — for the swimmers", items: [
+      { n: "Whale shark snorkel", dur: "Full day · 6–10h", w: "wet", d: "Swim alongside the world's largest fish off Isla Mujeres. July is peak season (~95% sightings) — the region's signature." },
+      { n: "Isla Mujeres catamaran & snorkel", dur: "6–8h", w: "wet", d: "Sail, snorkel a reef, and hit a beach club with an open bar." },
+      { n: "Puerto Morelos reef snorkel", dur: "2–3h", w: "wet", d: "The world's 2nd-largest reef sits ~15 min offshore — the closest water adventure." },
+      { n: "Cenote swim — Dos Ojos / Ruta de los Cenotes", dur: "~4h", w: "wet", d: "Swim and cliff-jump crystal-clear freshwater sinkholes; the cenote road starts right by Puerto Morelos." },
+      { n: "Cozumel snorkel & dive", dur: "Full day", w: "wet", d: "Ferry to Mexico's top dive island for reef snorkeling and diving." },
+      { n: "Rio Secreto", dur: "~half day", w: "wet", d: "Wade and float through a stunning half-flooded stalactite cave." },
+      { n: "Xel-Há", dur: "Full day", w: "wet", d: "An all-inclusive natural snorkeling lagoon and water park." }
     ]}
   ];
   var PEOPLE = [
@@ -411,7 +443,7 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
     { key: "pack", label: "Packing" }, { key: "info", label: "Good to Know" }
   ];
 
-  var state = load(); var activeSection = "overview"; var activePerson = "shared";
+  var state = load(); var activeSection = "overview"; var activePerson = "shared"; var exFilter = "all";
   function load() { try { var r = localStorage.getItem(STORE_KEY); if (r) return JSON.parse(r); } catch (e) {} return { checked:{}, star:{}, names:{}, custom:{}, removed:{} }; }
   function save() { try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) {} }
   function slug(s) { return s.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,""); }
@@ -533,36 +565,55 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
     w.appendChild(cards); stagger([].slice.call(cards.children));
   }
 
+  function waterChip(w){ if(w==="dry") return chip("Swim-free","good"); if(w==="opt") return chip("Optional dip","sun"); return chip("In the water","wave"); }
+  function exShortlisted(){ var n=0; for(var k in state.checked){ if(k.indexOf("exc::")===0 && state.checked[k]) n++; } return n; }
+  function updateExCount(){ var c=document.getElementById("exCount"); if(c) c.textContent=exShortlisted()+" shortlisted"; }
+
   function exc(w){
-    var picked=0,total=1; if(state.checked["exc::"+slug(EX_FEATURE.name)])picked++;
-    EXCURSIONS.forEach(function(g){ g.items.forEach(function(it){ total++; if(state.checked["exc::"+slug(it.name)])picked++; }); });
-    w.appendChild(leadBlock("Off-resort adventures","Worth leaving <em>paradise</em> for","Shortlist what you want, then book through the resort tour desk or an operator. Whale sharks and Isla Mujeres sell out in summer — reserve those first."));
-    // feature
-    var fid="exc::"+slug(EX_FEATURE.name);
-    var f=el("div","exfeat r"); f.appendChild(el("div","scene"));
-    var tag=el("div","tag"); tag.innerHTML="★ In season now — July peak"; f.appendChild(tag);
-    f.appendChild(el("h3",null,EX_FEATURE.name));
-    f.appendChild(el("p",null,EX_FEATURE.desc));
-    var m=el("div","ex-meta"); m.appendChild(el("span","dur",EX_FEATURE.dur));
-    var fb=el("button","exbtn"+(state.checked[fid]?" on":"")); fb.textContent = state.checked[fid]?"✓ Shortlisted":"Add to shortlist";
-    fb.addEventListener("click", function(){ if(state.checked[fid]) delete state.checked[fid]; else state.checked[fid]=true; save(); fb.className="exbtn"+(state.checked[fid]?" on":""); fb.textContent=state.checked[fid]?"✓ Shortlisted":"Add to shortlist"; updateExCount(); });
-    m.appendChild(fb); f.appendChild(m); w.appendChild(f);
-    var cnt = el("p","r"); cnt.id="exCount"; cnt.style.cssText="color:var(--faint);font-size:13px;margin:0 0 6px;font-weight:600;"; cnt.textContent = picked+" of "+total+" shortlisted"; w.appendChild(cnt);
+    w.appendChild(leadBlock("Off-resort adventures","Worth leaving <em>paradise</em> for","Beyond the beach: ancient ruins, jungle wildlife, ziplines and colonial towns, plus the big eco-park shows. Not a fan of the water? Tap Swim-free and every snorkel trip drops away."));
+    var seg=el("div","seg r");
+    [["all","Everything"],["dry","Swim-free"],["wet","In the water"]].forEach(function(f){
+      var b=el("button","segbtn"); b.setAttribute("aria-selected", exFilter===f[0]?"true":"false");
+      b.appendChild(el("span",null,f[1]));
+      b.addEventListener("click", function(){ exFilter=f[0]; exc(clearWrap(w)); observeReveals(); });
+      seg.appendChild(b);
+    });
+    w.appendChild(seg);
+    var hero = (exFilter==="wet") ? WET_HERO : DRY_HERO;
+    w.appendChild(exFeature(hero));
+    var cnt=el("p","r"); cnt.id="exCount"; cnt.style.cssText="color:var(--faint);font-size:13px;margin:4px 2px 0;font-weight:600;"; cnt.textContent=exShortlisted()+" shortlisted"; w.appendChild(cnt);
     EXCURSIONS.forEach(function(g){
+      var items = g.items.filter(function(it){
+        if(slug(it.n)===slug(hero.name)) return false;
+        if(exFilter==="dry") return it.w!=="wet";
+        if(exFilter==="wet") return it.w==="wet";
+        return true;
+      });
+      if(!items.length) return;
       w.appendChild(subhead(g.group,""));
       var list=el("div","exlist r");
-      g.items.forEach(function(it){ list.appendChild(exRow(it)); });
+      items.forEach(function(it){ list.appendChild(exRow(it)); });
       w.appendChild(list);
     });
   }
+  function exFeature(hero){
+    var id="exc::"+slug(hero.name);
+    var f=el("div","exfeat r"); f.appendChild(el("div","scene"));
+    f.appendChild(el("div","tag",hero.tagline));
+    f.appendChild(el("h3",null,hero.name));
+    f.appendChild(el("p",null,hero.desc));
+    var m=el("div","ex-meta"); m.appendChild(el("span","dur",hero.dur));
+    var fb=el("button","exbtn"+(state.checked[id]?" on":"")); fb.textContent = state.checked[id]?"✓ Shortlisted":"Add to shortlist";
+    fb.addEventListener("click", function(){ if(state.checked[id]) delete state.checked[id]; else state.checked[id]=true; save(); fb.className="exbtn"+(state.checked[id]?" on":""); fb.textContent=state.checked[id]?"✓ Shortlisted":"Add to shortlist"; updateExCount(); });
+    m.appendChild(fb); f.appendChild(m); return f;
+  }
   function exRow(it){
-    var id="exc::"+slug(it.name); var row=el("div","exrow"+(state.checked[id]?" checked":""));
+    var id="exc::"+slug(it.n); var row=el("div","exrow"+(state.checked[id]?" checked":""));
     var t=el("div","tick"); t.appendChild(tickSvg()); row.appendChild(t);
-    var b=el("div","ex-b"); var h=el("div","ex-h"); h.appendChild(el("span","ex-n",it.name)); h.appendChild(el("span","dur",it.dur)); b.appendChild(h); b.appendChild(el("div","ex-d",it.desc)); row.appendChild(b);
+    var b=el("div","ex-b"); var h=el("div","ex-h"); h.appendChild(el("span","ex-n",it.n)); h.appendChild(el("span","dur",it.dur)); h.appendChild(waterChip(it.w)); b.appendChild(h); b.appendChild(el("div","ex-d",it.d)); row.appendChild(b);
     row.addEventListener("click", function(){ if(state.checked[id]) delete state.checked[id]; else state.checked[id]=true; save(); row.classList.toggle("checked"); updateExCount(); });
     return row;
   }
-  function updateExCount(){ var picked=0,total=1; if(state.checked["exc::"+slug(EX_FEATURE.name)])picked++; EXCURSIONS.forEach(function(g){ g.items.forEach(function(it){ total++; if(state.checked["exc::"+slug(it.name)])picked++; }); }); var c=document.getElementById("exCount"); if(c)c.textContent=picked+" of "+total+" shortlisted"; }
 
   function pak(w){
     w.appendChild(leadBlock("Six days, one carry-on","<em>Packing</em>, sorted","One list each, plus a shared bag for documents and beach gear. Tick as you go — it saves automatically, so everyone can pack from their own phone."));
