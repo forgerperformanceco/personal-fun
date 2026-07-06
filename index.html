@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mexico Packing List · Ella's Senior Trip</title>
-<meta name="description" content="Packing + excursions checklist for Ella's senior trip to Excellence Riviera Cancun, July 18–24.">
+<title>Mexico Vacation · Excellence Riviera Cancun</title>
+<meta name="description" content="Vacation companion app for our family trip to Excellence Riviera Cancun, July 18–24 — dining, excursions, packing lists and resort info.">
 <meta name="theme-color" content="#0E8F8A">
 </head>
 <body>
@@ -18,40 +18,28 @@
     --line: #E9E1D2;
     --sea: #0E8F8A;
     --sea-deep: #0B6E6A;
-    --sun: #E39B2E;
-    --coral: #E0655B;
-    --grape: #8A6BB0;
-    --sky: #3E86C7;
+    --sun: #D98A1F;
+    --coral: #D8564B;
+    --grape: #7E5FA6;
+    --sky: #2F79BC;
     --good: #2E9E6B;
     --shadow: 0 1px 2px rgba(20,48,56,.05), 0 8px 24px rgba(20,48,56,.06);
     --font-display: ui-rounded, "SF Pro Rounded", "Hiragino Maru Gothic ProN", "Segoe UI", system-ui, sans-serif;
     --font-body: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    --p-me: var(--sea);
-    --p-wife: var(--coral);
-    --p-kid: var(--grape);
+    --accent: var(--sea);
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --sand: #0C1E24;
-      --surface: #122A31;
-      --surface-2: #0F242B;
-      --ink: #EAF2F0;
-      --muted: #91A7AD;
-      --line: #22434C;
-      --sea: #2FB6B0;
-      --sea-deep: #4FC9C3;
-      --sun: #F0B454;
-      --coral: #F07E74;
-      --grape: #B292D8;
-      --sky: #6BA9E0;
-      --good: #4EC489;
+      --sand: #0C1E24; --surface: #122A31; --surface-2: #0F242B; --ink: #EAF2F0;
+      --muted: #91A7AD; --line: #22434C; --sea: #2FB6B0; --sea-deep: #4FC9C3;
+      --sun: #F0B454; --coral: #F07E74; --grape: #B292D8; --sky: #6BA9E0; --good: #4EC489;
       --shadow: 0 1px 2px rgba(0,0,0,.25), 0 10px 28px rgba(0,0,0,.35);
     }
   }
   :root[data-theme="light"] {
     --sand: #FCF8F1; --surface: #FFFFFF; --surface-2: #F6F1E7; --ink: #163038;
     --muted: #5E7078; --line: #E9E1D2; --sea: #0E8F8A; --sea-deep: #0B6E6A;
-    --sun: #E39B2E; --coral: #E0655B; --grape: #8A6BB0; --sky: #3E86C7; --good: #2E9E6B;
+    --sun: #D98A1F; --coral: #D8564B; --grape: #7E5FA6; --sky: #2F79BC; --good: #2E9E6B;
     --shadow: 0 1px 2px rgba(20,48,56,.05), 0 8px 24px rgba(20,48,56,.06);
   }
   :root[data-theme="dark"] {
@@ -62,568 +50,614 @@
   }
 
   * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    background: var(--sand);
-    color: var(--ink);
-    font-family: var(--font-body);
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-  }
-  .wrap { max-width: 1060px; margin: 0 auto; padding: 22px 20px 72px; }
+  body { margin: 0; background: var(--sand); color: var(--ink); font-family: var(--font-body); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 18px 18px 80px; }
+  a { color: var(--sea-deep); }
 
-  /* Header */
+  /* ---- hero ---- */
   header.hero {
-    position: relative;
-    overflow: hidden;
-    border-radius: 22px;
-    background:
-      radial-gradient(120px 120px at 88% -10%, color-mix(in srgb, var(--sun) 70%, transparent), transparent 70%),
-      linear-gradient(135deg, var(--sea-deep), var(--sea));
-    color: #fff;
-    padding: 26px 26px 22px;
-    box-shadow: var(--shadow);
+    position: relative; overflow: hidden; border-radius: 22px;
+    background: radial-gradient(140px 140px at 90% -20%, color-mix(in srgb, var(--sun) 75%, transparent), transparent 70%),
+                linear-gradient(135deg, var(--sea-deep), var(--sea));
+    color: #fff; padding: 22px 24px 20px; box-shadow: var(--shadow);
   }
-  header.hero::after {
-    content: "";
-    position: absolute; left: 0; right: 0; bottom: -2px; height: 46px;
-    background:
-      radial-gradient(22px 22px at 12px 46px, transparent 21px, color-mix(in srgb, #fff 14%, transparent) 22px) repeat-x;
-    background-size: 44px 46px;
-    opacity: .5;
-  }
-  .eyebrow {
-    font-family: var(--font-body);
-    text-transform: uppercase;
-    letter-spacing: .16em;
-    font-size: 12px;
-    font-weight: 700;
-    opacity: .9;
-    margin: 0 0 6px;
-  }
-  h1 {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: clamp(30px, 6vw, 46px);
-    letter-spacing: -.01em;
-    margin: 0;
-    text-wrap: balance;
-  }
-  .trip-meta {
-    display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center;
-    margin-top: 12px; font-size: 15px; font-weight: 600;
-  }
-  .trip-meta .dot { opacity: .55; }
-  .countdown {
-    margin-left: auto;
-    background: rgba(255,255,255,.16);
-    border: 1px solid rgba(255,255,255,.28);
-    border-radius: 999px;
-    padding: 7px 15px;
-    font-weight: 700;
-    font-variant-numeric: tabular-nums;
-    white-space: nowrap;
-  }
+  .eyebrow { text-transform: uppercase; letter-spacing: .16em; font-size: 11.5px; font-weight: 700; opacity: .92; margin: 0 0 5px; }
+  header.hero h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(26px, 5.4vw, 40px); letter-spacing: -.01em; margin: 0; text-wrap: balance; }
+  .trip-meta { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; margin-top: 10px; font-size: 14.5px; font-weight: 600; }
+  .trip-meta .dot { opacity: .5; }
+  .countdown { margin-left: auto; background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.28); border-radius: 999px; padding: 6px 14px; font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .resort-line { margin-top: 8px; font-size: 13.5px; font-weight: 600; opacity: .92; }
 
-  /* overall progress */
-  .overall {
-    display: flex; align-items: center; gap: 14px;
-    margin-top: 18px;
+  /* ---- section nav ---- */
+  nav.secnav {
+    position: sticky; top: 0; z-index: 20; display: flex; gap: 7px; overflow-x: auto;
+    padding: 12px 2px; margin: 4px -2px 6px; scrollbar-width: none;
+    background: linear-gradient(var(--sand) 72%, transparent);
   }
-  .bar {
-    flex: 1; height: 12px; border-radius: 999px;
-    background: rgba(255,255,255,.22); overflow: hidden;
-  }
-  .bar > i {
-    display: block; height: 100%; width: 0%;
-    background: linear-gradient(90deg, #fff, color-mix(in srgb, var(--sun) 60%, #fff));
-    border-radius: 999px;
-    transition: width .4s ease;
-  }
-  .overall .pct { font-weight: 800; font-variant-numeric: tabular-nums; min-width: 88px; text-align: right; }
-
-  /* tabs */
-  .tabs {
-    display: flex; flex-wrap: wrap; gap: 10px;
-    margin: 22px 0 6px;
-  }
-  .tab {
-    appearance: none; cursor: pointer;
-    border: 1px solid var(--line);
-    background: var(--surface);
-    color: var(--ink);
-    border-radius: 14px;
-    padding: 10px 15px;
-    font-family: var(--font-display);
-    font-weight: 700; font-size: 15px;
-    display: flex; align-items: center; gap: 9px;
-    box-shadow: var(--shadow);
+  nav.secnav::-webkit-scrollbar { display: none; }
+  .navbtn {
+    appearance: none; cursor: pointer; border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+    border-radius: 13px; padding: 9px 14px; font-family: var(--font-display); font-weight: 700; font-size: 14.5px;
+    white-space: nowrap; display: flex; align-items: center; gap: 7px; box-shadow: var(--shadow); flex: none;
     transition: transform .12s ease, border-color .15s ease;
   }
-  .tab:hover { transform: translateY(-1px); }
-  .tab .swatch { width: 11px; height: 11px; border-radius: 50%; background: var(--accent); flex: none; }
-  .tab .count {
-    font-family: var(--font-body); font-weight: 700; font-size: 12.5px;
-    color: var(--muted); font-variant-numeric: tabular-nums;
-  }
-  .tab[aria-selected="true"] {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 35%, transparent), var(--shadow);
-  }
-  .tab[aria-selected="true"] .count { color: var(--accent); }
-  .tab .rename {
-    display: none; border: none; background: transparent; cursor: pointer;
-    color: var(--muted); font-size: 13px; padding: 0 0 0 2px; line-height: 1;
-  }
-  .tab[aria-selected="true"] .rename { display: inline; }
-  .tab .rename:hover { color: var(--accent); }
+  .navbtn:hover { transform: translateY(-1px); }
+  .navbtn .ico { font-size: 15px; }
+  .navbtn[aria-current="true"] { border-color: var(--accent); color: var(--accent); box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 32%, transparent), var(--shadow); }
 
-  /* panel */
-  main { margin-top: 16px; }
-  .panel-head {
-    display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
-    margin: 6px 2px 14px;
-  }
-  .panel-head h2 {
-    font-family: var(--font-display); font-size: 22px; font-weight: 800; margin: 0;
-    color: var(--accent);
-  }
-  .panel-head .sub { color: var(--muted); font-size: 14px; font-weight: 600; }
+  /* ---- generic section ---- */
+  .sec-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin: 10px 2px 14px; }
+  .sec-head h2 { font-family: var(--font-display); font-size: clamp(22px, 4vw, 27px); font-weight: 800; margin: 0; color: var(--accent); }
+  .sec-head .sub { color: var(--muted); font-size: 14px; font-weight: 600; }
 
-  .grid {
-    display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px;
-  }
-  @media (max-width: 680px) { .grid { grid-template-columns: 1fr; } }
+  .grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 15px; }
+  .grid.three { grid-template-columns: repeat(3, minmax(0,1fr)); }
+  @media (max-width: 720px) { .grid, .grid.three { grid-template-columns: 1fr; } }
 
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 18px;
-    padding: 16px 16px 12px;
-    box-shadow: var(--shadow);
-  }
-  .card > header {
-    display: flex; align-items: center; gap: 10px; margin-bottom: 8px;
-  }
-  .card h3 {
-    font-family: var(--font-display); font-size: 16px; font-weight: 800; margin: 0;
-    letter-spacing: -.005em; flex: 1;
-  }
-  .card .cat-count {
-    font-size: 12px; font-weight: 700; color: var(--muted);
-    font-variant-numeric: tabular-nums;
-    background: var(--surface-2); border-radius: 999px; padding: 3px 9px;
-  }
-  .card .cat-count.done { color: var(--good); background: color-mix(in srgb, var(--good) 14%, transparent); }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 16px 16px 13px; box-shadow: var(--shadow); }
+  .card h3 { font-family: var(--font-display); font-size: 16.5px; font-weight: 800; margin: 0 0 3px; letter-spacing: -.005em; }
+  .card p { margin: 6px 0 0; font-size: 14px; }
+  .card p.lead { color: var(--muted); }
+
+  .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 9px; }
+  .badge { font-size: 11.5px; font-weight: 700; padding: 3px 9px; border-radius: 999px; background: var(--surface-2); color: var(--muted); letter-spacing: .01em; }
+  .badge.accent { background: color-mix(in srgb, var(--accent) 15%, transparent); color: var(--accent); }
+  .badge.fav { background: color-mix(in srgb, var(--sun) 18%, transparent); color: var(--sun); }
+  .badge.club { background: color-mix(in srgb, var(--grape) 16%, transparent); color: var(--grape); }
+  .badge.warn { background: color-mix(in srgb, var(--coral) 15%, transparent); color: var(--coral); }
+  .badge.good { background: color-mix(in srgb, var(--good) 16%, transparent); color: var(--good); }
+
+  .note-strip { background: var(--surface-2); border: 1px solid var(--line); border-radius: 14px; padding: 11px 14px; font-size: 13.5px; color: var(--muted); margin-bottom: 14px; display: flex; gap: 9px; align-items: flex-start; }
+  .note-strip b { color: var(--ink); }
+
+  /* ---- dining cards ---- */
+  .dine { display: flex; flex-direction: column; }
+  .dine .top { display: flex; align-items: flex-start; gap: 8px; }
+  .dine h3 { flex: 1; }
+  .star { appearance: none; border: none; background: transparent; cursor: pointer; font-size: 21px; line-height: 1; padding: 0; color: color-mix(in srgb, var(--muted) 55%, transparent); transition: transform .12s ease, color .15s ease; flex: none; }
+  .star:hover { transform: scale(1.12); }
+  .star.on { color: var(--sun); }
+  .dine .cuisine { color: var(--accent); font-weight: 700; font-size: 13px; }
+  .dine .meta-row { display: flex; flex-wrap: wrap; gap: 5px 12px; margin-top: 8px; font-size: 12.5px; color: var(--muted); font-weight: 600; }
+  .dine .meta-row span b { color: var(--ink); font-weight: 700; }
+
+  /* ---- excursion cards ---- */
+  li.item, .exc-item { display: flex; align-items: flex-start; gap: 12px; }
+  .exc-item { padding: 13px 14px; }
+  .check { width: 21px; height: 21px; flex: none; margin-top: 1px; border-radius: 7px; border: 2px solid color-mix(in srgb, var(--muted) 55%, transparent); display: grid; place-items: center; transition: background .15s ease, border-color .15s ease; }
+  .check svg { width: 13px; height: 13px; stroke: #fff; stroke-width: 3.2; fill: none; stroke-linecap: round; stroke-linejoin: round; opacity: 0; transform: scale(.5); transition: opacity .12s, transform .12s; }
+  input.cb { position: absolute; opacity: 0; width: 0; height: 0; }
+  .checked .check { background: var(--accent); border-color: var(--accent); }
+  .checked .check svg { opacity: 1; transform: scale(1); }
+  input.cb:focus-visible + label .check, .star:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .exc-item .body { flex: 1; min-width: 0; }
+  .exc-item label { display: flex; gap: 12px; cursor: pointer; align-items: flex-start; }
+  .exc-item .name { font-family: var(--font-display); font-weight: 800; font-size: 15.5px; }
+  .exc-item.checked .name { color: var(--accent); }
+  .exc-item .dur { font-size: 11.5px; font-weight: 700; color: var(--muted); background: var(--surface-2); border-radius: 999px; padding: 2px 8px; white-space: nowrap; }
+  .exc-item .desc { font-size: 13.5px; color: var(--muted); margin-top: 3px; }
+  .namewrap { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+
+  /* ---- pack ---- */
+  .subtabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 2px 0 14px; }
+  .subtab { appearance: none; cursor: pointer; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 12px; padding: 8px 13px; font-family: var(--font-display); font-weight: 700; font-size: 14px; display: flex; align-items: center; gap: 8px; box-shadow: var(--shadow); }
+  .subtab .swatch { width: 10px; height: 10px; border-radius: 50%; background: var(--sw); }
+  .subtab .cnt { font-family: var(--font-body); font-weight: 700; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .subtab[aria-selected="true"] { border-color: var(--sw); box-shadow: 0 0 0 2px color-mix(in srgb, var(--sw) 32%, transparent), var(--shadow); }
+  .subtab[aria-selected="true"] .cnt { color: var(--sw); }
 
   ul.items { list-style: none; margin: 0; padding: 0; }
-  li.item {
-    display: flex; align-items: center; gap: 11px;
-    padding: 7px 4px; border-radius: 10px;
-  }
+  li.item { padding: 7px 4px; border-radius: 10px; }
   li.item:hover { background: var(--surface-2); }
-  li.item label {
-    display: flex; align-items: center; gap: 11px; flex: 1; cursor: pointer; min-width: 0;
-  }
-  .check {
-    width: 21px; height: 21px; flex: none; border-radius: 7px;
-    border: 2px solid color-mix(in srgb, var(--muted) 55%, transparent);
-    display: grid; place-items: center;
-    transition: background .15s ease, border-color .15s ease, transform .1s ease;
-  }
-  .check svg { width: 13px; height: 13px; stroke: #fff; stroke-width: 3.2;
-    fill: none; stroke-linecap: round; stroke-linejoin: round;
-    opacity: 0; transform: scale(.5); transition: opacity .12s, transform .12s; }
-  input.cb { position: absolute; opacity: 0; width: 0; height: 0; }
-  input.cb:focus-visible + label .check { outline: 2px solid var(--accent); outline-offset: 2px; }
-  li.item.checked .check { background: var(--accent); border-color: var(--accent); }
-  li.item.checked .check svg { opacity: 1; transform: scale(1); }
+  li.item label { display: flex; align-items: center; gap: 11px; flex: 1; cursor: pointer; min-width: 0; }
   li.item .txt { font-size: 15px; font-weight: 500; }
-  li.item.checked .txt { color: var(--muted); text-decoration: line-through; text-decoration-color: color-mix(in srgb, var(--muted) 60%, transparent); }
-  li.item .del {
-    opacity: 0; border: none; background: transparent; color: var(--muted);
-    cursor: pointer; font-size: 17px; line-height: 1; padding: 2px 6px; border-radius: 6px; flex: none;
-  }
+  li.item.checked .txt { color: var(--muted); text-decoration: line-through; text-decoration-color: color-mix(in srgb, var(--muted) 55%, transparent); }
+  li.item .del { opacity: 0; border: none; background: transparent; color: var(--muted); cursor: pointer; font-size: 17px; line-height: 1; padding: 2px 6px; border-radius: 6px; flex: none; }
   li.item:hover .del { opacity: 1; }
   li.item .del:hover { color: var(--coral); background: color-mix(in srgb, var(--coral) 14%, transparent); }
-
-  .additem {
-    display: flex; gap: 8px; margin-top: 6px; padding: 4px;
-  }
-  .additem input {
-    flex: 1; border: 1px dashed var(--line); background: transparent;
-    border-radius: 10px; padding: 8px 11px; font: inherit; font-size: 14px; color: var(--ink);
-  }
+  .card .cat-count { font-size: 12px; font-weight: 700; color: var(--muted); font-variant-numeric: tabular-nums; background: var(--surface-2); border-radius: 999px; padding: 3px 9px; }
+  .card .cat-count.done { color: var(--good); background: color-mix(in srgb, var(--good) 14%, transparent); }
+  .card > header { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+  .card > header h3 { flex: 1; margin: 0; }
+  .additem { display: flex; gap: 8px; margin-top: 6px; padding: 4px; }
+  .additem input { flex: 1; border: 1px dashed var(--line); background: transparent; border-radius: 10px; padding: 8px 11px; font: inherit; font-size: 14px; color: var(--ink); }
   .additem input:focus { outline: none; border-color: var(--accent); border-style: solid; }
   .additem input::placeholder { color: var(--muted); }
-  .additem button {
-    border: none; background: var(--accent); color: #fff; font-weight: 700;
-    border-radius: 10px; padding: 0 14px; cursor: pointer; font-family: var(--font-display); font-size: 15px;
-  }
+  .additem button { border: none; background: var(--accent); color: #fff; font-weight: 700; border-radius: 10px; padding: 0 14px; cursor: pointer; font-family: var(--font-display); font-size: 15px; }
   .additem button:disabled { opacity: .4; cursor: default; }
+  .bar { height: 10px; border-radius: 999px; background: var(--surface-2); overflow: hidden; flex: 1; }
+  .bar > i { display: block; height: 100%; width: 0; background: var(--accent); border-radius: 999px; transition: width .4s ease; }
+  .packbar { display: flex; align-items: center; gap: 12px; margin: 2px 2px 16px; }
+  .packbar .pct { font-weight: 800; font-variant-numeric: tabular-nums; min-width: 76px; text-align: right; font-size: 14px; }
 
-  footer.note {
-    margin-top: 30px; padding-top: 18px; border-top: 1px solid var(--line);
-    display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
-    color: var(--muted); font-size: 13px;
-  }
-  footer.note .reset {
-    margin-left: auto; border: 1px solid var(--line); background: var(--surface);
-    color: var(--muted); border-radius: 10px; padding: 7px 12px; cursor: pointer;
-    font: inherit; font-weight: 600;
-  }
+  /* ---- info ---- */
+  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap: 12px; margin-bottom: 16px; }
+  .fact { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; box-shadow: var(--shadow); }
+  .fact .k { font-size: 11.5px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); font-weight: 700; }
+  .fact .v { font-family: var(--font-display); font-weight: 800; font-size: 17px; margin-top: 3px; }
+  .fact .v small { font-weight: 600; font-size: 12.5px; color: var(--muted); }
+  ul.plain { margin: 8px 0 0; padding-left: 18px; }
+  ul.plain li { font-size: 14px; margin: 4px 0; }
+  .phrases { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 8px; }
+  .phrase { display: flex; justify-content: space-between; gap: 10px; background: var(--surface-2); border-radius: 10px; padding: 8px 12px; font-size: 14px; }
+  .phrase b { font-family: var(--font-display); }
+  .phrase span { color: var(--muted); font-style: italic; }
+
+  footer.note { margin-top: 30px; padding-top: 16px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 12px; align-items: center; color: var(--muted); font-size: 13px; }
+  footer.note .reset { margin-left: auto; border: 1px solid var(--line); background: var(--surface); color: var(--muted); border-radius: 10px; padding: 7px 12px; cursor: pointer; font: inherit; font-weight: 600; }
   footer.note .reset:hover { color: var(--coral); border-color: var(--coral); }
 
-  @media (prefers-reduced-motion: reduce) {
-    * { transition: none !important; }
-  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 
 <div class="wrap">
   <header class="hero">
     <p class="eyebrow">Ella's Senior Trip · Riviera Maya</p>
-    <h1>Mexico Packing List</h1>
+    <h1>Mexico Vacation</h1>
     <div class="trip-meta">
-      <span>🏖️ July 18 – 24</span>
+      <span>🗓️ July 18 – 24</span>
       <span class="dot">•</span>
       <span>7 days</span>
       <span class="dot">•</span>
-      <span>4 travelers</span>
+      <span>Bobby, Vanessa &amp; Ella +1</span>
       <span class="countdown" id="countdown">—</span>
     </div>
-    <div class="trip-meta" style="margin-top:4px;font-weight:600;opacity:.92;">
-      <span>📍 Excellence Riviera Cancun (ERC) · south of Cancun</span>
-    </div>
-    <div class="overall">
-      <div class="bar"><i id="overallBar"></i></div>
-      <span class="pct" id="overallPct">0 / 0</span>
-    </div>
+    <div class="resort-line">📍 Excellence Riviera Cancun · adults-only all-inclusive, Puerto Morelos</div>
   </header>
 
-  <div class="tabs" id="tabs" role="tablist"></div>
-
-  <main>
-    <div class="panel-head">
-      <h2 id="panelName">Shared</h2>
-      <span class="sub" id="panelSub"></span>
-    </div>
-    <div class="grid" id="grid"></div>
-  </main>
+  <nav class="secnav" id="secnav" role="tablist"></nav>
+  <main id="view"></main>
 
   <footer class="note">
-    <span>✓ Saved automatically on this device &amp; browser. Each person can open the same link and track their own list — checkmarks don't sync between devices.</span>
-    <button class="reset" id="resetBtn">Reset everything</button>
+    <span>✓ Your packing checkmarks, excursion picks &amp; dining stars save on this device/browser. Each traveler can open the same link and track their own.</span>
+    <button class="reset" id="resetBtn">Reset saved data</button>
   </footer>
 </div>
 
 <script>
 (function () {
   "use strict";
+  var STORE_KEY = "erc-trip-v2";
 
-  var STORE_KEY = "mx-packing-v1";
+  // ------------------------------------------------------------------ content
+  var RESTAURANTS = [
+    { name: "The Kitchen Table", cuisine: "International", service: "Buffet", meals: "Breakfast & lunch", note: "The main all-day venue — huge breakfast spread. Get there early before it fills.", tags: [] },
+    { name: "The Lobster House", cuisine: "Seafood", service: "À la carte", meals: "Breakfast · lunch · dinner", note: "Signature lobster at dinner, Mexican seafood at lunch. Consistently the guest favorite.", tags: ["fav"] },
+    { name: "Spice", cuisine: "Pan-Asian · Teppanyaki", service: "À la carte", meals: "Dinner", note: "Sit at the teppanyaki counter for the live cooking show.", tags: ["fav"] },
+    { name: "Chez Isabelle", cuisine: "French", service: "À la carte", meals: "Dinner", note: "The dress-up fine-dining room — dressiest venue on property.", tags: ["fav", "dressy"] },
+    { name: "The Grill", cuisine: "Steakhouse", service: "À la carte", meals: "Dinner", note: "Prime cuts and grilled proteins with seasonal sides.", tags: [] },
+    { name: "Agave", cuisine: "Mexican", service: "À la carte", meals: "Dinner", note: "Regional Mexican dishes.", tags: [] },
+    { name: "Oregano", cuisine: "Italian", service: "À la carte", meals: "Lunch & dinner", note: "Wood-fired pizza, calzones and pasta — easy casual night.", tags: [] },
+    { name: "Basmati", cuisine: "Indian", service: "À la carte", meals: "Dinner", note: "Contemporary Indian.", tags: [] },
+    { name: "Magna", cuisine: "International", service: "À la carte", meals: "Breakfast & dinner", note: "Excellence Club guests only — highly praised if you have Club access.", tags: ["club"] }
+  ];
+  var SNACKS = "Also on property: a beach snack grill, a food truck, take-away pizza and a crepe station — plus 24-hour room service (yes, including cocktails) in every suite.";
 
-  // ---- default content: tabs -> categories -> items -------------------------
-  var TABS = [
-    {
-      key: "shared", name: "Shared", accentVar: "--sea",
-      sub: "Everyone shares these",
-      cats: [
-        { name: "Documents & Money", items: ["Passports (all 3)", "Tourist card / FMM form", "Travel insurance docs", "Flight confirmations", "Hotel confirmation", "Credit / debit cards", "Pesos in cash", "Photocopies of passports", "Driver's license (if renting)"] },
-        { name: "Health & Safety", items: ["Reef-safe sunscreen", "After-sun / aloe gel", "Insect repellent (DEET)", "First-aid kit", "Pepto / Imodium", "Electrolyte packets", "Prescription meds", "Pain relievers", "Hand sanitizer"] },
-        { name: "Beach & Water", items: ["Beach bag", "Beach towels", "Snorkel masks", "Beach shade / umbrella", "Dry bag for phones", "Reusable water bottles"] },
-        { name: "Electronics", items: ["Phone chargers", "Power bank", "Camera", "Headphones", "Tablet / Kindle", "Charging cables"] },
-        { name: "Odds & Ends", items: ["Travel snacks", "Ziploc bags", "Laundry / wet bag", "Umbrella (afternoon rain)", "Playing cards"] }
-      ]
-    },
-    {
-      key: "excursions", name: "Excursions", accentVar: "--sun", verb: "shortlisted",
-      sub: "Tick the ones you want — then book ahead",
-      cats: [
-        { name: "Water & Snorkel", items: ["Whale shark tour (peak season in July!)", "Isla Mujeres catamaran day", "Cozumel snorkel / dive", "Puerto Morelos reef snorkel", "Cenote swim (Dos Ojos / Cenote Azul)", "Rio Secreto underground river"] },
-        { name: "Ruins & Culture", items: ["Tulum ruins + beach", "Chichén Itzá day trip", "Cobá ruins (climb & bike)", "Muyil ruins & lagoon float"] },
-        { name: "Adventure Parks", items: ["Xcaret", "Xel-Há (all-in snorkel park)", "Xplor (ziplines & rafts)", "Selvatica ziplines & ATV"] },
-        { name: "Chill & Explore", items: ["Playa del Carmen / Fifth Ave", "Tulum beach club day", "Cancun hotel zone", "Sunset catamaran cruise", "Spa day at ERC"] }
-      ]
-    },
-    {
-      key: "me", name: "Me", accentVar: "--sea",
-      sub: "",
-      cats: [
-        { name: "Clothing", items: ["T-shirts", "Shorts", "Swim trunks (x2)", "Linen shirt", "Light pants", "Underwear (x8)", "Socks", "Flip-flops", "Sneakers", "Sun hat", "Sunglasses", "Light rain jacket", "Dinner outfit"] },
-        { name: "Toiletries", items: ["Toothbrush & paste", "Deodorant", "Razor", "Shampoo / body wash", "Comb", "Contacts / glasses"] }
-      ]
-    },
-    {
-      key: "wife", name: "Vanessa", accentVar: "--coral",
-      sub: "",
-      cats: [
-        { name: "Clothing", items: ["Sundresses", "Swimsuits (x2)", "Beach cover-up", "Shorts", "Tops", "Underwear", "Sandals", "Nicer shoes", "Sun hat", "Sunglasses", "Light cardigan", "Evening outfit"] },
-        { name: "Toiletries", items: ["Makeup", "Skincare", "Toothbrush & paste", "Hairbrush & ties", "Feminine products", "Perfume"] }
-      ]
-    },
-    {
-      key: "kid", name: "Ella", accentVar: "--grape",
-      sub: "",
-      cats: [
-        { name: "Clothing", items: ["Swimsuits (x3)", "Beach cover-up", "Sun hat", "T-shirts", "Shorts / dresses", "Underwear", "Pajamas", "Sandals", "Sneakers", "Sunglasses", "Going-out outfits"] },
-        { name: "Essentials", items: ["Sunscreen", "Phone charger", "Camera / GoPro", "Headphones", "Skincare & makeup", "Toiletries", "Reusable water bottle", "Motion-sickness pills (boat days)"] }
-      ]
-    }
+  var BARS = [
+    { name: "Martini Bar", d: "The signature lobby lounge — martinis from classic to fruit-infused." },
+    { name: "La Habana", d: "Plush cigar-and-spirits lounge for after-dinner drinks." },
+    { name: "Blue", d: "Swim-up bar — tropical cocktails without leaving the pool." },
+    { name: "Sol & Cielo", d: "More poolside / swim-up service; cold beers all day." },
+    { name: "X Lounge", d: "Beachfront daybed lounge — candlelit, mellow, romantic evenings." },
+    { name: "Stars", d: "The theater bar for pre-show cocktails." },
+    { name: "Sports Bar", d: "Big-screen sports, casual." },
+    { name: "Cafékafé", d: "Coffee & espresso bistro." },
+    { name: "Revive", d: "Fresh-fruit smoothie bar by the spa." }
   ];
 
-  var ACCENT = { shared: "--sea", excursions: "--sun", me: "--sea", wife: "--coral", kid: "--grape" };
+  var DO_CARDS = [
+    { h: "Six pools", tags: ["Reliable swim"], p: "Six meandering, lagoon-style pools — main activity pool, quiet pools, swim-up bars, and (with Club access) an exclusive Club pool. Ground-floor swim-up suites open right onto the water." },
+    { h: "The beach", tags: ["Check daily"], p: "Long white-sand Caribbean beach. Heads-up: summer sargassum (seaweed) is the #1 guest gripe — July is usually lighter but can vary, and 2026 has been heavy region-wide. Crews rake it daily; on bad days the pools are your friend." },
+    { h: "Water sports — included", tags: ["Free"], p: "Kayaks, snorkel gear, small sailing catamarans, windsurfing, and intro scuba lessons in the pool are all included. Motorized sports, certified dives and deep-sea fishing are paid extras." },
+    { h: "Miilé Spa", tags: ["Circuit"], p: "One of the region's biggest hydrotherapy circuits — jacuzzi, sauna, steam, cold plunge, sensation showers, ice fountain and a temazcal. Massages/facials are paid; the water circuit is usually complimentary with a treatment (confirm at booking). Book day one — mid-morning slots go first." },
+    { h: "Stay active", tags: ["Free"], p: "24-hour gym, plus complimentary yoga, Pilates and water aerobics. Daytime: beach & pool volleyball, water polo, tennis, archery, billiards, cooking & cocktail demos, dance and Spanish lessons." },
+    { h: "After dark", tags: ["Nightly"], p: "Outdoor theater shows (acrobats, fire dancers, live music), strolling mariachi in the plaza, and rotating theme nights — casino night and a silent (headphone) party are regulars. The calendar rotates weekly; check the daily program." }
+  ];
 
-  // ---- state ---------------------------------------------------------------
+  var EXCURSIONS = [
+    { group: "On the water", items: [
+      { name: "Whale shark snorkel", dur: "Full day · 6–10h", desc: "Swim alongside the world's biggest fish off Isla Mujeres. July is PEAK season (~95% sighting odds) — the signature summer trip.", hot: true },
+      { name: "Isla Mujeres catamaran", dur: "6–8h", desc: "Sail and snorkel to the little island north of Cancún — beach club, reef stop, open bar." },
+      { name: "Puerto Morelos reef snorkel", dur: "2–3h", desc: "The closest adventure — the world's 2nd-largest reef sits ~15 min offshore. Several departures daily." },
+      { name: "Cozumel day", dur: "Full day", desc: "Ferry (via Playa del Carmen) to Mexico's top snorkel & dive island." }
+    ]},
+    { group: "Ruins & cenotes", items: [
+      { name: "Cenotes — Ruta de los Cenotes", dur: "~4h", desc: "Puerto Morelos is the gateway. Swim and cliff-jump freshwater sinkholes; combos with ziplines & ATVs." },
+      { name: "Tulum ruins + cenote", dur: "6–8h", desc: "Clifftop Maya ruins over the Caribbean, paired with a cenote swim." },
+      { name: "Cobá ruins", dur: "Half–full day", desc: "Jungle Maya site with a climbable pyramid; often combined with cenotes." },
+      { name: "Chichén Itzá", dur: "Full day · ~12h", desc: "The UNESCO wonder. Long drive each way, usually with a cenote and Valladolid stop." }
+    ]},
+    { group: "Adventure parks", items: [
+      { name: "Xcaret", dur: "Full day", desc: "Eco-archaeological park — underground rivers, wildlife, and a huge evening show." },
+      { name: "Xel-Há", dur: "Full day", desc: "All-inclusive natural snorkeling lagoon and water park." },
+      { name: "Xplor", dur: "Full day", desc: "Ziplines, amphibious vehicles and underground river rafting." }
+    ]}
+  ];
+
+  var PEOPLE = [
+    { key: "shared", name: "Shared", sw: "--sea", cats: [
+      { name: "Documents & Money", items: ["Passports (all travelers)", "Flight confirmations", "Hotel / transfer confirmation", "Travel insurance", "Credit / debit cards", "Small US bills for tips", "Some pesos for excursions", "Photocopies of passports"] },
+      { name: "Health & Beach", items: ["Reef-safe sunscreen (lots)", "After-sun / aloe", "Insect repellent", "Aloe / lip balm w/ SPF", "First-aid kit", "Pepto / Imodium", "Electrolyte packets", "Motion-sickness pills (boat days)", "Snorkel masks (or rent)", "Dry bag for phones"] },
+      { name: "Tech", items: ["Phone chargers", "Power bank", "Camera / GoPro", "Headphones", "Charging cables"] }
+    ]},
+    { key: "me", name: "Bobby", sw: "--sea", cats: [
+      { name: "Clothing", items: ["T-shirts", "Shorts", "Swim trunks (x2)", "Linen / collared shirts (dinner)", "Long pants for dinner", "Underwear (x8)", "Flip-flops", "Dress sandals / loafers", "Sneakers", "Sun hat", "Sunglasses", "Light rain shell"] },
+      { name: "Toiletries", items: ["Toothbrush & paste", "Deodorant", "Razor", "Shampoo / body wash", "Contacts / glasses"] }
+    ]},
+    { key: "wife", name: "Vanessa", sw: "--coral", cats: [
+      { name: "Clothing", items: ["Sundresses", "Swimsuits (x2)", "Beach cover-up", "Shorts", "Tops", "Dinner dress / nice pants", "Sandals", "Wedges / nicer shoes", "Sun hat", "Sunglasses", "Light cardigan"] },
+      { name: "Toiletries", items: ["Makeup", "Skincare", "Toothbrush & paste", "Hairbrush & ties", "Feminine products", "Perfume"] }
+    ]},
+    { key: "kid", name: "Ella", sw: "--grape", cats: [
+      { name: "Clothing", items: ["Swimsuits (x3)", "Beach cover-up", "Sun hat", "Tops & shorts / dresses", "Dinner / going-out outfits", "Underwear", "Pajamas", "Sandals", "Sneakers", "Sunglasses"] },
+      { name: "Essentials", items: ["Sunscreen", "Phone charger", "Camera / GoPro", "Headphones", "Skincare & makeup", "Toiletries", "Reusable water bottle", "Any meds"] }
+    ]}
+  ];
+
+  var FACTS = [
+    { k: "Fly in", v: "CUN", s: "~20–35 min north" },
+    { k: "Nights", v: "6", s: "Jul 18 → 24" },
+    { k: "Vibe", v: "18+", s: "adults-only" },
+    { k: "Rooms", v: "440", s: "all-suite" },
+    { k: "Restaurants", v: "9", s: "+ bars & snacks" },
+    { k: "Wristbands", v: "None", s: "luxury touch" }
+  ];
+
+  var INFO = [
+    { h: "Getting there", tags: ["good:~30 min"], p: "Cancún airport (CUN) is only about 20–35 minutes north — the resort is just past Puerto Morelos. Arrange a transfer in advance; the resort can set one up." },
+    { h: "Money & tipping", tags: ["Tips included"], p: "US dollars are accepted everywhere on property and across the Riviera Maya; you don't need pesos for the resort. Gratuities are already included, so tipping is optional — but small US bills ($1–$5) for standout service go a long way. The front desk exchanges USD → pesos." },
+    { h: "Dinner dress code", tags: ["warn:Enforced"], p: "Breakfast & lunch are casual (beachwear fine). At dinner it's resort-elegant: men need long pants + a collared/dress shirt (no tanks, no beach flip-flops); women wear a dress, skirt or nice pants. No swimwear indoors. Chez Isabelle is the dressiest." },
+    { h: "WiFi & room service", tags: ["Free"], p: "Free WiFi resort-wide, fine for messaging and browsing. Room service is included 24/7 (cocktails too), and every suite has a stocked minibar." },
+    { h: "Weather — late July", tags: ["Hot & humid"], p: "Highs around 88–93°F with high humidity; expect short afternoon/evening tropical showers rather than all-day rain. July hurricane risk is statistically low, but travel insurance is smart." },
+    { h: "Staying safe", tags: ["good:Low-key"], p: "The resort is gated, well-staffed and consistently rated safe; use the in-room safe. Puerto Morelos is a mellow fishing village. Normal beach caution — sun, rip currents, stick to marked areas." }
+  ];
+
+  var PHRASES = [
+    ["Hola", "Hello"], ["Gracias", "Thank you"], ["Por favor", "Please"],
+    ["Salud", "Cheers"], ["La cuenta, por favor", "The check, please"],
+    ["¿Cuánto cuesta?", "How much is it?"], ["Dos cervezas", "Two beers"],
+    ["¿Dónde está el baño?", "Where's the bathroom?"], ["Buenos días", "Good morning"]
+  ];
+
+  var SECTIONS = [
+    { key: "overview",   label: "Overview",     ico: "🌴", accent: "--sea" },
+    { key: "dining",     label: "Dining",       ico: "🍽️", accent: "--coral" },
+    { key: "do",         label: "Do",           ico: "🏖️", accent: "--grape" },
+    { key: "excursions", label: "Excursions",   ico: "⛵", accent: "--sun" },
+    { key: "pack",       label: "Pack",         ico: "🧳", accent: "--sea" },
+    { key: "info",       label: "Good to Know", ico: "ℹ️", accent: "--sky" }
+  ];
+
+  // ------------------------------------------------------------------- state
   var state = load();
-  var active = "shared";
+  var activeSection = "overview";
+  var activePerson = "shared";
 
   function load() {
-    try {
-      var raw = localStorage.getItem(STORE_KEY);
-      if (raw) return JSON.parse(raw);
-    } catch (e) {}
-    return { names: {}, checked: {}, custom: {}, removed: {} };
+    try { var r = localStorage.getItem(STORE_KEY); if (r) return JSON.parse(r); } catch (e) {}
+    return { checked: {}, star: {}, names: {}, custom: {}, removed: {} };
   }
-  function save() {
-    try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) {}
-  }
-
+  function save() { try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) {} }
   function slug(s) { return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""); }
-  function itemId(tab, cat, label) { return tab + "::" + slug(cat) + "::" + slug(label); }
-  function tabName(t) { return state.names[t.key] || t.name; }
 
-  // items for a given tab+category, merging custom & filtering removed
-  function itemsFor(tab, cat) {
+  // tiny DOM helper
+  function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
+  function checkSvg() {
+    var s = document.createElementNS("http://www.w3.org/2000/svg", "svg"); s.setAttribute("viewBox", "0 0 24 24");
+    var p = document.createElementNS("http://www.w3.org/2000/svg", "path"); p.setAttribute("d", "M4 12.5 L10 18 L20 6"); s.appendChild(p); return s;
+  }
+  function badgeEl(t) {
+    var cls = "badge", label = t;
+    if (t === "fav") { cls += " fav"; label = "★ Guest favorite"; }
+    else if (t === "club") { cls += " club"; label = "Excellence Club only"; }
+    else if (t === "dressy") { cls += " warn"; label = "Dress up"; }
+    else if (t.indexOf("good:") === 0) { cls += " good"; label = t.slice(5); }
+    else if (t.indexOf("warn:") === 0) { cls += " warn"; label = t.slice(5); }
+    else { cls += " accent"; }
+    return el("span", cls, label);
+  }
+
+  // --------------------------------------------------------------- pack model
+  function packItems(person, cat) {
     var out = [];
     cat.items.forEach(function (label) {
-      var id = itemId(tab.key, cat.name, label);
+      var id = "pack::" + person.key + "::" + slug(cat.name) + "::" + slug(label);
       if (!state.removed[id]) out.push({ id: id, label: label, custom: false });
     });
-    var ck = tab.key + "::" + slug(cat.name);
-    (state.custom[ck] || []).forEach(function (c) {
-      out.push({ id: c.id, label: c.label, custom: true });
-    });
+    var ck = person.key + "::" + slug(cat.name);
+    (state.custom[ck] || []).forEach(function (c) { out.push({ id: c.id, label: c.label, custom: true }); });
     return out;
   }
-
-  function tabStats(tab) {
-    var total = 0, done = 0;
-    tab.cats.forEach(function (cat) {
-      itemsFor(tab, cat).forEach(function (it) {
-        total++; if (state.checked[it.id]) done++;
-      });
-    });
-    return { total: total, done: done };
+  function personStats(person) {
+    var t = 0, d = 0;
+    person.cats.forEach(function (cat) { packItems(person, cat).forEach(function (it) { t++; if (state.checked[it.id]) d++; }); });
+    return { total: t, done: d };
+  }
+  function packTotals() {
+    var t = 0, d = 0; PEOPLE.forEach(function (p) { var s = personStats(p); t += s.total; d += s.done; }); return { total: t, done: d };
   }
 
-  // ---- rendering -----------------------------------------------------------
-  var tabsEl = document.getElementById("tabs");
-  var gridEl = document.getElementById("grid");
+  // ------------------------------------------------------------------ render
+  var viewEl = document.getElementById("view");
+  var navEl = document.getElementById("secnav");
 
-  function renderTabs() {
-    tabsEl.innerHTML = "";
-    TABS.forEach(function (tab) {
-      var st = tabStats(tab);
-      var btn = document.createElement("button");
-      btn.className = "tab";
-      btn.setAttribute("role", "tab");
-      btn.setAttribute("aria-selected", active === tab.key ? "true" : "false");
-      btn.style.setProperty("--accent", "var(" + ACCENT[tab.key] + ")");
+  function renderNav() {
+    navEl.innerHTML = "";
+    SECTIONS.forEach(function (s) {
+      var b = el("button", "navbtn"); b.setAttribute("role", "tab");
+      b.setAttribute("aria-current", activeSection === s.key ? "true" : "false");
+      b.style.setProperty("--accent", "var(" + s.accent + ")");
+      b.appendChild(el("span", "ico", s.ico));
+      b.appendChild(el("span", null, s.label));
+      if (s.key === "pack") { var t = packTotals(); var c = el("span", "cnt", t.done + "/" + t.total); c.style.color = "var(--muted)"; b.appendChild(c); }
+      b.addEventListener("click", function () { activeSection = s.key; render(); window.scrollTo({ top: 0, behavior: "smooth" }); });
+      navEl.appendChild(b);
+    });
+  }
 
-      var sw = document.createElement("span"); sw.className = "swatch"; btn.appendChild(sw);
-      var nm = document.createElement("span"); nm.textContent = tabName(tab); btn.appendChild(nm);
-      var ct = document.createElement("span"); ct.className = "count";
-      ct.textContent = st.done + "/" + st.total; btn.appendChild(ct);
+  function secHead(title, sub) {
+    var h = el("div", "sec-head"); h.appendChild(el("h2", null, title));
+    if (sub) h.appendChild(el("span", "sub", sub)); return h;
+  }
 
-      if (tab.key !== "shared") {
-        var rn = document.createElement("button");
-        rn.className = "rename"; rn.textContent = "✎"; rn.title = "Rename";
-        rn.setAttribute("aria-label", "Rename " + tabName(tab));
-        rn.addEventListener("click", function (e) {
-          e.stopPropagation();
-          var v = prompt("Name for this person:", tabName(tab));
-          if (v && v.trim()) { state.names[tab.key] = v.trim(); save(); renderAll(); }
+  function render() {
+    var sec = SECTIONS.filter(function (s) { return s.key === activeSection; })[0];
+    document.documentElement.style.setProperty("--accent", "var(" + sec.accent + ")");
+    renderNav();
+    viewEl.innerHTML = "";
+    viewEl.style.setProperty("--accent", "var(" + sec.accent + ")");
+    ({ overview: renderOverview, dining: renderDining, do: renderDo, excursions: renderExcursions, pack: renderPack, info: renderInfo })[activeSection]();
+  }
+
+  function renderOverview() {
+    viewEl.appendChild(secHead("Trip at a glance", "Everything for our week at ERC"));
+    var facts = el("div", "facts");
+    FACTS.forEach(function (f) {
+      var c = el("div", "fact"); c.appendChild(el("div", "k", f.k));
+      var v = el("div", "v"); v.appendChild(document.createTextNode(f.v + " ")); v.appendChild(el("small", null, f.s));
+      c.appendChild(v); facts.appendChild(c);
+    });
+    viewEl.appendChild(facts);
+
+    var grid = el("div", "grid");
+    var intro = [
+      { h: "Where we're staying", p: "Excellence Riviera Cancun — a 440-suite, adults-only (18+) all-inclusive on a long Caribbean beach just past Puerto Morelos, midway between Cancún and Playa del Carmen. Six pools, nine restaurants, a dozen bars, and a big spa. Calmer and more polished than the Cancún party zone." },
+      { h: "How to use this app", p: "Tabs up top: browse Dining, plan your Do days and off-resort Excursions, then knock out the per-person Pack lists. Star restaurants you want to try and check off packing — it all saves in your browser. Good to Know has the money, dress-code and transfer details." },
+      { h: "Don't-miss while we're there", p: "It's peak whale-shark season in July — that's the one excursion to book early. Sit at Spice's teppanyaki counter, get a Lobster House dinner in, and book spa treatments on day one before they fill." },
+      { h: "The one catch", p: "Summer sargassum (seaweed) can hit the beach. July's usually lighter but variable — check the beach each morning and lean on the six pools when it's heavy. Bring reef-safe sunscreen and something for boat-day motion sickness." }
+    ];
+    intro.forEach(function (o) { var c = el("div", "card"); c.appendChild(el("h3", null, o.h)); c.appendChild(el("p", "lead", o.p)); grid.appendChild(c); });
+    viewEl.appendChild(grid);
+  }
+
+  function renderDining() {
+    viewEl.appendChild(secHead("Dining", "9 restaurants — no reservations needed"));
+    var strip = el("div", "note-strip");
+    strip.innerHTML = "<span>⭐</span><span><b>Tap the star</b> to save a spot you want to try. Hours rotate seasonally — treat meal times as typical and confirm on the resort's daily program. À la carte venues don't need reservations, but you can book a table at reception if you want a locked-in time.</span>";
+    viewEl.appendChild(strip);
+
+    var grid = el("div", "grid");
+    RESTAURANTS.forEach(function (r) {
+      var id = "dine::" + slug(r.name);
+      var c = el("div", "card dine");
+      var top = el("div", "top");
+      var h = el("h3", null, r.name); top.appendChild(h);
+      var star = el("button", "star" + (state.star[id] ? " on" : ""), state.star[id] ? "★" : "☆");
+      star.setAttribute("aria-label", "Mark " + r.name + " as want to try");
+      star.addEventListener("click", function () {
+        if (state.star[id]) delete state.star[id]; else state.star[id] = true; save();
+        star.className = "star" + (state.star[id] ? " on" : ""); star.textContent = state.star[id] ? "★" : "☆";
+      });
+      top.appendChild(star); c.appendChild(top);
+      c.appendChild(el("div", "cuisine", r.cuisine));
+      var meta = el("div", "meta-row");
+      var m1 = el("span"); m1.innerHTML = "<b>" + r.service + "</b>"; meta.appendChild(m1);
+      var m2 = el("span"); m2.innerHTML = "🕒 " + r.meals; meta.appendChild(m2);
+      c.appendChild(meta);
+      c.appendChild(el("p", "lead", r.note));
+      if (r.tags.length) { var b = el("div", "badges"); r.tags.forEach(function (t) { b.appendChild(badgeEl(t)); }); c.appendChild(b); }
+      grid.appendChild(c);
+    });
+    viewEl.appendChild(grid);
+
+    var snack = el("div", "note-strip"); snack.style.marginTop = "14px"; snack.style.marginBottom = "0";
+    snack.innerHTML = "<span>🌮</span><span>" + SNACKS + "</span>";
+    viewEl.appendChild(snack);
+
+    viewEl.appendChild(secHead("Bars & lounges", "All drinks included"));
+    var bg = el("div", "grid three");
+    BARS.forEach(function (bar) { var c = el("div", "card"); c.appendChild(el("h3", null, bar.name)); c.appendChild(el("p", "lead", bar.d)); bg.appendChild(c); });
+    viewEl.appendChild(bg);
+  }
+
+  function renderDo() {
+    viewEl.appendChild(secHead("At the resort", "Pools, spa, activities & nights"));
+    var grid = el("div", "grid");
+    DO_CARDS.forEach(function (o) {
+      var c = el("div", "card"); c.appendChild(el("h3", null, o.h)); c.appendChild(el("p", "lead", o.p));
+      if (o.tags && o.tags.length) { var b = el("div", "badges"); o.tags.forEach(function (t) { b.appendChild(badgeEl(t)); }); c.appendChild(b); }
+      grid.appendChild(c);
+    });
+    viewEl.appendChild(grid);
+  }
+
+  function renderExcursions() {
+    viewEl.appendChild(secHead("Excursions", "Tick what we want — then book ahead"));
+    var picked = 0, total = 0;
+    EXCURSIONS.forEach(function (g) { g.items.forEach(function (it) { total++; if (state.checked["exc::" + slug(it.name)]) picked++; }); });
+    var strip = el("div", "note-strip");
+    strip.innerHTML = "<span>⛵</span><span><b>" + picked + " of " + total + " shortlisted.</b> Book through the resort tour desk or an operator (GetYourGuide / Viator). Whale sharks and Isla Mujeres sell out in summer — reserve those first.</span>";
+    viewEl.appendChild(strip);
+
+    EXCURSIONS.forEach(function (g) {
+      viewEl.appendChild(secHead(g.group, ""));
+      var grid = el("div", "grid");
+      g.items.forEach(function (it) {
+        var id = "exc::" + slug(it.name);
+        var card = el("div", "card exc-item" + (state.checked[id] ? " checked" : ""));
+        var cb = el("input", "cb"); cb.type = "checkbox"; cb.id = id; cb.checked = !!state.checked[id];
+        var lab = document.createElement("label"); lab.setAttribute("for", id);
+        var box = el("span", "check"); box.appendChild(checkSvg());
+        var body = el("div", "body");
+        var nw = el("div", "namewrap");
+        nw.appendChild(el("span", "name", it.name));
+        if (it.hot) nw.appendChild(badgeEl("★ In season now"));
+        nw.appendChild(el("span", "dur", it.dur));
+        body.appendChild(nw);
+        body.appendChild(el("div", "desc", it.desc));
+        lab.appendChild(box); lab.appendChild(body);
+        cb.addEventListener("change", function () {
+          if (cb.checked) state.checked[id] = true; else delete state.checked[id]; save();
+          card.classList.toggle("checked", cb.checked); renderExcursionsCount();
         });
-        btn.appendChild(rn);
-      }
-
-      btn.addEventListener("click", function () { active = tab.key; renderAll(); });
-      tabsEl.appendChild(btn);
-    });
-  }
-
-  function checkSvg() {
-    var s = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    s.setAttribute("viewBox", "0 0 24 24");
-    var p = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    p.setAttribute("d", "M4 12.5 L10 18 L20 6");
-    s.appendChild(p);
-    return s;
-  }
-
-  function renderPanel() {
-    var tab = TABS.filter(function (t) { return t.key === active; })[0];
-    document.documentElement.style.setProperty("--accent", "var(" + ACCENT[tab.key] + ")");
-    document.querySelector("main").style.setProperty("--accent", "var(" + ACCENT[tab.key] + ")");
-    gridEl.style.setProperty("--accent", "var(" + ACCENT[tab.key] + ")");
-
-    document.getElementById("panelName").textContent = tabName(tab);
-    var st = tabStats(tab);
-    var sub = tab.sub ? tab.sub + " · " : "";
-    document.getElementById("panelSub").textContent = sub + st.done + " of " + st.total + " " + (tab.verb || "packed");
-
-    gridEl.innerHTML = "";
-    gridEl.style.setProperty("--accent", "var(" + ACCENT[tab.key] + ")");
-
-    tab.cats.forEach(function (cat) {
-      var list = itemsFor(tab, cat);
-      var done = list.filter(function (it) { return state.checked[it.id]; }).length;
-
-      var card = document.createElement("div");
-      card.className = "card";
-      card.style.setProperty("--accent", "var(" + ACCENT[tab.key] + ")");
-
-      var head = document.createElement("header");
-      var h3 = document.createElement("h3"); h3.textContent = cat.name; head.appendChild(h3);
-      var cc = document.createElement("span");
-      cc.className = "cat-count" + (list.length && done === list.length ? " done" : "");
-      cc.textContent = done + "/" + list.length; head.appendChild(cc);
-      card.appendChild(head);
-
-      var ul = document.createElement("ul"); ul.className = "items";
-      list.forEach(function (it) {
-        ul.appendChild(renderItem(tab, cat, it));
+        card.appendChild(cb); card.appendChild(lab); grid.appendChild(card);
       });
+      viewEl.appendChild(grid);
+    });
+  }
+  function renderExcursionsCount() {
+    var picked = 0, total = 0;
+    EXCURSIONS.forEach(function (g) { g.items.forEach(function (it) { total++; if (state.checked["exc::" + slug(it.name)]) picked++; }); });
+    var strip = viewEl.querySelector(".note-strip b"); if (strip) strip.textContent = picked + " of " + total + " shortlisted.";
+  }
+
+  function renderPack() {
+    viewEl.appendChild(secHead("Pack", "One list each — checkmarks save automatically"));
+    // person subtabs
+    var subs = el("div", "subtabs");
+    PEOPLE.forEach(function (p) {
+      var s = personStats(p);
+      var b = el("button", "subtab"); b.setAttribute("aria-selected", activePerson === p.key ? "true" : "false");
+      b.style.setProperty("--sw", "var(" + p.sw + ")");
+      b.appendChild(el("span", "swatch"));
+      b.appendChild(el("span", null, state.names[p.key] || p.name));
+      b.appendChild(el("span", "cnt", s.done + "/" + s.total));
+      b.addEventListener("click", function () { activePerson = p.key; renderPack(); });
+      subs.appendChild(b);
+    });
+    viewEl.appendChild(subs);
+
+    var person = PEOPLE.filter(function (p) { return p.key === activePerson; })[0];
+    var accent = person.sw;
+    viewEl.style.setProperty("--accent", "var(" + accent + ")");
+
+    var st = personStats(person);
+    var pb = el("div", "packbar");
+    var bar = el("div", "bar"); var fill = el("i"); fill.style.width = (st.total ? Math.round(st.done / st.total * 100) : 0) + "%"; bar.appendChild(fill);
+    pb.appendChild(bar);
+    pb.appendChild(el("span", "pct", st.done + " / " + st.total));
+    viewEl.appendChild(pb);
+
+    var grid = el("div", "grid");
+    person.cats.forEach(function (cat) {
+      var list = packItems(person, cat);
+      var done = list.filter(function (it) { return state.checked[it.id]; }).length;
+      var card = el("div", "card");
+      var head = document.createElement("header");
+      head.appendChild(el("h3", null, cat.name));
+      var cc = el("span", "cat-count" + (list.length && done === list.length ? " done" : ""), done + "/" + list.length);
+      head.appendChild(cc); card.appendChild(head);
+      var ul = el("ul", "items");
+      list.forEach(function (it) { ul.appendChild(packRow(person, cat, it)); });
       card.appendChild(ul);
-
-      card.appendChild(renderAdder(tab, cat));
-      gridEl.appendChild(card);
+      card.appendChild(packAdder(person, cat));
+      grid.appendChild(card);
     });
+    viewEl.appendChild(grid);
   }
 
-  function renderItem(tab, cat, it) {
-    var li = document.createElement("li");
-    li.className = "item" + (state.checked[it.id] ? " checked" : "");
-
-    var cb = document.createElement("input");
-    cb.type = "checkbox"; cb.className = "cb"; cb.checked = !!state.checked[it.id];
-    cb.id = "cb-" + it.id;
-
-    var lab = document.createElement("label");
-    lab.setAttribute("for", cb.id);
-    var box = document.createElement("span"); box.className = "check"; box.appendChild(checkSvg());
-    var txt = document.createElement("span"); txt.className = "txt"; txt.textContent = it.label;
-    lab.appendChild(box); lab.appendChild(txt);
-
+  function packRow(person, cat, it) {
+    var li = el("li", "item" + (state.checked[it.id] ? " checked" : ""));
+    var cb = el("input", "cb"); cb.type = "checkbox"; cb.id = "cb-" + it.id; cb.checked = !!state.checked[it.id];
+    var lab = document.createElement("label"); lab.setAttribute("for", cb.id);
+    var box = el("span", "check"); box.appendChild(checkSvg());
+    lab.appendChild(box); lab.appendChild(el("span", "txt", it.label));
     cb.addEventListener("change", function () {
-      if (cb.checked) state.checked[it.id] = true; else delete state.checked[it.id];
-      save();
-      li.classList.toggle("checked", cb.checked);
-      updateCounts();
+      if (cb.checked) state.checked[it.id] = true; else delete state.checked[it.id]; save();
+      li.classList.toggle("checked", cb.checked); refreshPackCounts(person);
     });
-
-    var del = document.createElement("button");
-    del.className = "del"; del.innerHTML = "&times;";
-    del.title = "Remove item"; del.setAttribute("aria-label", "Remove " + it.label);
+    var del = el("button", "del"); del.innerHTML = "&times;"; del.setAttribute("aria-label", "Remove " + it.label);
     del.addEventListener("click", function () {
-      if (it.custom) {
-        var ck = tab.key + "::" + slug(cat.name);
-        state.custom[ck] = (state.custom[ck] || []).filter(function (c) { return c.id !== it.id; });
-      } else {
-        state.removed[it.id] = true;
-      }
-      delete state.checked[it.id];
-      save(); renderAll();
+      if (it.custom) { var ck = person.key + "::" + slug(cat.name); state.custom[ck] = (state.custom[ck] || []).filter(function (c) { return c.id !== it.id; }); }
+      else state.removed[it.id] = true;
+      delete state.checked[it.id]; save(); renderPack();
     });
-
-    li.appendChild(cb); li.appendChild(lab); li.appendChild(del);
-    return li;
+    li.appendChild(cb); li.appendChild(lab); li.appendChild(del); return li;
   }
 
-  function renderAdder(tab, cat) {
-    var wrap = document.createElement("div"); wrap.className = "additem";
-    var inp = document.createElement("input");
-    inp.type = "text"; inp.placeholder = "Add an item…";
-    inp.setAttribute("aria-label", "Add item to " + cat.name);
-    var btn = document.createElement("button"); btn.textContent = "Add"; btn.disabled = true;
-
+  function packAdder(person, cat) {
+    var wrap = el("div", "additem");
+    var inp = document.createElement("input"); inp.type = "text"; inp.placeholder = "Add an item…"; inp.setAttribute("aria-label", "Add item");
+    var btn = el("button", null, "Add"); btn.disabled = true;
     inp.addEventListener("input", function () { btn.disabled = !inp.value.trim(); });
     function add() {
       var v = inp.value.trim(); if (!v) return;
-      var ck = tab.key + "::" + slug(cat.name);
-      if (!state.custom[ck]) state.custom[ck] = [];
-      var id = "custom::" + ck + "::" + slug(v) + "::" + (state.custom[ck].length + 1);
-      state.custom[ck].push({ id: id, label: v });
-      save(); renderAll();
+      var ck = person.key + "::" + slug(cat.name); if (!state.custom[ck]) state.custom[ck] = [];
+      state.custom[ck].push({ id: "custom::" + ck + "::" + slug(v) + "::" + (state.custom[ck].length + 1), label: v });
+      save(); renderPack();
     }
     btn.addEventListener("click", add);
     inp.addEventListener("keydown", function (e) { if (e.key === "Enter") add(); });
-
-    wrap.appendChild(inp); wrap.appendChild(btn);
-    return wrap;
+    wrap.appendChild(inp); wrap.appendChild(btn); return wrap;
   }
 
-  function updateCounts() {
-    // overall
-    var total = 0, done = 0;
-    TABS.forEach(function (tab) {
-      var st = tabStats(tab); total += st.total; done += st.done;
-    });
-    var pct = total ? Math.round((done / total) * 100) : 0;
-    document.getElementById("overallBar").style.width = pct + "%";
-    document.getElementById("overallPct").textContent = done + " / " + total;
-    // tab counts + category counts without full rerender
-    renderTabs();
-    // refresh category count pills + panel sub for active tab
-    var tab = TABS.filter(function (t) { return t.key === active; })[0];
-    var stA = tabStats(tab);
-    var sub = tab.sub ? tab.sub + " · " : "";
-    document.getElementById("panelSub").textContent = sub + stA.done + " of " + stA.total + " " + (tab.verb || "packed");
-    var cards = gridEl.querySelectorAll(".card");
-    tab.cats.forEach(function (cat, i) {
-      var list = itemsFor(tab, cat);
-      var d = list.filter(function (it) { return state.checked[it.id]; }).length;
+  function refreshPackCounts(person) {
+    var st = personStats(person);
+    var fill = viewEl.querySelector(".packbar .bar > i"); if (fill) fill.style.width = (st.total ? Math.round(st.done / st.total * 100) : 0) + "%";
+    var pct = viewEl.querySelector(".packbar .pct"); if (pct) pct.textContent = st.done + " / " + st.total;
+    // category pills
+    var cards = viewEl.querySelectorAll(".grid .card");
+    person.cats.forEach(function (cat, i) {
+      var list = packItems(person, cat); var d = list.filter(function (it) { return state.checked[it.id]; }).length;
       var pill = cards[i] && cards[i].querySelector(".cat-count");
-      if (pill) {
-        pill.textContent = d + "/" + list.length;
-        pill.className = "cat-count" + (list.length && d === list.length ? " done" : "");
-      }
+      if (pill) { pill.textContent = d + "/" + list.length; pill.className = "cat-count" + (list.length && d === list.length ? " done" : ""); }
     });
+    // subtab counts
+    var subs = viewEl.querySelectorAll(".subtab .cnt");
+    PEOPLE.forEach(function (p, i) { var s = personStats(p); if (subs[i]) subs[i].textContent = s.done + "/" + s.total; });
+    renderNav();
   }
 
-  function renderAll() {
-    renderTabs();
-    renderPanel();
-    updateCounts();
+  function renderInfo() {
+    viewEl.appendChild(secHead("Good to know", "The practical stuff"));
+    var grid = el("div", "grid");
+    INFO.forEach(function (o) {
+      var c = el("div", "card"); c.appendChild(el("h3", null, o.h));
+      if (o.tags && o.tags.length) { var b = el("div", "badges"); o.tags.forEach(function (t) { b.appendChild(badgeEl(t)); }); c.appendChild(b); }
+      c.appendChild(el("p", "lead", o.p)); grid.appendChild(c);
+    });
+    viewEl.appendChild(grid);
+
+    viewEl.appendChild(secHead("A little Spanish", "Goes a long way"));
+    var ph = el("div", "phrases");
+    PHRASES.forEach(function (p) { var d = el("div", "phrase"); d.appendChild(el("b", null, p[0])); d.appendChild(el("span", null, p[1])); ph.appendChild(d); });
+    viewEl.appendChild(ph);
   }
 
-  // ---- countdown -----------------------------------------------------------
+  // --------------------------------------------------------------- countdown
   function renderCountdown() {
-    var now = new Date();
-    var y = now.getFullYear();
-    var start = new Date(y, 6, 18); // July = month 6
-    var end = new Date(y, 6, 24, 23, 59);
-    if (now > end) start = new Date(y + 1, 6, 18);
-    var el = document.getElementById("countdown");
+    var now = new Date(); var y = now.getFullYear();
+    var start = new Date(y, 6, 18), end = new Date(y, 6, 24, 23, 59);
+    if (now > end) { start = new Date(y + 1, 6, 18); }
+    var el2 = document.getElementById("countdown");
     var d0 = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     var s0 = new Date(start.getFullYear(), start.getMonth(), start.getDate());
     var days = Math.round((s0 - d0) / 86400000);
-    if (now >= new Date(y,6,18) && now <= end) el.textContent = "🌴 On the trip!";
-    else if (days === 0) el.textContent = "✈️ Leaving today!";
-    else if (days === 1) el.textContent = "✈️ 1 day to go";
-    else el.textContent = "✈️ " + days + " days to go";
+    if (now >= new Date(y, 6, 18) && now <= end) el2.textContent = "🌴 On the trip!";
+    else if (days === 0) el2.textContent = "🌴 Leaving today!";
+    else if (days === 1) el2.textContent = "✈️ 1 day to go";
+    else el2.textContent = "✈️ " + days + " days to go";
   }
 
-  // ---- reset ---------------------------------------------------------------
   document.getElementById("resetBtn").addEventListener("click", function () {
-    if (confirm("Reset all checkmarks, custom items, and names? This can't be undone.")) {
-      state = { names: {}, checked: {}, custom: {}, removed: {} };
-      save(); active = "shared"; renderAll();
+    if (confirm("Reset all saved checkmarks, excursion picks, dining stars and custom items?")) {
+      state = { checked: {}, star: {}, names: {}, custom: {}, removed: {} };
+      save(); activeSection = "overview"; activePerson = "shared"; render();
     }
   });
 
   renderCountdown();
-  renderAll();
+  render();
 })();
 </script>
 
