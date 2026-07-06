@@ -533,7 +533,7 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
   var EXW = {}, EXBYSLUG = {}; ALLEXC.forEach(function(e){ EXW[e.name]=e.w; EXBYSLUG[slug(e.name)]=e.name; });
 
   var PREP = [
-    { when:"3–4 weeks out", items:[
+    { when:"Do these now", items:[
       "Book the airport transfer (CUN ⇄ resort)",
       "Book the whale-shark tour — it sells out in July",
       "Check all four passports are valid 6+ months out",
@@ -886,8 +886,11 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
   }
 
   function prepStats(){ var t=0,d=0; PREP.forEach(function(g){ g.items.forEach(function(l){ t++; if(state.checked["prep::"+slug(l)])d++; }); }); return {total:t,done:d}; }
+  function tripDays(){ var now=new Date(), y=now.getFullYear(); var start=new Date(y,6,18), end=new Date(y,6,24,23,59); if(now>end) start=new Date(y+1,6,18); var d0=new Date(now.getFullYear(),now.getMonth(),now.getDate()), s0=new Date(start.getFullYear(),start.getMonth(),start.getDate()); return Math.round((s0-d0)/86400000); }
   function prep(w){
     w.appendChild(leadBlock("Before you go","The <em>pre-flight</em> checklist","The handful of things worth doing ahead — a few are time-sensitive, so they're up top: lock in the transfer and whale-shark tour early, and check those passports. Tick as you go; it saves on your phone."));
+    var dleft=tripDays();
+    if(dleft>0 && dleft<=21){ var urg=el("div","nudge r"); urg.appendChild(el("b",null,"✈️ "+dleft+" day"+(dleft===1?"":"s")+" out — ")); urg.appendChild(document.createTextNode("the “Do these now” list is time-sensitive. Lock in the airport transfer and the whale-shark tour today; both book out fast in July.")); w.appendChild(urg); }
     var st=prepStats();
     var pr=el("div","progress r"); var track=el("div","track"); var fill=el("i"); fill.style.width=(st.total?Math.round(st.done/st.total*100):0)+"%"; track.appendChild(fill); pr.appendChild(track);
     var pn=el("div","pnum"); pn.innerHTML=st.done+' <small>/ '+st.total+' done</small>'; pr.appendChild(pn); w.appendChild(pr);
