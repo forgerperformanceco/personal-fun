@@ -532,10 +532,42 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
   var ALLEXC = (function(){ var a=[{name:DRY_HERO.name,w:"opt"},{name:WET_HERO.name,w:"wet"}]; EXCURSIONS.forEach(function(g){ g.items.forEach(function(it){ if(!a.some(function(x){return x.name===it.n;})) a.push({name:it.n,w:it.w}); }); }); return a; })();
   var EXW = {}, EXBYSLUG = {}; ALLEXC.forEach(function(e){ EXW[e.name]=e.w; EXBYSLUG[slug(e.name)]=e.name; });
 
+  var PREP = [
+    { when:"3–4 weeks out", items:[
+      "Book the airport transfer (CUN ⇄ resort)",
+      "Book the whale-shark tour — it sells out in July",
+      "Check all four passports are valid 6+ months out",
+      "Buy travel insurance (include Ella's friend)",
+      "Get a medical-OK letter from the friend's parents",
+      "Save the friend's parents' emergency contact",
+      "Pre-book any must-do spa treatments"
+    ]},
+    { when:"The week before", items:[
+      "Tell your bank & card company you're headed to Mexico",
+      "Set aside a no-foreign-fee card",
+      "Add an international phone plan or eSIM",
+      "Confirm flights & pick seats",
+      "Refill prescriptions (pack a few extra days)",
+      "Get $60–80 in small US bills for tips",
+      "Get $50–100 in pesos for excursions",
+      "Print & cloud-save passports, insurance & confirmations",
+      "Run the Packing lists"
+    ]},
+    { when:"Day before & day of", items:[
+      "Check in online & save the boarding passes",
+      "Download offline Google Maps for the Riviera Maya",
+      "Download shows, music & books for the girls",
+      "Charge phones, power banks & the camera",
+      "Screenshot the resort address & confirmation",
+      "Turn on WiFi calling",
+      "Grab chargers — no plug adapter needed for Mexico"
+    ]}
+  ];
+
   var SECTIONS = [
     { key: "overview", label: "Overview" }, { key: "itin", label: "Itinerary" }, { key: "dining", label: "Dining" },
     { key: "do", label: "The Resort" }, { key: "excursions", label: "Excursions" },
-    { key: "pack", label: "Packing" }, { key: "info", label: "Good to Know" }
+    { key: "pack", label: "Packing" }, { key: "prep", label: "Before You Go" }, { key: "info", label: "Good to Know" }
   ];
 
   var state = load(); var activeSection = "overview"; var activePerson = "shared"; var exFilter = "all"; var dragFrom = null;
@@ -570,6 +602,7 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
       var b = el("button","navbtn"); b.setAttribute("aria-current", activeSection===s.key?"true":"false");
       b.appendChild(el("span",null,s.label));
       if(s.key==="pack"){ var t=packTotals(); b.appendChild(el("span","n-cnt",t.done+"/"+t.total)); }
+      if(s.key==="prep"){ var pt=prepStats(); b.appendChild(el("span","n-cnt",pt.done+"/"+pt.total)); }
       b.addEventListener("click", function(){ go(s.key); });
       navInner.appendChild(b);
     });
@@ -589,7 +622,7 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
   function render(){
     renderNav(); viewEl.innerHTML = "";
     var host = el("section","section"); var wrap = el("div","wrap"); host.appendChild(wrap); viewEl.appendChild(host);
-    ({ overview:ovw, itin:itin, dining:din, do:doo, excursions:exc, pack:pak, info:inf })[activeSection](wrap);
+    ({ overview:ovw, itin:itin, dining:din, do:doo, excursions:exc, pack:pak, prep:prep, info:inf })[activeSection](wrap);
     observeReveals();
   }
 
@@ -850,6 +883,34 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
     var card=el("div","day travel"); card.appendChild(dayWhen(d.dow,d.date));
     var body=el("div","d-body"); var head=el("div","d-head"); head.appendChild(chip("Travel day","")); body.appendChild(head);
     body.appendChild(el("h3",null,d.title)); body.appendChild(el("p",null,d.note)); card.appendChild(body); return card;
+  }
+
+  function prepStats(){ var t=0,d=0; PREP.forEach(function(g){ g.items.forEach(function(l){ t++; if(state.checked["prep::"+slug(l)])d++; }); }); return {total:t,done:d}; }
+  function prep(w){
+    w.appendChild(leadBlock("Before you go","The <em>pre-flight</em> checklist","The handful of things worth doing ahead — a few are time-sensitive, so they're up top: lock in the transfer and whale-shark tour early, and check those passports. Tick as you go; it saves on your phone."));
+    var st=prepStats();
+    var pr=el("div","progress r"); var track=el("div","track"); var fill=el("i"); fill.style.width=(st.total?Math.round(st.done/st.total*100):0)+"%"; track.appendChild(fill); pr.appendChild(track);
+    var pn=el("div","pnum"); pn.innerHTML=st.done+' <small>/ '+st.total+' done</small>'; pr.appendChild(pn); w.appendChild(pr);
+    var cols=el("div","packcols r");
+    PREP.forEach(function(g){
+      var grp=el("div","packgroup"); var h=el("h4"); h.appendChild(document.createTextNode(g.when));
+      var done=g.items.filter(function(l){return state.checked["prep::"+slug(l)];}).length;
+      h.appendChild(el("span","gc",done+"/"+g.items.length)); grp.appendChild(h);
+      var ul=el("ul","items"); g.items.forEach(function(label){ ul.appendChild(prepRow(label)); }); grp.appendChild(ul); cols.appendChild(grp);
+    });
+    w.appendChild(cols);
+  }
+  function prepRow(label){
+    var id="prep::"+slug(label); var li=el("li","item"+(state.checked[id]?" checked":""));
+    var cb=el("input","cb"); cb.type="checkbox"; cb.id="cb-"+id; cb.checked=!!state.checked[id];
+    var lab=document.createElement("label"); lab.setAttribute("for",cb.id); var t=el("span","tick"); t.appendChild(tickSvg()); lab.appendChild(t); lab.appendChild(el("span","txt",label));
+    cb.addEventListener("change",function(){ if(cb.checked)state.checked[id]=true; else delete state.checked[id]; save(); li.classList.toggle("checked",cb.checked); refreshPrep(); });
+    li.appendChild(cb); li.appendChild(lab); return li;
+  }
+  function refreshPrep(){
+    var st=prepStats(); var fill=viewEl.querySelector(".progress .track > i"); if(fill)fill.style.width=(st.total?Math.round(st.done/st.total*100):0)+"%";
+    var pn=viewEl.querySelector(".progress .pnum"); if(pn)pn.innerHTML=st.done+' <small>/ '+st.total+' done</small>';
+    var groups=viewEl.querySelectorAll(".packgroup"); PREP.forEach(function(g,i){ var d=g.items.filter(function(l){return state.checked["prep::"+slug(l)];}).length; var gc=groups[i]&&groups[i].querySelector(".gc"); if(gc)gc.textContent=d+"/"+g.items.length; }); renderNav();
   }
 
   function inf(w){
