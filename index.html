@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mexico Packing List · Ella's Senior Trip</title>
+<meta name="description" content="Packing + excursions checklist for Ella's senior trip to Excellence Riviera Cancun, July 18–24.">
+<meta name="theme-color" content="#0E8F8A">
+</head>
+<body>
+<style>
+  :root {
+    --sand: #FCF8F1;
+    --surface: #FFFFFF;
+    --surface-2: #F6F1E7;
+    --ink: #163038;
+    --muted: #5E7078;
+    --line: #E9E1D2;
+    --sea: #0E8F8A;
+    --sea-deep: #0B6E6A;
+    --sun: #E39B2E;
+    --coral: #E0655B;
+    --grape: #8A6BB0;
+    --sky: #3E86C7;
+    --good: #2E9E6B;
+    --shadow: 0 1px 2px rgba(20,48,56,.05), 0 8px 24px rgba(20,48,56,.06);
+    --font-display: ui-rounded, "SF Pro Rounded", "Hiragino Maru Gothic ProN", "Segoe UI", system-ui, sans-serif;
+    --font-body: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --p-me: var(--sea);
+    --p-wife: var(--coral);
+    --p-kid: var(--grape);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --sand: #0C1E24;
+      --surface: #122A31;
+      --surface-2: #0F242B;
+      --ink: #EAF2F0;
+      --muted: #91A7AD;
+      --line: #22434C;
+      --sea: #2FB6B0;
+      --sea-deep: #4FC9C3;
+      --sun: #F0B454;
+      --coral: #F07E74;
+      --grape: #B292D8;
+      --sky: #6BA9E0;
+      --good: #4EC489;
+      --shadow: 0 1px 2px rgba(0,0,0,.25), 0 10px 28px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="light"] {
+    --sand: #FCF8F1; --surface: #FFFFFF; --surface-2: #F6F1E7; --ink: #163038;
+    --muted: #5E7078; --line: #E9E1D2; --sea: #0E8F8A; --sea-deep: #0B6E6A;
+    --sun: #E39B2E; --coral: #E0655B; --grape: #8A6BB0; --sky: #3E86C7; --good: #2E9E6B;
+    --shadow: 0 1px 2px rgba(20,48,56,.05), 0 8px 24px rgba(20,48,56,.06);
+  }
+  :root[data-theme="dark"] {
+    --sand: #0C1E24; --surface: #122A31; --surface-2: #0F242B; --ink: #EAF2F0;
+    --muted: #91A7AD; --line: #22434C; --sea: #2FB6B0; --sea-deep: #4FC9C3;
+    --sun: #F0B454; --coral: #F07E74; --grape: #B292D8; --sky: #6BA9E0; --good: #4EC489;
+    --shadow: 0 1px 2px rgba(0,0,0,.25), 0 10px 28px rgba(0,0,0,.35);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--sand);
+    color: var(--ink);
+    font-family: var(--font-body);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 22px 20px 72px; }
+
+  /* Header */
+  header.hero {
+    position: relative;
+    overflow: hidden;
+    border-radius: 22px;
+    background:
+      radial-gradient(120px 120px at 88% -10%, color-mix(in srgb, var(--sun) 70%, transparent), transparent 70%),
+      linear-gradient(135deg, var(--sea-deep), var(--sea));
+    color: #fff;
+    padding: 26px 26px 22px;
+    box-shadow: var(--shadow);
+  }
+  header.hero::after {
+    content: "";
+    position: absolute; left: 0; right: 0; bottom: -2px; height: 46px;
+    background:
+      radial-gradient(22px 22px at 12px 46px, transparent 21px, color-mix(in srgb, #fff 14%, transparent) 22px) repeat-x;
+    background-size: 44px 46px;
+    opacity: .5;
+  }
+  .eyebrow {
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: .16em;
+    font-size: 12px;
+    font-weight: 700;
+    opacity: .9;
+    margin: 0 0 6px;
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(30px, 6vw, 46px);
+    letter-spacing: -.01em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .trip-meta {
+    display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center;
+    margin-top: 12px; font-size: 15px; font-weight: 600;
+  }
+  .trip-meta .dot { opacity: .55; }
+  .countdown {
+    margin-left: auto;
+    background: rgba(255,255,255,.16);
+    border: 1px solid rgba(255,255,255,.28);
+    border-radius: 999px;
+    padding: 7px 15px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  /* overall progress */
+  .overall {
+    display: flex; align-items: center; gap: 14px;
+    margin-top: 18px;
+  }
+  .bar {
+    flex: 1; height: 12px; border-radius: 999px;
+    background: rgba(255,255,255,.22); overflow: hidden;
+  }
+  .bar > i {
+    display: block; height: 100%; width: 0%;
+    background: linear-gradient(90deg, #fff, color-mix(in srgb, var(--sun) 60%, #fff));
+    border-radius: 999px;
+    transition: width .4s ease;
+  }
+  .overall .pct { font-weight: 800; font-variant-numeric: tabular-nums; min-width: 88px; text-align: right; }
+
+  /* tabs */
+  .tabs {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    margin: 22px 0 6px;
+  }
+  .tab {
+    appearance: none; cursor: pointer;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--ink);
+    border-radius: 14px;
+    padding: 10px 15px;
+    font-family: var(--font-display);
+    font-weight: 700; font-size: 15px;
+    display: flex; align-items: center; gap: 9px;
+    box-shadow: var(--shadow);
+    transition: transform .12s ease, border-color .15s ease;
+  }
+  .tab:hover { transform: translateY(-1px); }
+  .tab .swatch { width: 11px; height: 11px; border-radius: 50%; background: var(--accent); flex: none; }
+  .tab .count {
+    font-family: var(--font-body); font-weight: 700; font-size: 12.5px;
+    color: var(--muted); font-variant-numeric: tabular-nums;
+  }
+  .tab[aria-selected="true"] {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 35%, transparent), var(--shadow);
+  }
+  .tab[aria-selected="true"] .count { color: var(--accent); }
+  .tab .rename {
+    display: none; border: none; background: transparent; cursor: pointer;
+    color: var(--muted); font-size: 13px; padding: 0 0 0 2px; line-height: 1;
+  }
+  .tab[aria-selected="true"] .rename { display: inline; }
+  .tab .rename:hover { color: var(--accent); }
+
+  /* panel */
+  main { margin-top: 16px; }
+  .panel-head {
+    display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+    margin: 6px 2px 14px;
+  }
+  .panel-head h2 {
+    font-family: var(--font-display); font-size: 22px; font-weight: 800; margin: 0;
+    color: var(--accent);
+  }
+  .panel-head .sub { color: var(--muted); font-size: 14px; font-weight: 600; }
+
+  .grid {
+    display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px;
+  }
+  @media (max-width: 680px) { .grid { grid-template-columns: 1fr; } }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 16px 16px 12px;
+    box-shadow: var(--shadow);
+  }
+  .card > header {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 8px;
+  }
+  .card h3 {
+    font-family: var(--font-display); font-size: 16px; font-weight: 800; margin: 0;
+    letter-spacing: -.005em; flex: 1;
+  }
+  .card .cat-count {
+    font-size: 12px; font-weight: 700; color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    background: var(--surface-2); border-radius: 999px; padding: 3px 9px;
+  }
+  .card .cat-count.done { color: var(--good); background: color-mix(in srgb, var(--good) 14%, transparent); }
+
+  ul.items { list-style: none; margin: 0; padding: 0; }
+  li.item {
+    display: flex; align-items: center; gap: 11px;
+    padding: 7px 4px; border-radius: 10px;
+  }
+  li.item:hover { background: var(--surface-2); }
+  li.item label {
+    display: flex; align-items: center; gap: 11px; flex: 1; cursor: pointer; min-width: 0;
+  }
+  .check {
+    width: 21px; height: 21px; flex: none; border-radius: 7px;
+    border: 2px solid color-mix(in srgb, var(--muted) 55%, transparent);
+    display: grid; place-items: center;
+    transition: background .15s ease, border-color .15s ease, transform .1s ease;
+  }
+  .check svg { width: 13px; height: 13px; stroke: #fff; stroke-width: 3.2;
+    fill: none; stroke-linecap: round; stroke-linejoin: round;
+    opacity: 0; transform: scale(.5); transition: opacity .12s, transform .12s; }
+  input.cb { position: absolute; opacity: 0; width: 0; height: 0; }
+  input.cb:focus-visible + label .check { outline: 2px solid var(--accent); outline-offset: 2px; }
+  li.item.checked .check { background: var(--accent); border-color: var(--accent); }
+  li.item.checked .check svg { opacity: 1; transform: scale(1); }
+  li.item .txt { font-size: 15px; font-weight: 500; }
+  li.item.checked .txt { color: var(--muted); text-decoration: line-through; text-decoration-color: color-mix(in srgb, var(--muted) 60%, transparent); }
+  li.item .del {
+    opacity: 0; border: none; background: transparent; color: var(--muted);
+    cursor: pointer; font-size: 17px; line-height: 1; padding: 2px 6px; border-radius: 6px; flex: none;
+  }
+  li.item:hover .del { opacity: 1; }
+  li.item .del:hover { color: var(--coral); background: color-mix(in srgb, var(--coral) 14%, transparent); }
+
+  .additem {
+    display: flex; gap: 8px; margin-top: 6px; padding: 4px;
+  }
+  .additem input {
+    flex: 1; border: 1px dashed var(--line); background: transparent;
+    border-radius: 10px; padding: 8px 11px; font: inherit; font-size: 14px; color: var(--ink);
+  }
+  .additem input:focus { outline: none; border-color: var(--accent); border-style: solid; }
+  .additem input::placeholder { color: var(--muted); }
+  .additem button {
+    border: none; background: var(--accent); color: #fff; font-weight: 700;
+    border-radius: 10px; padding: 0 14px; cursor: pointer; font-family: var(--font-display); font-size: 15px;
+  }
+  .additem button:disabled { opacity: .4; cursor: default; }
+
+  footer.note {
+    margin-top: 30px; padding-top: 18px; border-top: 1px solid var(--line);
+    display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
+    color: var(--muted); font-size: 13px;
+  }
+  footer.note .reset {
+    margin-left: auto; border: 1px solid var(--line); background: var(--surface);
+    color: var(--muted); border-radius: 10px; padding: 7px 12px; cursor: pointer;
+    font: inherit; font-weight: 600;
+  }
+  footer.note .reset:hover { color: var(--coral); border-color: var(--coral); }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+
+<div class="wrap">
+  <header class="hero">
+    <p class="eyebrow">Ella's Senior Trip · Riviera Maya</p>
+    <h1>Mexico Packing List</h1>
+    <div class="trip-meta">
+      <span>🏖️ July 18 – 24</span>
+      <span class="dot">•</span>
+      <span>7 days</span>
+      <span class="dot">•</span>
+      <span>4 travelers</span>
+      <span class="countdown" id="countdown">—</span>
+    </div>
+    <div class="trip-meta" style="margin-top:4px;font-weight:600;opacity:.92;">
+      <span>📍 Excellence Riviera Cancun (ERC) · south of Cancun</span>
+    </div>
+    <div class="overall">
+      <div class="bar"><i id="overallBar"></i></div>
+      <span class="pct" id="overallPct">0 / 0</span>
+    </div>
+  </header>
+
+  <div class="tabs" id="tabs" role="tablist"></div>
+
+  <main>
+    <div class="panel-head">
+      <h2 id="panelName">Shared</h2>
+      <span class="sub" id="panelSub"></span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </main>
+
+  <footer class="note">
+    <span>✓ Saved automatically on this device &amp; browser. Each person can open the same link and track their own list — checkmarks don't sync between devices.</span>
+    <button class="reset" id="resetBtn">Reset everything</button>
+  </footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var STORE_KEY = "mx-packing-v1";
+
+  // ---- default content: tabs -> categories -> items -------------------------
+  var TABS = [
+    {
+      key: "shared", name: "Shared", accentVar: "--sea",
+      sub: "Everyone shares these",
+      cats: [
+        { name: "Documents & Money", items: ["Passports (all 3)", "Tourist card / FMM form", "Travel insurance docs", "Flight confirmations", "Hotel confirmation", "Credit / debit cards", "Pesos in cash", "Photocopies of passports", "Driver's license (if renting)"] },
+        { name: "Health & Safety", items: ["Reef-safe sunscreen", "After-sun / aloe gel", "Insect repellent (DEET)", "First-aid kit", "Pepto / Imodium", "Electrolyte packets", "Prescription meds", "Pain relievers", "Hand sanitizer"] },
+        { name: "Beach & Water", items: ["Beach bag", "Beach towels", "Snorkel masks", "Beach shade / umbrella", "Dry bag for phones", "Reusable water bottles"] },
+        { name: "Electronics", items: ["Phone chargers", "Power bank", "Camera", "Headphones", "Tablet / Kindle", "Charging cables"] },
+        { name: "Odds & Ends", items: ["Travel snacks", "Ziploc bags", "Laundry / wet bag", "Umbrella (afternoon rain)", "Playing cards"] }
+      ]
+    },
+    {
+      key: "excursions", name: "Excursions", accentVar: "--sun", verb: "shortlisted",
+      sub: "Tick the ones you want — then book ahead",
+      cats: [
+        { name: "Water & Snorkel", items: ["Whale shark tour (peak season in July!)", "Isla Mujeres catamaran day", "Cozumel snorkel / dive", "Puerto Morelos reef snorkel", "Cenote swim (Dos Ojos / Cenote Azul)", "Rio Secreto underground river"] },
+        { name: "Ruins & Culture", items: ["Tulum ruins + beach", "Chichén Itzá day trip", "Cobá ruins (climb & bike)", "Muyil ruins & lagoon float"] },
+        { name: "Adventure Parks", items: ["Xcaret", "Xel-Há (all-in snorkel park)", "Xplor (ziplines & rafts)", "Selvatica ziplines & ATV"] },
+        { name: "Chill & Explore", items: ["Playa del Carmen / Fifth Ave", "Tulum beach club day", "Cancun hotel zone", "Sunset catamaran cruise", "Spa day at ERC"] }
+      ]
+    },
+    {
+      key: "me", name: "Me", accentVar: "--sea",
+      sub: "",
+      cats: [
+        { name: "Clothing", items: ["T-shirts", "Shorts", "Swim trunks (x2)", "Linen shirt", "Light pants", "Underwear (x8)", "Socks", "Flip-flops", "Sneakers", "Sun hat", "Sunglasses", "Light rain jacket", "Dinner outfit"] },
+        { name: "Toiletries", items: ["Toothbrush & paste", "Deodorant", "Razor", "Shampoo / body wash", "Comb", "Contacts / glasses"] }
+      ]
+    },
+    {
+      key: "wife", name: "Vanessa", accentVar: "--coral",
+      sub: "",
+      cats: [
+        { name: "Clothing", items: ["Sundresses", "Swimsuits (x2)", "Beach cover-up", "Shorts", "Tops", "Underwear", "Sandals", "Nicer shoes", "Sun hat", "Sunglasses", "Light cardigan", "Evening outfit"] },
+        { name: "Toiletries", items: ["Makeup", "Skincare", "Toothbrush & paste", "Hairbrush & ties", "Feminine products", "Perfume"] }
+      ]
+    },
+    {
+      key: "kid", name: "Ella", accentVar: "--grape",
+      sub: "",
+      cats: [
+        { name: "Clothing", items: ["Swimsuits (x3)", "Beach cover-up", "Sun hat", "T-shirts", "Shorts / dresses", "Underwear", "Pajamas", "Sandals", "Sneakers", "Sunglasses", "Going-out outfits"] },
+        { name: "Essentials", items: ["Sunscreen", "Phone charger", "Camera / GoPro", "Headphones", "Skincare & makeup", "Toiletries", "Reusable water bottle", "Motion-sickness pills (boat days)"] }
+      ]
+    }
+  ];
+
+  var ACCENT = { shared: "--sea", excursions: "--sun", me: "--sea", wife: "--coral", kid: "--grape" };
+
+  // ---- state ---------------------------------------------------------------
+  var state = load();
+  var active = "shared";
+
+  function load() {
+    try {
+      var raw = localStorage.getItem(STORE_KEY);
+      if (raw) return JSON.parse(raw);
+    } catch (e) {}
+    return { names: {}, checked: {}, custom: {}, removed: {} };
+  }
+  function save() {
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) {}
+  }
+
+  function slug(s) { return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""); }
+  function itemId(tab, cat, label) { return tab + "::" + slug(cat) + "::" + slug(label); }
+  function tabName(t) { return state.names[t.key] || t.name; }
+
+  // items for a given tab+category, merging custom & filtering removed
+  function itemsFor(tab, cat) {
+    var out = [];
+    cat.items.forEach(function (label) {
+      var id = itemId(tab.key, cat.name, label);
+      if (!state.removed[id]) out.push({ id: id, label: label, custom: false });
+    });
+    var ck = tab.key + "::" + slug(cat.name);
+    (state.custom[ck] || []).forEach(function (c) {
+      out.push({ id: c.id, label: c.label, custom: true });
+    });
+    return out;
+  }
+
+  function tabStats(tab) {
+    var total = 0, done = 0;
+    tab.cats.forEach(function (cat) {
+      itemsFor(tab, cat).forEach(function (it) {
+        total++; if (state.checked[it.id]) done++;
+      });
+    });
+    return { total: total, done: done };
+  }
+
+  // ---- rendering -----------------------------------------------------------
+  var tabsEl = document.getElementById("tabs");
+  var gridEl = document.getElementById("grid");
+
+  function renderTabs() {
+    tabsEl.innerHTML = "";
+    TABS.forEach(function (tab) {
+      var st = tabStats(tab);
+      var btn = document.createElement("button");
+      btn.className = "tab";
+      btn.setAttribute("role", "tab");
+      btn.setAttribute("aria-selected", active === tab.key ? "true" : "false");
+      btn.style.setProperty("--accent", "var(" + ACCENT[tab.key] + ")");
+
+      var sw = document.createElement("span"); sw.className = "swatch"; btn.appendChild(sw);
+      var nm = document.createElement("span"); nm.textContent = tabName(tab); btn.appendChild(nm);
+      var ct = document.createElement("span"); ct.className = "count";
+      ct.textContent = st.done + "/" + st.total; btn.appendChild(ct);
+
+      if (tab.key !== "shared") {
+        var rn = document.createElement("button");
+        rn.className = "rename"; rn.textContent = "✎"; rn.title = "Rename";
+        rn.setAttribute("aria-label", "Rename " + tabName(tab));
+        rn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          var v = prompt("Name for this person:", tabName(tab));
+          if (v && v.trim()) { state.names[tab.key] = v.trim(); save(); renderAll(); }
+        });
+        btn.appendChild(rn);
+      }
+
+      btn.addEventListener("click", function () { active = tab.key; renderAll(); });
+      tabsEl.appendChild(btn);
+    });
+  }
+
+  function checkSvg() {
+    var s = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    s.setAttribute("viewBox", "0 0 24 24");
+    var p = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    p.setAttribute("d", "M4 12.5 L10 18 L20 6");
+    s.appendChild(p);
+    return s;
+  }
+
+  function renderPanel() {
+    var tab = TABS.filter(function (t) { return t.key === active; })[0];
+    document.documentElement.style.setProperty("--accent", "var(" + ACCENT[tab.key] + ")");
+    document.querySelector("main").style.setProperty("--accent", "var(" + ACCENT[tab.key] + ")");
+    gridEl.style.setProperty("--accent", "var(" + ACCENT[tab.key] + ")");
+
+    document.getElementById("panelName").textContent = tabName(tab);
+    var st = tabStats(tab);
+    var sub = tab.sub ? tab.sub + " · " : "";
+    document.getElementById("panelSub").textContent = sub + st.done + " of " + st.total + " " + (tab.verb || "packed");
+
+    gridEl.innerHTML = "";
+    gridEl.style.setProperty("--accent", "var(" + ACCENT[tab.key] + ")");
+
+    tab.cats.forEach(function (cat) {
+      var list = itemsFor(tab, cat);
+      var done = list.filter(function (it) { return state.checked[it.id]; }).length;
+
+      var card = document.createElement("div");
+      card.className = "card";
+      card.style.setProperty("--accent", "var(" + ACCENT[tab.key] + ")");
+
+      var head = document.createElement("header");
+      var h3 = document.createElement("h3"); h3.textContent = cat.name; head.appendChild(h3);
+      var cc = document.createElement("span");
+      cc.className = "cat-count" + (list.length && done === list.length ? " done" : "");
+      cc.textContent = done + "/" + list.length; head.appendChild(cc);
+      card.appendChild(head);
+
+      var ul = document.createElement("ul"); ul.className = "items";
+      list.forEach(function (it) {
+        ul.appendChild(renderItem(tab, cat, it));
+      });
+      card.appendChild(ul);
+
+      card.appendChild(renderAdder(tab, cat));
+      gridEl.appendChild(card);
+    });
+  }
+
+  function renderItem(tab, cat, it) {
+    var li = document.createElement("li");
+    li.className = "item" + (state.checked[it.id] ? " checked" : "");
+
+    var cb = document.createElement("input");
+    cb.type = "checkbox"; cb.className = "cb"; cb.checked = !!state.checked[it.id];
+    cb.id = "cb-" + it.id;
+
+    var lab = document.createElement("label");
+    lab.setAttribute("for", cb.id);
+    var box = document.createElement("span"); box.className = "check"; box.appendChild(checkSvg());
+    var txt = document.createElement("span"); txt.className = "txt"; txt.textContent = it.label;
+    lab.appendChild(box); lab.appendChild(txt);
+
+    cb.addEventListener("change", function () {
+      if (cb.checked) state.checked[it.id] = true; else delete state.checked[it.id];
+      save();
+      li.classList.toggle("checked", cb.checked);
+      updateCounts();
+    });
+
+    var del = document.createElement("button");
+    del.className = "del"; del.innerHTML = "&times;";
+    del.title = "Remove item"; del.setAttribute("aria-label", "Remove " + it.label);
+    del.addEventListener("click", function () {
+      if (it.custom) {
+        var ck = tab.key + "::" + slug(cat.name);
+        state.custom[ck] = (state.custom[ck] || []).filter(function (c) { return c.id !== it.id; });
+      } else {
+        state.removed[it.id] = true;
+      }
+      delete state.checked[it.id];
+      save(); renderAll();
+    });
+
+    li.appendChild(cb); li.appendChild(lab); li.appendChild(del);
+    return li;
+  }
+
+  function renderAdder(tab, cat) {
+    var wrap = document.createElement("div"); wrap.className = "additem";
+    var inp = document.createElement("input");
+    inp.type = "text"; inp.placeholder = "Add an item…";
+    inp.setAttribute("aria-label", "Add item to " + cat.name);
+    var btn = document.createElement("button"); btn.textContent = "Add"; btn.disabled = true;
+
+    inp.addEventListener("input", function () { btn.disabled = !inp.value.trim(); });
+    function add() {
+      var v = inp.value.trim(); if (!v) return;
+      var ck = tab.key + "::" + slug(cat.name);
+      if (!state.custom[ck]) state.custom[ck] = [];
+      var id = "custom::" + ck + "::" + slug(v) + "::" + (state.custom[ck].length + 1);
+      state.custom[ck].push({ id: id, label: v });
+      save(); renderAll();
+    }
+    btn.addEventListener("click", add);
+    inp.addEventListener("keydown", function (e) { if (e.key === "Enter") add(); });
+
+    wrap.appendChild(inp); wrap.appendChild(btn);
+    return wrap;
+  }
+
+  function updateCounts() {
+    // overall
+    var total = 0, done = 0;
+    TABS.forEach(function (tab) {
+      var st = tabStats(tab); total += st.total; done += st.done;
+    });
+    var pct = total ? Math.round((done / total) * 100) : 0;
+    document.getElementById("overallBar").style.width = pct + "%";
+    document.getElementById("overallPct").textContent = done + " / " + total;
+    // tab counts + category counts without full rerender
+    renderTabs();
+    // refresh category count pills + panel sub for active tab
+    var tab = TABS.filter(function (t) { return t.key === active; })[0];
+    var stA = tabStats(tab);
+    var sub = tab.sub ? tab.sub + " · " : "";
+    document.getElementById("panelSub").textContent = sub + stA.done + " of " + stA.total + " " + (tab.verb || "packed");
+    var cards = gridEl.querySelectorAll(".card");
+    tab.cats.forEach(function (cat, i) {
+      var list = itemsFor(tab, cat);
+      var d = list.filter(function (it) { return state.checked[it.id]; }).length;
+      var pill = cards[i] && cards[i].querySelector(".cat-count");
+      if (pill) {
+        pill.textContent = d + "/" + list.length;
+        pill.className = "cat-count" + (list.length && d === list.length ? " done" : "");
+      }
+    });
+  }
+
+  function renderAll() {
+    renderTabs();
+    renderPanel();
+    updateCounts();
+  }
+
+  // ---- countdown -----------------------------------------------------------
+  function renderCountdown() {
+    var now = new Date();
+    var y = now.getFullYear();
+    var start = new Date(y, 6, 18); // July = month 6
+    var end = new Date(y, 6, 24, 23, 59);
+    if (now > end) start = new Date(y + 1, 6, 18);
+    var el = document.getElementById("countdown");
+    var d0 = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var s0 = new Date(start.getFullYear(), start.getMonth(), start.getDate());
+    var days = Math.round((s0 - d0) / 86400000);
+    if (now >= new Date(y,6,18) && now <= end) el.textContent = "🌴 On the trip!";
+    else if (days === 0) el.textContent = "✈️ Leaving today!";
+    else if (days === 1) el.textContent = "✈️ 1 day to go";
+    else el.textContent = "✈️ " + days + " days to go";
+  }
+
+  // ---- reset ---------------------------------------------------------------
+  document.getElementById("resetBtn").addEventListener("click", function () {
+    if (confirm("Reset all checkmarks, custom items, and names? This can't be undone.")) {
+      state = { names: {}, checked: {}, custom: {}, removed: {} };
+      save(); active = "shared"; renderAll();
+    }
+  });
+
+  renderCountdown();
+  renderAll();
+})();
+</script>
+
+</body>
+</html>
