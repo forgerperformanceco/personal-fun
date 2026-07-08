@@ -386,34 +386,38 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
   var STORE_KEY = "erc-trip-v2";
 
   var RESTAURANTS = [
-    { name: "The Kitchen Table", cuisine: "International", service: "Buffet", meals: "Breakfast & lunch", note: "The main all-day venue — a huge breakfast spread. Arrive early before it fills.", tags: [] },
-    { name: "The Lobster House", cuisine: "Seafood", service: "À la carte", meals: "Breakfast · lunch · dinner", note: "Signature lobster at dinner, Mexican seafood at lunch. Consistently the guest favorite.", tags: ["fav"] },
-    { name: "Spice", cuisine: "Pan-Asian · Teppanyaki", service: "À la carte", meals: "Dinner", note: "Sit at the teppanyaki counter for the live cooking show.", tags: ["fav"] },
+    { name: "The Kitchen Table", cuisine: "International", service: "Buffet", meals: "Buffet breakfast · à la carte lunch", note: "The main all-day venue — a big buffet breakfast, à la carte at lunch. Arrive early before it fills.", tags: [] },
+    { name: "The Lobster House", cuisine: "Seafood", service: "À la carte", meals: "Breakfast · lunch · dinner", note: "Signature lobster at dinner, local Mexican seafood at lunch. Consistently the guest favorite.", tags: ["fav"] },
+    { name: "Spice", cuisine: "Asian · Teppanyaki & Yakiniku", service: "À la carte", meals: "Dinner", note: "Teppanyaki stations plus two yakiniku grill tables — sit up close for the show.", tags: ["fav"] },
     { name: "Chez Isabelle", cuisine: "French", service: "À la carte", meals: "Dinner", note: "The dress-up fine-dining room — dressiest venue on property.", tags: ["fav", "dressy"] },
     { name: "The Grill", cuisine: "Steakhouse", service: "À la carte", meals: "Dinner", note: "Prime cuts and grilled proteins with seasonal sides.", tags: [] },
+    { name: "Flavor Market", cuisine: "Tapas & wine", service: "À la carte", meals: "Dinner", note: "Gourmet tapas paired with fine wines — a fun grazing-and-sipping night.", tags: [] },
     { name: "Agave", cuisine: "Mexican", service: "À la carte", meals: "Dinner", note: "Regional Mexican dishes.", tags: [] },
-    { name: "Oregano", cuisine: "Italian", service: "À la carte", meals: "Lunch & dinner", note: "Wood-fired pizza, calzones and pasta — an easy casual night.", tags: [] },
+    { name: "Oregano", cuisine: "Italian", service: "À la carte", meals: "Lunch & dinner", note: "Pizzeria-trattoria — wood-fired pizza, calzones and pasta. An easy casual night.", tags: [] },
     { name: "Basmati", cuisine: "Indian", service: "À la carte", meals: "Dinner", note: "Contemporary Indian.", tags: [] },
     { name: "Magna", cuisine: "International", service: "À la carte", meals: "Breakfast & dinner", note: "Excellence Club guests only — highly praised if you have Club access.", tags: ["club"] }
   ];
-  var SNACKS = "Also on property: a beach snack grill, a food truck, take-away pizza and a crepe station — plus 24-hour room service (cocktails included) in every suite.";
+  var SNACKS = "Also on property: the Las Olas beach snack grill, a food truck, takeaway wood-oven pizza, an afternoon crêpe station, and Kakao — a chocolate boutique for a sweet fix. Room service runs 24 hours in every suite, and there's a vegetarian menu at every dinner.";
   var BARS = [
-    { name: "Martini Bar", d: "The signature lobby lounge — martinis from classic to fruit-infused." },
-    { name: "La Habana", d: "Plush cigar-and-spirits lounge for after-dinner drinks." },
-    { name: "Blue", d: "Swim-up bar — tropical cocktails without leaving the pool." },
-    { name: "Sol & Cielo", d: "Poolside and swim-up service; cold beers all day." },
-    { name: "X Lounge", d: "Beachfront daybed lounge — candlelit, mellow, romantic evenings." },
-    { name: "Stars", d: "The theater bar for pre-show cocktails." },
-    { name: "Sports Bar", d: "Big-screen sports, casual." },
-    { name: "Cafékafé", d: "Coffee & espresso bistro." },
-    { name: "Revive", d: "Fresh-fruit smoothie bar by the spa." }
+    { name: "Lobby bar", d: "The main lounge for cocktails and people-watching." },
+    { name: "Bar on the main square", d: "Open-air drinks in the central plaza — near the mariachi." },
+    { name: "Swim-up pool bar", d: "Order a drink without leaving the water." },
+    { name: "Pool & beach bar", d: "By the main pool, with all-day waiter service." },
+    { name: "Las Olas beach bar", d: "Toes-in-the-sand drinks right on the beach." },
+    { name: "Chill-out beach bar", d: "A mellow spot for a sunset drink by the water." },
+    { name: "Theater bar", d: "Pre-show cocktails by the outdoor theater." },
+    { name: "Sports bar", d: "Big-screen games with a snacks menu." },
+    { name: "Coffee house", d: "Espresso and coffee drinks." },
+    { name: "Juice bar", d: "Fresh juices and smoothies by the spa." },
+    { name: "Kakao", d: "Chocolate boutique — hot chocolate and sweet treats." },
+    { name: "Excellence Club bars", d: "Club-only lounge bar and pool bar (with Club access)." }
   ];
   var DO_CARDS = [
-    { h: "Six pools", k: "The reliable swim", p: "Six meandering, lagoon-style pools — a main activity pool, quieter ones, swim-up bars, and (with Club access) an exclusive Club pool. Ground-floor swim-up suites open right onto the water." },
+    { h: "Six pools", k: "The reliable swim", p: "Six pools winding through the gardens — 77,800 sq ft in all, two heated in winter — plus five outdoor jacuzzis and three whirlpools with Caribbean views. Ground-floor suites open right onto the water, and Club guests get an exclusive pool." },
     { h: "The beach", k: "Check each morning", p: "A long white-sand Caribbean beach. Heads-up: summer sargassum (seaweed) is the #1 guest gripe — July is usually lighter but variable, and 2026 has been heavy region-wide. Crews rake daily; lean on the pools on bad days." },
-    { h: "Water sports", k: "Included", p: "Kayaks, snorkel gear, small sailing catamarans, windsurfing and intro scuba lessons in the pool are all included. Motorized sports, certified dives and deep-sea fishing are paid extras." },
-    { h: "Miilé Spa", k: "Book day one", p: "One of the region's biggest hydrotherapy circuits — jacuzzi, sauna, steam, cold plunge, sensation showers, ice fountain and a temazcal. Massages are paid; the circuit is usually complimentary with a treatment. Mid-morning slots go first." },
-    { h: "Stay active", k: "Free", p: "A 24-hour gym plus complimentary yoga, Pilates and water aerobics. Daytime: beach & pool volleyball, water polo, tennis, archery, billiards, cooking & cocktail demos, dance and Spanish lessons." },
+    { h: "Water sports", k: "Included", p: "Kayaks, snorkel gear, sailing and stand-up paddleboards are all included. Deep-sea fishing, private yacht charters and scuba (with instruction) are paid extras." },
+    { h: "Miilé Spa", k: "Book day one", p: "You can literally swim into the spa. A big open-air hydrotherapy circuit — hot & cold plunge pools, bubble beds, a temazcal, steam, ice fountain and sensation showers — plus 10 treatment rooms. Club guests get one hydrotherapy treatment each per stay; book massages on day one." },
+    { h: "Stay active", k: "Free", p: "A state-of-the-art fitness center and a Functional Training Center (Technogym Skill Run/Mill/Row), plus a tropical fitness trail. Daily: yoga, water aerobics, beach volleyball & soccer, water polo, tennis clinics, table tennis, pickleball, archery, air-rifle, billiards, a fat-bike tour, and cooking, dance & Spanish lessons." },
     { h: "After dark", k: "Nightly", p: "Outdoor theater shows — acrobats, fire dancers, live music — strolling mariachi in the plaza, and rotating theme nights. Casino night and a silent headphone party are regulars. Check the daily program." }
   ];
   var DRY_HERO = { name: "Xcaret", dur: "Full day + night show · ~40 min", tagline: "★ Swim-free friendly — for everyone", desc: "The region's great eco-park, and the underground-river swims are completely optional. Even staying dry you get butterfly pavilions, jaguars and flamingos, a Maya village, and the jaw-dropping “México Espectacular” night show with 300 performers. The best big day out if you'd rather not get in the water." };
@@ -484,16 +488,16 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
   ];
   var FACTS = [
     { num: "6", s: "", k: "Nights" }, { num: "18<small>+</small>", s: "", k: "Adults-only" },
-    { num: "440", s: "", k: "All-suites" }, { num: "9", s: "", k: "Restaurants" },
-    { num: "6", s: "", k: "Pools" }, { num: "~30<small>m</small>", s: "", k: "From CUN" }
+    { num: "440", s: "", k: "All-suites" }, { num: "12", s: "", k: "Restaurants" },
+    { num: "6", s: "", k: "Pools" }, { num: "~15<small>m</small>", s: "", k: "From CUN" }
   ];
   var INFO = [
-    { h: "Getting there", k: "≈30 min from CUN", p: "Cancún airport (CUN) is only about 20–35 minutes north — the resort sits just past Puerto Morelos. Arrange a transfer in advance; the resort can set one up." },
+    { h: "Getting there", k: "≈15 min from CUN", p: "Per the resort, it's only about 15 minutes south of Cancún airport (CUN), just past Puerto Morelos — one of the closest good resorts to the airport. Arrange a transfer in advance; the resort can set one up." },
     { h: "Money & tipping", k: "Tips included", p: "US dollars are accepted everywhere on property and across the Riviera Maya; you don't need pesos for the resort. Gratuities are already included, so tipping is optional — but small US bills ($1–$5) for standout service go a long way." },
     { h: "Dinner dress code", k: "Enforced", p: "Breakfast & lunch are casual (beachwear fine). At dinner it's resort-elegant: men need long pants and a collared shirt (no tanks, no beach flip-flops); women wear a dress, skirt or nice pants. No swimwear indoors. Chez Isabelle is dressiest." },
-    { h: "WiFi & room service", k: "Included", p: "Free WiFi resort-wide, fine for messaging and browsing. Room service is included 24/7 (cocktails too), and every suite has a stocked minibar." },
+    { h: "WiFi & room service", k: "Included", p: "Free WiFi resort-wide and free calls to the US & Canada. Room service runs 24/7, and every suite has an espresso machine and a stocked minibar (beer, soft drinks, water, snacks and premium liquor)." },
     { h: "Weather — late July", k: "Hot & humid", p: "Highs around 88–93°F with high humidity; expect short afternoon showers rather than all-day rain. July hurricane risk is statistically low, but travel insurance is smart." },
-    { h: "Staying safe", k: "Low-key & gated", p: "The resort is gated, well-staffed and consistently rated safe; use the in-room safe. Puerto Morelos is a mellow fishing village. Normal beach caution — sun, rip currents, marked areas." }
+    { h: "Staying safe", k: "Low-key & gated", p: "The resort is gated, well-staffed and consistently rated safe, with on-site medical facilities and a laptop-size in-room safe. Puerto Morelos is a mellow fishing village. Normal beach caution — sun, rip currents, marked areas." }
   ];
   var PHRASES = [["Hola","Hello"],["Gracias","Thank you"],["Por favor","Please"],["Salud","Cheers"],["La cuenta, por favor","The check, please"],["¿Cuánto cuesta?","How much?"],["Dos cervezas","Two beers"],["¿Dónde está el baño?","Where's the bathroom?"],["Buenos días","Good morning"]];
 
@@ -627,7 +631,7 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
   }
 
   function ovw(w){
-    w.appendChild(leadBlock("The itinerary at a glance","A week on the <em>Caribbean</em>","Excellence Riviera Cancun — a 440-suite, adults-only hideaway on a long white-sand beach just past Puerto Morelos, halfway between Cancún and Playa del Carmen. Six pools, nine restaurants, a dozen bars and a serious spa."));
+    w.appendChild(leadBlock("The itinerary at a glance","A week on the <em>Caribbean</em>","Excellence Riviera Cancun — a 440-suite, adults-only hideaway on a long white-sand beach just past Puerto Morelos, halfway between Cancún and Playa del Carmen. Six pools, a dozen restaurants and a dozen bars, and a serious spa."));
     var stats = el("div","stats r");
     FACTS.forEach(function(f){ var s=el("div","stat"); var n=el("div","num"); n.innerHTML=f.num; s.appendChild(n); s.appendChild(el("div","k",f.k)); stats.appendChild(s); });
     w.appendChild(stats);
@@ -644,7 +648,7 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
   }
 
   function din(w){
-    w.appendChild(leadBlock("Nine kitchens, no reservations","Dining, <em>at your leisure</em>","Tap the star to save a table you want. Hours rotate seasonally — treat meal times as typical and confirm on the resort's daily program. You can book a table at reception if you want a locked-in time."));
+    w.appendChild(leadBlock("A dozen kitchens, no reservations","Dining, <em>at your leisure</em>","Tap the star to save a table you want. No dinner reservations required, and there's a vegetarian menu at every dinner. Hours rotate seasonally — treat meal times as typical and confirm on the resort's daily program."));
     var favs = RESTAURANTS.filter(function(r){ return r.tags.indexOf("fav")>=0; });
     var feat = el("div","feature");
     favs.forEach(function(r,i){ feat.appendChild(restaurantFeat(r,i+1)); });
