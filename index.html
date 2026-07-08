@@ -87,6 +87,10 @@ a { color: inherit; }
 .hero .grain { position: absolute; inset: 0; opacity: .5; mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E"); }
 .hero::after { content:""; position:absolute; left:0; right:0; bottom:0; height:120px; background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--hero-6) 55%, transparent)); pointer-events:none; }
+.hero .wave { position:absolute; left:0; right:0; bottom:-1px; z-index:3; line-height:0; pointer-events:none; }
+.hero .wave svg { display:block; width:100%; height:clamp(38px, 6vw, 64px); }
+.hero .wave path { fill: var(--ivory); }
+.hero.collapsed .wave { display:none; }
 
 .hero .full { position: relative; z-index: 2; }
 .hero .mini { display: none; }
@@ -147,7 +151,12 @@ main { min-height: 60vh; }
 /* reveal */
 .r { opacity: 0; transform: translateY(16px); transition: opacity .7s cubic-bezier(.2,.6,.2,1), transform .7s cubic-bezier(.2,.6,.2,1); }
 .r.in { opacity: 1; transform: none; }
-@media (prefers-reduced-motion: reduce) { .r { opacity: 1 !important; transform: none !important; } .hero .sun, .scrollcue .arrow { animation: none !important; } html { scroll-behavior: auto; } }
+/* toast */
+.toast { position: fixed; bottom: 22px; left: 50%; transform: translate(-50%, 140%); z-index: 90; display: flex; align-items: center; gap: 11px; background: var(--ink); color: var(--ivory); padding: 12px 18px 12px 14px; border-radius: 999px; box-shadow: var(--shadow-lg); font-size: 14px; font-weight: 600; max-width: min(92vw, 420px); opacity: 0; transition: transform .45s cubic-bezier(.2,.8,.2,1), opacity .3s ease; }
+.toast.show { transform: translate(-50%, 0); opacity: 1; }
+.toast .toast-ico { width: 22px; height: 22px; flex: none; border-radius: 50%; background: var(--sea); color: #fff; display: grid; place-items: center; font-size: 12px; }
+@media (min-width: 640px) { .toast { left: auto; right: 26px; transform: translate(0, 140%); } .toast.show { transform: translate(0, 0); } }
+@media (prefers-reduced-motion: reduce) { .r { opacity: 1 !important; transform: none !important; } .hero .sun, .scrollcue .arrow { animation: none !important; } html { scroll-behavior: auto; } .toast { transition: opacity .2s ease; } }
 
 /* ---------- STAT BAND ---------- */
 .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
@@ -350,6 +359,7 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
 
 <header class="hero expanded" id="hero">
   <div class="scene"><div class="glow"></div><div class="sun"></div><div class="horizon"></div><div class="grain"></div></div>
+  <div class="wave" aria-hidden="true"><svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V0C52.4,32.35,152.4,66.09,321.39,56.44Z"></path></svg></div>
   <div class="full"><div class="wrap">
     <div class="h-top">
       <span class="wordmark">Riviera <b>Maya</b></span>
@@ -373,6 +383,8 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
 
 <nav class="nav" id="nav"><div class="inner" id="navInner"></div></nav>
 <main id="view"></main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"><span class="toast-ico" aria-hidden="true">✓</span><span id="toastMsg"></span></div>
 
 <footer class="foot"><div class="inner">
   <span class="fm">Buen viaje.</span>
@@ -579,6 +591,7 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
   function save() { try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) {} }
   function slug(s) { return s.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,""); }
   function el(t,c,x){ var e=document.createElement(t); if(c)e.className=c; if(x!=null)e.textContent=x; return e; }
+  var _toastT; function toast(msg){ var t=document.getElementById("toast"), m=document.getElementById("toastMsg"); if(!t||!m)return; m.textContent=msg; t.classList.add("show"); clearTimeout(_toastT); _toastT=setTimeout(function(){ t.classList.remove("show"); }, 2600); }
   function tickSvg(){ var s=document.createElementNS("http://www.w3.org/2000/svg","svg"); s.setAttribute("viewBox","0 0 24 24"); var p=document.createElementNS("http://www.w3.org/2000/svg","path"); p.setAttribute("d","M5 12.5 L10 17.5 L19 6.5"); s.appendChild(p); return s; }
   function starSvg(fill){ return '<svg viewBox="0 0 24 24" fill="'+(fill?'currentColor':'none')+'" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3.2l2.6 5.7 6.2.6-4.7 4.1 1.4 6.1L12 16.9 6.5 19.8l1.4-6.1L3.2 9.5l6.2-.6z"/></svg>'; }
 
@@ -666,7 +679,7 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
   }
   function starToggle(id, cls){
     var btn = el("button", cls + (state.star[id]?" on":"")); btn.innerHTML = starSvg(!!state.star[id]); btn.setAttribute("aria-label","Save to want-to-try");
-    btn.addEventListener("click", function(e){ e.stopPropagation(); if(state.star[id]) delete state.star[id]; else state.star[id]=true; save(); btn.className = cls + (state.star[id]?" on":""); btn.innerHTML = starSvg(!!state.star[id]); });
+    btn.addEventListener("click", function(e){ e.stopPropagation(); if(state.star[id]) delete state.star[id]; else state.star[id]=true; save(); btn.className = cls + (state.star[id]?" on":""); btn.innerHTML = starSvg(!!state.star[id]); if(state.star[id]) toast("★ Saved to your dining picks"); });
     return btn;
   }
   function restaurantFeat(r,i){
@@ -736,14 +749,14 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
     f.appendChild(el("p",null,hero.desc));
     var m=el("div","ex-meta"); m.appendChild(el("span","dur",hero.dur));
     var fb=el("button","exbtn"+(state.checked[id]?" on":"")); fb.textContent = state.checked[id]?"✓ Shortlisted":"Add to shortlist";
-    fb.addEventListener("click", function(){ if(state.checked[id]) delete state.checked[id]; else state.checked[id]=true; save(); fb.className="exbtn"+(state.checked[id]?" on":""); fb.textContent=state.checked[id]?"✓ Shortlisted":"Add to shortlist"; updateExCount(); });
+    fb.addEventListener("click", function(){ if(state.checked[id]) delete state.checked[id]; else state.checked[id]=true; save(); fb.className="exbtn"+(state.checked[id]?" on":""); fb.textContent=state.checked[id]?"✓ Shortlisted":"Add to shortlist"; updateExCount(); if(state.checked[id]) toast("Shortlisted "+hero.name); });
     m.appendChild(fb); f.appendChild(m); return f;
   }
   function exRow(it){
     var id="exc::"+slug(it.n); var row=el("div","exrow"+(state.checked[id]?" checked":""));
     var t=el("div","tick"); t.appendChild(tickSvg()); row.appendChild(t);
     var b=el("div","ex-b"); var h=el("div","ex-h"); h.appendChild(el("span","ex-n",it.n)); h.appendChild(el("span","dur",it.dur)); h.appendChild(waterChip(it.w)); b.appendChild(h); b.appendChild(el("div","ex-d",it.d)); row.appendChild(b);
-    row.addEventListener("click", function(){ if(state.checked[id]) delete state.checked[id]; else state.checked[id]=true; save(); row.classList.toggle("checked"); updateExCount(); });
+    row.addEventListener("click", function(){ if(state.checked[id]) delete state.checked[id]; else state.checked[id]=true; save(); row.classList.toggle("checked"); updateExCount(); if(state.checked[id]) toast("Shortlisted "+it.n); });
     return row;
   }
 
@@ -840,7 +853,7 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
     var body=el("div","d-body");
     var head=el("div","d-head"); head.appendChild(chip(p.tag,p.tk||"sea"));
     var lock=el("button","dayset"); lock.textContent=set?"✓ Locked in":"Lock in";
-    lock.addEventListener("click",function(){ if(state.checked[id])delete state.checked[id]; else state.checked[id]=true; save(); var on=!!state.checked[id]; card.classList.toggle("set",on); lock.textContent=on?"✓ Locked in":"Lock in"; });
+    lock.addEventListener("click",function(){ if(state.checked[id])delete state.checked[id]; else state.checked[id]=true; save(); var on=!!state.checked[id]; card.classList.toggle("set",on); lock.textContent=on?"✓ Locked in":"Lock in"; if(on) toast("Locked in “"+p.theme+"”"); });
     head.appendChild(lock); body.appendChild(head);
     body.appendChild(el("h3",null,p.theme));
     var tl=el("ul","tl"); p.slots.forEach(function(s){ var li=el("li","slot"); li.appendChild(el("span","lbl",s[0])); li.appendChild(el("span","txt",s[1])); tl.appendChild(li); }); body.appendChild(tl);
@@ -873,14 +886,14 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
     sel.appendChild(new Option("＋ Add excursion",""));
     var flag={dry:"🟢",opt:"🟡",wet:"🔵"};
     excCatalog().forEach(function(g){ var og=document.createElement("optgroup"); og.label=g.group; g.items.forEach(function(it){ og.appendChild(new Option((flag[it.w]||"")+" "+it.n,it.n)); }); sel.appendChild(og); });
-    sel.addEventListener("change",function(){ var name=sel.value; if(!name)return; var ps=planState(); if(!ps.acts[p.key])ps.acts[p.key]=[]; if(ps.acts[p.key].indexOf(name)<0){ ps.acts[p.key].push(name); state.checked["exc::"+slug(name)]=true; } save(); rerenderItin(); });
+    sel.addEventListener("change",function(){ var name=sel.value; if(!name)return; var ps=planState(); if(!ps.acts[p.key])ps.acts[p.key]=[]; if(ps.acts[p.key].indexOf(name)<0){ ps.acts[p.key].push(name); state.checked["exc::"+slug(name)]=true; toast("Added “"+name+"” to your plans"); } save(); rerenderItin(); });
     return sel;
   }
   function dineSelect(p){
     var sel=document.createElement("select"); sel.className="psel"; sel.setAttribute("aria-label","Set dinner for this day");
     sel.appendChild(new Option("🍽 Set dinner",""));
     RESTAURANTS.forEach(function(r){ sel.appendChild(new Option(r.name,r.name)); });
-    sel.addEventListener("change",function(){ var name=sel.value; if(!name)return; var ps=planState(); ps.dinner[p.key]=name; state.star["dine::"+slug(name)]=true; save(); rerenderItin(); });
+    sel.addEventListener("change",function(){ var name=sel.value; if(!name)return; var ps=planState(); ps.dinner[p.key]=name; state.star["dine::"+slug(name)]=true; toast("Dinner set: "+name); save(); rerenderItin(); });
     return sel;
   }
   function travelCard(d){
