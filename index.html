@@ -75,9 +75,15 @@ a { color: inherit; }
 
 /* ---------- HERO ---------- */
 .hero { position: relative; overflow: hidden; color: #FBF6EC;
-  background: linear-gradient(178deg, var(--hero-1) 0%, var(--hero-2) 16%, var(--hero-3) 32%, var(--hero-4) 54%, var(--hero-5) 78%, var(--hero-6) 100%);
+  background: color-mix(in srgb, var(--hero-6) 52%, #04110d);
   transition: min-height .5s cubic-bezier(.4,0,.1,1); }
+.hero .media { position: absolute; inset: 0; z-index: 0; overflow: hidden; will-change: clip-path;
+  background: linear-gradient(178deg, var(--hero-1) 0%, var(--hero-2) 16%, var(--hero-3) 32%, var(--hero-4) 54%, var(--hero-5) 78%, var(--hero-6) 100%); }
 .hero .scene { position: absolute; inset: 0; pointer-events: none; }
+.hero .media-cap { position: absolute; z-index: 2; left: 0; right: 0; bottom: 14%; text-align: center; padding: 0 24px; opacity: 0; pointer-events: none; }
+.hero .media-cap .k { text-transform: uppercase; letter-spacing: .25em; font-size: 11px; font-weight: 700; color: rgba(251,246,236,.72); margin: 0 0 10px; }
+.hero .media-cap .t { font-family: var(--f-display); font-style: italic; font-weight: 400; font-size: clamp(22px, 3.6vw, 40px); color: #FDF8EE; max-width: 18ch; margin: 0 auto; line-height: 1.12; }
+.hero .htitle .hw { display: block; will-change: transform; }
 .hero .sun { position: absolute; left: 50%; top: 40%; width: 210px; height: 210px; transform: translate(-50%,-50%);
   background: radial-gradient(circle, var(--sun-disc) 0%, rgba(251,227,166,.55) 42%, rgba(251,227,166,0) 70%);
   border-radius: 50%; filter: blur(2px); animation: sunfloat 14s ease-in-out infinite; }
@@ -358,7 +364,11 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
 </style>
 
 <header class="hero expanded" id="hero">
-  <div class="scene"><div class="glow"></div><div class="sun"></div><div class="horizon"></div><div class="grain"></div></div>
+  <div class="media" id="mediaBox"><div class="scene"><div class="glow"></div><div class="sun"></div><div class="horizon"></div><div class="grain"></div></div></div>
+  <div class="media-cap" id="mediaCap">
+    <p class="k">Ella's Senior Trip · July 2026</p>
+    <p class="t">Everything for our week on the Riviera Maya.</p>
+  </div>
   <div class="wave" aria-hidden="true"><svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V0C52.4,32.35,152.4,66.09,321.39,56.44Z"></path></svg></div>
   <div class="full"><div class="wrap">
     <div class="h-top">
@@ -366,7 +376,7 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
       <span class="eyebrow">Est. July 2026</span>
     </div>
     <p class="eyebrow">Ella's Senior Trip · A Family Escape</p>
-    <h1>Riviera<br><em>Maya</em></h1>
+    <h1 class="htitle"><span class="hw" id="hw1">Riviera</span><span class="hw" id="hw2"><em>Maya</em></span></h1>
     <div class="h-sub">
       <span class="place">Excellence Riviera Cancun</span>
       <span class="sep">—</span><span>July 18–24</span>
@@ -625,7 +635,36 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
     });
   }
 
-  function go(key){ activeSection = key; hero.className = "hero " + (key==="overview" ? "expanded" : "collapsed"); render(); window.scrollTo({ top: key==="overview"?0:0, behavior: "auto" }); }
+  function go(key){ activeSection = key; hero.className = "hero " + (key==="overview" ? "expanded" : "collapsed"); render(); window.scrollTo({ top: 0, behavior: "auto" }); updateHero(); }
+
+  // ---- scroll-expand hero (self-contained; gradient scene as the expanding media) ----
+  var _rm = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  function _clamp(v,a,b){ return Math.min(Math.max(v,a),b); }
+  function _smooth(e0,e1,x){ var t=_clamp((x-e0)/(e1-e0),0,1); return t*t*(3-2*t); }
+  function updateHero(){
+    var mb=document.getElementById("mediaBox"); if(!mb) return;
+    var full=hero.querySelector(".full"), cap=document.getElementById("mediaCap"),
+        w1=document.getElementById("hw1"), w2=document.getElementById("hw2");
+    if(_rm || !hero.classList.contains("expanded")){
+      mb.style.clipPath="inset(0 round 0)";
+      if(full){ full.style.opacity=""; full.style.transform=""; }
+      if(cap){ cap.style.opacity="0"; }
+      if(w1){ w1.style.transform=""; } if(w2){ w2.style.transform=""; }
+      return;
+    }
+    var h=hero.offsetHeight||window.innerHeight;
+    var p=_clamp((window.pageYOffset||0)/(h*0.85),0,1);
+    var pe=_clamp(p/0.62,0,1); // compress the effect into the first ~62% of the scroll (hero isn't pinned)
+    mb.style.clipPath="inset("+(4*(1-pe)).toFixed(2)+"vh "+(6*(1-pe)).toFixed(2)+"vw round "+(30*(1-pe)).toFixed(1)+"px)";
+    var fade=1-_smooth(0.08,0.55,pe);
+    if(full){ full.style.opacity=fade; full.style.transform="translateY("+(-26*pe).toFixed(1)+"px)"; }
+    var dx=(window.innerWidth<768?38:90)*pe;
+    if(w1){ w1.style.transform="translateX("+(-dx).toFixed(1)+"px)"; }
+    if(w2){ w2.style.transform="translateX("+dx.toFixed(1)+"px)"; }
+    if(cap){ var c=_smooth(0.5,0.96,pe); cap.style.opacity=c; cap.style.transform="translateY("+(14*(1-c)).toFixed(1)+"px)"; }
+  }
+  window.addEventListener("scroll", updateHero, { passive: true });
+  window.addEventListener("resize", updateHero);
 
   function leadBlock(eyebrow, title, para){
     var d = el("div","sec-lead r");
@@ -953,10 +992,10 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
     else { num.textContent=days; lbl.textContent = days===1?"day away":"days away"; mini.textContent=days+" days away"; }
   }
 
-  document.getElementById("scrollcue").addEventListener("click", function(){ go("dining"); });
+  document.getElementById("scrollcue").addEventListener("click", function(){ var h=document.getElementById("hero").offsetHeight; window.scrollTo({ top: Math.max(0, h-2), behavior: "smooth" }); });
   document.getElementById("resetBtn").addEventListener("click", function(){ if(confirm("Reset all saved checkmarks, excursion picks, dining stars and custom items?")){ state={checked:{},star:{},names:{},custom:{},removed:{}}; save(); activePerson="shared"; go("overview"); } });
 
-  countdown(); render();
+  countdown(); render(); updateHero();
 })();
 </script>
 
