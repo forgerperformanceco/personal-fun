@@ -515,7 +515,14 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
 
   var DATES = [["Sat","Sep 5"],["Sun","Sep 6"]];
   var TRAVEL_DAYS = {
-    arrive: { dow:"Fri", date:"Sep 4", title:"Arrival & a half beach day", note:"Leave Lumberton pre-dawn (~4:30 AM) — you'll clear Baton Rouge before rush and roll into Orange Beach around 1 PM, before the 3–4 PM check-in. Turn that into a win: keep a day-one beach bag up front, head straight to the sand (Gulf State Park has parking, restrooms and showers) and steal a half beach day while one person checks in and grabs groceries. Grill-or-takeout dinner and a sunset walk to close it out. No time change — Alabama's on Central." },
+    arrive: { dow:"Fri", date:"Sep 4", title:"Arrival & a half beach day", note:"Leave pre-dawn and the ~7-hour I-10 run still lands you on the beach by lunch — a half beach day before you even check in. No time change; Alabama's on Central.", steps:[
+      ["~4:30 AM","Roll out of Lumberton — car packed the night before, tacos and coffee in the car."],
+      ["Baton Rouge","Clear it before the morning jam, then bypass New Orleans on I-12."],
+      ["~10:30 AM","One stop near Lafayette — fuel and grab lunch."],
+      ["~1:00 PM","Arrive Orange Beach, ahead of the 3–4 PM check-in."],
+      ["1–4 PM","Day-one beach bag → straight to the sand while one person checks in and gets groceries."],
+      ["Evening","Unpack, grill or takeout, and a first sunset walk."]
+    ] },
     depart: { dow:"Mon", date:"Sep 7", title:"Departure — one last swim", note:"Pack the car Sunday night and ask the rental for a late checkout. Get up for a sunrise beach walk and one last swim, rinse off at the boardwalk showers, then hit the road late morning — home by evening. Squeeze every bit of sand out before the drive." }
   };
   var PLANS = [
@@ -911,7 +918,9 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
   function travelCard(d){
     var card=el("div","day travel"); card.appendChild(dayWhen(d.dow,d.date));
     var body=el("div","d-body"); var head=el("div","d-head"); head.appendChild(chip("Travel day","")); body.appendChild(head);
-    body.appendChild(el("h3",null,d.title)); body.appendChild(el("p",null,d.note)); card.appendChild(body); return card;
+    body.appendChild(el("h3",null,d.title)); body.appendChild(el("p",null,d.note));
+    if(d.steps){ var tl=el("ul","tl"); d.steps.forEach(function(s){ var li=el("li","slot"); li.appendChild(el("span","lbl",s[0])); li.appendChild(el("span","txt",s[1])); tl.appendChild(li); }); body.appendChild(tl); }
+    card.appendChild(body); return card;
   }
 
   function prepStats(){ var t=0,d=0; PREP.forEach(function(g){ g.items.forEach(function(l){ t++; if(state.checked["prep::"+slug(l)])d++; }); }); return {total:t,done:d}; }
