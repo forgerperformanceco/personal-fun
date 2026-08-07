@@ -1,16 +1,11 @@
-# Gulf Coast Vacation App
+# Labor Day 2026 Trip Apps
 
-A shareable, mobile-friendly companion app for our family Labor Day trip to **Gulf Shores & Orange Beach, Alabama** (Sept 4–7).
+Shareable, mobile-friendly companion apps for our family Labor Day weekend (**Fri–Mon, Sept 4–7**), driving from Lumberton, TX. Two destinations are on the table, so there's a guide for each and a picker to choose between them.
 
-Eight sections:
+- **`index.html`** — the picker: a side-by-side compare of the two trips, links to each guide.
+- **`gulf-shores.html`** — **Gulf Shores & Orange Beach, AL** (the ~7-hr white-sand beach trip).
+- **`hill-country.html`** — **New Braunfels & the Rivers, TX** (the ~5-hr spring-fed float trip).
 
-- **Overview** — countdown, the area at a glance, early-September weather
-- **Itinerary** — a starting plan for the two full beach days (drag to reshuffle, add cruises & dinners)
-- **Dining** — Gulf Shores / Orange Beach seafood spots + bars & live music (star the ones to try)
-- **The Beach** — the sand, the condo pool, Gulf State Park, the pier and bike trails
-- **Do & Cruises** — dolphin cruises, jet skis, deep-sea fishing, The Wharf, go-karts & day trips (shortlist them)
-- **Packing** — per-person checklists (Shared / Bobby / Vanessa / Ella / Max)
-- **Before You Go** — the pre-trip checklist (book the rental, cruises & charters early)
-- **Good to Know** — driving in, the beach-flag safety key, check-in & parking, groceries, weather
+Each guide has eight sections: Overview (with countdown), Itinerary (drag-to-plan the two full days), Dining, The Beach / The Rivers, Do & Cruises / Do & Floats, Packing (per-person: Shared / Bobby / Vanessa / Ella / Max), Before You Go, and Good to Know.
 
-Open `index.html`. Everything is a single self-contained page; your picks and checkmarks save in your browser. Published via **GitHub Pages**.
+Everything is self-contained — open the files directly or serve via **GitHub Pages**. Your picks and checkmarks save in your browser (each guide keeps its own). The crew: **Bobby, Vanessa, Ella (18) & Max (16)**.
