@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Riviera Maya — Excellence Riviera Cancun</title>
+<title>Gulf Coast — Gulf Shores & Orange Beach</title>
 <meta name="theme-color" content="#0C6E62">
 </head>
 <body>
@@ -365,28 +365,28 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
 <header class="hero expanded" id="hero">
   <div class="media" id="mediaBox"><div class="scene"><div class="glow"></div><div class="sun"></div><div class="horizon"></div><div class="grain"></div></div></div>
   <div class="media-cap" id="mediaCap">
-    <p class="k">Ella's Senior Trip · July 2026</p>
-    <p class="t">Everything for our week on the Riviera Maya.</p>
+    <p class="k">Labor Day Weekend · Sept 2026</p>
+    <p class="t">Everything for our long weekend on the Alabama coast.</p>
   </div>
   <div class="wave" aria-hidden="true"><svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V0C52.4,32.35,152.4,66.09,321.39,56.44Z"></path></svg></div>
   <div class="full"><div class="wrap">
     <div class="h-top">
-      <span class="wordmark">Riviera <b>Maya</b></span>
-      <span class="eyebrow">Est. July 2026</span>
+      <span class="wordmark">Gulf <b>Coast</b></span>
+      <span class="eyebrow">Est. Sept 2026</span>
     </div>
-    <p class="eyebrow">Ella's Senior Trip · A Family Escape</p>
-    <h1 class="htitle"><span class="hw" id="hw1">Riviera</span><span class="hw" id="hw2"><em>Maya</em></span></h1>
+    <p class="eyebrow">Labor Day Weekend · A Family Escape</p>
+    <h1 class="htitle"><span class="hw" id="hw1">Gulf</span><span class="hw" id="hw2"><em>Coast</em></span></h1>
     <div class="h-sub">
-      <span class="place">Excellence Riviera Cancun</span>
-      <span class="sep">—</span><span>July 18–24</span>
-      <span class="sep">·</span><span>Puerto Morelos, México</span>
+      <span class="place">Gulf Shores &amp; Orange Beach</span>
+      <span class="sep">—</span><span>Sept 4–7</span>
+      <span class="sep">·</span><span>Alabama</span>
     </div>
     <div class="h-count"><span class="num" id="heroNum">—</span><span class="lbl" id="heroLbl">days away</span></div>
     <button class="scrollcue" id="scrollcue">Explore the trip <span class="arrow">↓</span></button>
   </div></div>
   <div class="mini"><div class="wrap" style="display:flex;align-items:center;width:100%">
-    <span class="wordmark">Riviera <b>Maya</b></span>
-    <span class="m-meta"><span>Jul 18–24</span><span class="m-count" id="heroMini">—</span></span>
+    <span class="wordmark">Gulf <b>Coast</b></span>
+    <span class="m-meta"><span>Sep 4–7</span><span class="m-count" id="heroMini">—</span></span>
   </div></div>
 </header>
 
@@ -396,7 +396,7 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
 <div class="toast" id="toast" role="status" aria-live="polite"><span class="toast-ico" aria-hidden="true">✓</span><span id="toastMsg"></span></div>
 
 <footer class="foot"><div class="inner">
-  <span class="fm">Buen viaje.</span>
+  <span class="fm">See y'all at the beach.</span>
   <span class="fnote">Your packing checkmarks, excursion picks and dining stars save on this device. Everyone can open the same link and track their own.</span>
   <button class="reset" id="resetBtn">Reset saved data</button>
 </div></footer>
@@ -404,160 +404,129 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
 <script>
 (function () {
   "use strict";
-  var STORE_KEY = "erc-trip-v2";
+  var STORE_KEY = "gulf-2026-v1";
 
   var RESTAURANTS = [
-    { name: "The Kitchen Table", cuisine: "International", service: "Buffet", meals: "Buffet breakfast · à la carte lunch", note: "The main all-day venue — a big buffet breakfast, à la carte at lunch. Arrive early before it fills.", tags: [] },
-    { name: "The Lobster House", cuisine: "Seafood", service: "À la carte", meals: "Breakfast · lunch · dinner", note: "Signature lobster at dinner, local Mexican seafood at lunch. Consistently the guest favorite.", tags: ["fav"] },
-    { name: "Spice", cuisine: "Asian · Teppanyaki & Yakiniku", service: "À la carte", meals: "Dinner", note: "Teppanyaki stations plus two yakiniku grill tables — sit up close for the show.", tags: ["fav"] },
-    { name: "Chez Isabelle", cuisine: "French", service: "À la carte", meals: "Dinner", note: "The dress-up fine-dining room — dressiest venue on property.", tags: ["fav", "dressy"] },
-    { name: "The Grill", cuisine: "Steakhouse", service: "À la carte", meals: "Dinner", note: "Prime cuts and grilled proteins with seasonal sides.", tags: [] },
-    { name: "Flavor Market", cuisine: "Tapas & wine", service: "À la carte", meals: "Dinner", note: "Gourmet tapas paired with fine wines — a fun grazing-and-sipping night.", tags: [] },
-    { name: "Agave", cuisine: "Mexican", service: "À la carte", meals: "Dinner", note: "Regional Mexican dishes.", tags: [] },
-    { name: "Oregano", cuisine: "Italian", service: "À la carte", meals: "Lunch & dinner", note: "Pizzeria-trattoria — wood-fired pizza, calzones and pasta. An easy casual night.", tags: [] },
-    { name: "Basmati", cuisine: "Indian", service: "À la carte", meals: "Dinner", note: "Contemporary Indian.", tags: [] },
-    { name: "Magna", cuisine: "International", service: "À la carte", meals: "Breakfast & dinner", note: "Excellence Club guests only — highly praised if you have Club access.", tags: ["club"] }
+    { name: "LuLu's at Homeport", cuisine: "Gulf seafood & fun", service: "Gulf Shores · Waterfront", meals: "Lunch & dinner", note: "Lucy Buffett's (Jimmy's sister) sprawling waterfront spot — fried seafood, the famous West Indies salad, live music, a ropes course and a sugar-sand play area. The whole-family crowd-pleaser; put your name in and let the kids roam.", tags: ["fav"] },
+    { name: "The Hangout", cuisine: "Coastal American", service: "Gulf Shores · On the beach", meals: "Lunch & dinner", note: "Right on the public beach at the foot of Hwy 59 — burgers, shrimp, live bands, and midday foam parties for the kids. Loud, fun, quintessentially Gulf Shores.", tags: ["fav"] },
+    { name: "Fisher's at Orange Beach Marina", cuisine: "Upscale coastal", service: "Orange Beach · Marina", meals: "Lunch & dinner", note: "Two restaurants in one: casual Dockside downstairs, and a genuinely excellent Upstairs for a dress-up dinner. The nice night out — book Upstairs ahead on a holiday weekend.", tags: ["fav", "dressy"] },
+    { name: "The Gulf", cuisine: "Casual coastal", service: "Orange Beach · Perdido Pass", meals: "Lunch & dinner", note: "A cluster of shipping containers on the sand at the pass — fresh, simple plates, cornhole and one of the best sunset-and-boat-watching spots around. No reservations; go early.", tags: ["fav"] },
+    { name: "Tacky Jack's", cuisine: "Casual waterfront", service: "Orange Beach · Waterfront", meals: "Breakfast · lunch · dinner", note: "Beloved dive on the water — big breakfasts, bloody marys and 'Tacky' burgers. Host of the Labor Day Bloody Mary 5K. Come as you are.", tags: [] },
+    { name: "Cosmo's Restaurant & Bar", cuisine: "Eclectic coastal", service: "Orange Beach", meals: "Dinner", note: "A local favorite for years — inventive small plates, sushi and a great bar. A notch nicer without being fussy; reservations help.", tags: [] },
+    { name: "Cobalt, The Restaurant", cuisine: "Coastal · sunset views", service: "Orange Beach · Terry Cove", meals: "Lunch & dinner", note: "Perched at Perdido Pass with wide water views — a solid sunset dinner watching the boats come through.", tags: [] },
+    { name: "The Original Oyster House", cuisine: "Seafood", service: "Gulf Shores · Bon Secour", meals: "Lunch & dinner", note: "On the boardwalk over Bon Secour Bay — raw and chargrilled oysters, gumbo and a resident gator or two below the deck. A dependable classic.", tags: [] },
+    { name: "Big Fish", cuisine: "Seafood & sushi", service: "Orange Beach", meals: "Dinner", note: "Upscale seafood and a strong sushi list — the other good option for a nicer dinner.", tags: ["dressy"] },
+    { name: "Doc's Seafood Shack & Oyster Bar", cuisine: "Fried seafood", service: "Orange Beach", meals: "Lunch & dinner", note: "No-frills fried shrimp, po'boys and hush puppies. Cheap, fast and everyone leaves happy.", tags: [] },
+    { name: "Ginny Lane Bar & Grill", cuisine: "American", service: "Orange Beach · The Wharf", meals: "Lunch & dinner", note: "On the water at The Wharf — easy menu, live music, and steps from the SkyWheel and zip line. Pair it with a Wharf evening.", tags: [] }
   ];
-  var SNACKS = "Also on property: the Las Olas beach snack grill, a food truck, takeaway wood-oven pizza, an afternoon crêpe station, and Kakao — a chocolate boutique for a sweet fix. Room service runs 24 hours in every suite, and there's a vegetarian menu at every dinner.";
+  var SNACKS = "For a sweet fix: The Yard Milkshake Bar in Gulf Shores builds over-the-top milkshakes, Frios Gourmet Pops and Cammie's Old Dutch Ice Cream cool you down, and Kona Ice trucks roam the beach. For beach lunches, hit the Publix deli or a Foosackly's / Zaxby's on the way in — condos are self-catered, so groceries stretch the budget.";
   var BARS = [
-    { name: "Lobby bar", d: "The main lounge for cocktails and people-watching." },
-    { name: "Bar on the main square", d: "Open-air drinks in the central plaza — near the mariachi." },
-    { name: "Swim-up pool bar", d: "Order a drink without leaving the water." },
-    { name: "Pool & beach bar", d: "By the main pool, with all-day waiter service." },
-    { name: "Las Olas beach bar", d: "Toes-in-the-sand drinks right on the beach." },
-    { name: "Chill-out beach bar", d: "A mellow spot for a sunset drink by the water." },
-    { name: "Theater bar", d: "Pre-show cocktails by the outdoor theater." },
-    { name: "Sports bar", d: "Big-screen games with a snacks menu." },
-    { name: "Coffee house", d: "Espresso and coffee drinks." },
-    { name: "Juice bar", d: "Fresh juices and smoothies by the spa." },
-    { name: "Kakao", d: "Chocolate boutique — hot chocolate and sweet treats." },
-    { name: "Excellence Club bars", d: "Club-only lounge bar and pool bar (with Club access)." }
+    { name: "Flora-Bama", d: "The legendary roadhouse straddling the AL/FL state line — multiple stages of live music, the signature Bushwhacker, and the famous bras on the ceiling. Family-friendly by day, a scene by night." },
+    { name: "The Hangout", d: "Beachfront music, frozen drinks and foam parties — right on the Gulf Shores public beach." },
+    { name: "Pink Pony Pub", d: "A Gulf Shores institution since 1956 — toes-in-the-sand dive bar with cold beer and beach views." },
+    { name: "Bahama Bob's Beach Side Cafe", d: "Tiny shack on the Gulf Shores sand — bushwhackers and a laid-back sunset vibe." },
+    { name: "LuLu's bar", d: "Live bands and frozen cocktails on the water at Homeport Marina." },
+    { name: "Live Bait", d: "Waterfront bar and grill in Orange Beach with music and a big deck." },
+    { name: "Ginny Lane @ The Wharf", d: "Drinks and live music on the marina, by the SkyWheel." },
+    { name: "The Gulf bar", d: "Sand, cornhole and sunset cocktails at Perdido Pass." },
+    { name: "Bushwhacker", d: "Not a place — the local frozen cocktail (rum, coffee & coconut). Order one at least once." },
+    { name: "Tacky Jack's bar", d: "Bloody marys and cold beer on the water — start here at breakfast." }
   ];
   var DO_CARDS = [
-    { h: "Six pools", k: "The reliable swim", p: "Six pools winding through the gardens — 77,800 sq ft in all, two heated in winter — plus five outdoor jacuzzis and three whirlpools with Caribbean views. Ground-floor suites open right onto the water, and Club guests get an exclusive pool." },
-    { h: "The beach", k: "Check each morning", p: "A long white-sand Caribbean beach. Heads-up: summer sargassum (seaweed) is the #1 guest gripe — July is usually lighter but variable, and 2026 has been heavy region-wide. Crews rake daily; lean on the pools on bad days." },
-    { h: "Water sports", k: "Included", p: "Kayaks, snorkel gear, sailing and stand-up paddleboards are all included. Deep-sea fishing, private yacht charters and scuba (with instruction) are paid extras." },
-    { h: "Miilé Spa", k: "Book day one", p: "You can literally swim into the spa. A big open-air hydrotherapy circuit — hot & cold plunge pools, bubble beds, a temazcal, steam, ice fountain and sensation showers — plus 10 treatment rooms. Club guests get one hydrotherapy treatment each per stay; book massages on day one." },
-    { h: "Stay active", k: "Free", p: "A state-of-the-art fitness center and a Functional Training Center (Technogym Skill Run/Mill/Row), plus a tropical fitness trail. Daily: yoga, water aerobics, beach volleyball & soccer, water polo, tennis clinics, table tennis, pickleball, archery, air-rifle, billiards, a fat-bike tour, and cooking, dance & Spanish lessons." },
-    { h: "After dark", k: "Nightly", p: "Outdoor theater shows — acrobats, fire dancers, live music — strolling mariachi in the plaza, and rotating theme nights. Casino night and a silent headphone party are regulars. Check the daily program." }
+    { h: "The beach", k: "Check the flag", p: "Soft white quartz sand and warm ~84°F Gulf water. Claim your spot early on a holiday weekend, and read the colored flag every morning before anyone swims — green is calm, red means strong currents, double red means the water's closed. Rip currents are the real hazard; swim near a lifeguard stand." },
+    { h: "The condo pool", k: "At your base", p: "Most Gulf Shores / Orange Beach high-rises come with an outdoor (and often indoor) pool, hot tub, and sometimes a lazy river or splash zone — the easy fallback for a stormy afternoon or when the surf's rough. Bring a couple of extra pool towels." },
+    { h: "Gulf State Park", k: "Don't skip", p: "6,150 acres in the middle of it all: a huge fishing-and-strolling pier (one of the longest on the Gulf, ~1,540 ft — you'll see dolphins and pelicans), Lake Shelby, a nature center, and a quieter public beach if you want space." },
+    { h: "Backcountry Trail", k: "Bring bikes", p: "The Hugh S. Branyon Backcountry Trail — ~28 miles of paved trails winding through six ecosystems. Easy, flat, shaded riding or walking; you'll likely spot turtles, herons and the occasional gator sunning off to the side." },
+    { h: "Sunsets & dolphins", k: "Free show", p: "Sunset over the Gulf is the nightly event — bring a chair, grab treats, and watch. Dolphins cruise past the pier and Perdido Pass most evenings; a sunset cruise (see Do & Cruises) is the splurge version." },
+    { h: "Beach gear & safety", k: "Good to know", p: "You can rent chairs-and-umbrella setups by the day, or bring your own with a beach cart. Shuffle your feet in the shallows to shoo stingrays, no glass on the sand, and fill in any holes and pack up gear at night — it's sea-turtle nesting season (Share the Beach)." }
   ];
-  var DRY_HERO = { name: "Xcaret", dur: "Full day + night show · ~40 min", tagline: "★ Swim-free friendly — for everyone", desc: "The region's great eco-park, and the underground-river swims are completely optional. Even staying dry you get butterfly pavilions, jaguars and flamingos, a Maya village, and the jaw-dropping “México Espectacular” night show with 300 performers. The best big day out if you'd rather not get in the water." };
-  var WET_HERO = { name: "Whale shark snorkel", dur: "Full day · 6–10 hrs", tagline: "★ In season now — July peak", desc: "Swim alongside the world's largest fish off Isla Mujeres. July is the very heart of the season — roughly 95% sighting odds. The region's signature trip for the swimmers in the group." };
-  // w: "dry" (no swimming) · "opt" (water skippable) · "wet" (water is the point)
+  var DRY_HERO = { name: "The Wharf & SkyWheel (Orange Beach)", dur: "Evening · 15 min away", tagline: "★ Dry-land fun for everyone", desc: "An entertainment district built for exactly this crew: ride the 112-ft SkyWheel Ferris wheel for the view, do the zip line and ropes course, hit the arcade, browse the shops, and eat on the marina — all in one walkable spot. Great for a teenager, and no sunscreen required." };
+  var WET_HERO = { name: "Dolphin & sunset cruise", dur: "~2 hrs · Orange Beach", tagline: "★ The easy crowd-pleaser", desc: "The one everyone agrees on. Cruise out through Perdido Pass to spot wild dolphins, with a sunset version that's pure golden-hour magic. Low effort, no swimming required, and boats leave all afternoon and evening — book a holiday slot ahead." };
+  // w: "dry" (stays on land) · "opt" (splash optional) · "wet" (on/in the water)
   var EXCURSIONS = [
-    { group: "Private & splurge", items: [
-      { n: "Private catamaran + Zama beach club (Isla Mujeres)", dur: "Full day · ~30–45 min sail over", w: "opt", d: "Private charter across to Isla Mujeres, dropping at Zama on Playa Norte — the shallow, stand-up end where you can wade with a drink and still touch the bottom. Daybeds, a pool, and food/drinks for the day; the girls can add a reef snorkel or glass-bottom boat while you stay on the sand. Maximum bougie, and close." },
-      { n: "Private Tulum + Cobá tour", dur: "Half–full day · ~1h to Tulum", w: "dry", d: "Your own guide and A/C SUV — clifftop Tulum ruins, and Cobá's climbable pyramid if you want it, all at your pace. Closest of the big tours; back for the pool." },
-      { n: "Private Chichén Itzá + Valladolid", dur: "Full day · 2.5–3h each way", w: "dry", d: "The bucket-list wonder with a private guide, out early to beat the crowds, plus lunch in colonial Valladolid. It's far — make it your one big day out." },
-      { n: "Private tequila tasting or cooking class", dur: "2–4h", w: "dry", d: "Air-conditioned and effortless — a great rainy-afternoon splurge, arranged just for the family." }
+    { group: "On the water", items: [
+      { n: "Dolphin cruise", dur: "~2h · Orange Beach", w: "wet", d: "The easy win — cruise out to find wild dolphins. Several operators leave from Orange Beach and The Wharf all day; kids love it and nobody has to swim." },
+      { n: "Sunset sail (Sail Wild Hearts catamaran)", dur: "~2h · evening", w: "wet", d: "A big smooth catamaran out of Orange Beach for golden-hour sailing and dolphins — the most relaxing way to end a beach day." },
+      { n: "Jet ski / waverunner rental", dur: "30–60 min", w: "wet", d: "Rent waverunners on the back bays or the Gulf — a highlight for a 16-year-old (age/licensing rules apply, a parent can ride along)." },
+      { n: "Parasailing", dur: "~1–1.5h", w: "wet", d: "Up 400+ feet over the emerald water for the view of the whole coast. Tandem or triple flights, feet-dry the whole time if you want." },
+      { n: "Pontoon boat rental", dur: "Half / full day", w: "wet", d: "Captain your own pontoon around the bays and to sandbar spots like Robinson Island — pack a cooler and make a day of it." },
+      { n: "Banana boat / tubing", dur: "~30 min", w: "wet", d: "Cheap, silly, wet fun getting whipped around behind a boat — good for the kids." }
     ]},
-    { group: "Ruins & culture", items: [
-      { n: "Chichén Itzá + Valladolid", dur: "Full day · ~11h", w: "dry", d: "El Castillo, the great ball court and observatory, plus a stop in colonial Valladolid. The bucket-list day — book an early start; it's long, hot and busy." },
-      { n: "Tulum ruins", dur: "Half day · ~4h", w: "dry", d: "A compact Maya city on a cliff over the Caribbean. Walk the grounds up top — the little cove swim below is optional." },
-      { n: "Cobá + Nohoch Mul", dur: "Half–full day · ~5h", w: "dry", d: "Jungle-shrouded ruins you explore on foot or by bike — and the big pyramid reopened for climbing in late 2025." },
-      { n: "Ek Balam", dur: "Half day", w: "dry", d: "A quieter site with a still-climbable acropolis and beautifully preserved stucco carvings. Pairs well with Valladolid." },
-      { n: "Valladolid & Izamal", dur: "Half–full day", w: "dry", d: "Colonial “Pueblos Mágicos” — shady plazas, colored facades and Izamal's all-yellow streets." }
+    { group: "Deep-sea & pier fishing", items: [
+      { n: "Deep-sea fishing charter", dur: "4–8h · Orange Beach", w: "wet", d: "Orange Beach bills itself the 'red snapper capital' — a big charter fleet runs half- and full-day trips for snapper, king mackerel and more. Book ahead for a holiday weekend; check the federal snapper season dates." },
+      { n: "Inshore / bay fishing", dur: "~4h", w: "wet", d: "Calmer back-bay trips for redfish and speckled trout — gentler water and better for younger anglers or shorter attention spans." },
+      { n: "Gulf State Park Pier fishing", dur: "Any time", w: "dry", d: "No boat needed — pay the walk-on fee, rent a rod, and fish one of the Gulf's longest piers. Great at sunrise and sunset; you'll see rays and dolphins too." }
     ]},
-    { group: "Wildlife & jungle", items: [
-      { n: "Croco Cun Zoo", dur: "~1.5h · 5 min away", w: "dry", d: "A guided, hands-on walk among crocodiles, spider monkeys and parrots — right next door to the resort. A great low-effort morning." },
-      { n: "Punta Laguna monkeys", dur: "Half day", w: "dry", d: "A jungle walk to spot wild spider and howler monkeys, plus lagoon canoeing. Ziplines and cenote are optional add-ons." },
-      { n: "Botanical Garden, Puerto Morelos", dur: "~2h · 5 min away", w: "dry", d: "Shaded jungle boardwalks, a Maya chicle-camp exhibit and resident wild spider monkeys, minutes from the resort." }
+    { group: "Teens & thrills", items: [
+      { n: "The Wharf — SkyWheel & zip line", dur: "Evening · Orange Beach", w: "dry", d: "The 112-ft SkyWheel, a zip line and ropes course, arcade, shops and marina dining all in one walkable district. Prime teenager territory." },
+      { n: "Waterville USA", dur: "Half / full day · Gulf Shores", w: "wet", d: "A 20-acre water park (wave pool, 17 slides, lazy river, FlowRider) plus go-karts, mini golf, bowling and a big arcade next door. A whole day if you want it." },
+      { n: "The Track Family Fun Park", dur: "A few hours · Gulf Shores", w: "dry", d: "Multi-level go-kart tracks, the Skycoaster and Spinning Coaster, bumper boats and mini golf — the classic beach-town arcade night." },
+      { n: "Adventure Island", dur: "A few hours · Gulf Shores", w: "opt", d: "Go-karts, bumper boats, glow golf and an arcade right on the main strip — easy to pair with dinner nearby." },
+      { n: "Tropic Falls at OWA", dur: "Full day · Foley (~20 min)", w: "wet", d: "A full theme park (23 rides incl. a wooden coaster) plus a huge indoor/outdoor water park with a retractable roof — the rain-proof big day out, just inland." }
     ]},
-    { group: "Land adventure", items: [
-      { n: "Aktun Chen dry cave walk", dur: "~1.5h · ~50 min", w: "dry", d: "A guided walk through a five-million-year-old dry stalactite cavern — the one underground river where swimming is banned, so zero water pressure. A genuine “dry but wow.”" },
-      { n: "Selvatica zip & ATV", dur: "Half day · ~15 min", w: "opt", d: "Jungle ziplines and off-road ATVs in the Puerto Morelos jungle. A cenote dip comes bundled but is easy to sit out — the rides are all dry." },
-      { n: "ATV / dune-buggy jungle tour", dur: "Half day", w: "dry", d: "Off-road buggies through the jungle and Ruta de los Cenotes. (July rain means mud, not swimming.)" },
-      { n: "Horseback on the beach", dur: "2–4h", w: "dry", d: "Beach-and-jungle trail rides from ranches near Puerto Morelos." },
-      { n: "Skydive Playa del Carmen", dur: "~2–3h · ~40 min", w: "dry", d: "A tandem jump over the coastline with a beach landing — not a water landing. Book a morning slot; afternoon storms scrub jumps." }
-    ]},
-    { group: "Eco-parks & shows", items: [
-      { n: "Xoximilco", dur: "Evening · ~4.5h", w: "dry", d: "A festive night on decorated trajinera boats — mariachi, tacos and open bar, seated the whole time. No swimming, all party." },
-      { n: "Xenses sensory park", dur: "Half day · ~40 min", w: "opt", d: "A playful optical-illusion park: a giant-and-dwarf village, mirror mazes and sensory trails. A dry half plus a muddy/water half you can skip." }
-    ]},
-    { group: "Towns, food & leisure", items: [
-      { n: "Puerto Morelos town", dur: "A few hours · in town", w: "dry", d: "The leaning lighthouse, the square, an artisan market and a terrific low-key seafood scene." },
-      { n: "Isla Mujeres by golf cart", dur: "Full day", w: "dry", d: "Ferry over from Cancún and loop the island by golf cart — Punta Sur cliffs, town and viewpoints, no snorkel boat required." },
-      { n: "Sian Ka'an biosphere (Muyil)", dur: "Half–full day · ~1.5h", w: "opt", d: "A UNESCO reserve: dry Muyil ruins and a jungle boardwalk, then a boat through mangrove lagoons for wildlife. The lazy-river float is optional." },
-      { n: "Tequila tasting or cooking class", dur: "2–4h", w: "dry", d: "Hands-on Yucatecan cooking or a guided tequila/mezcal tasting — air-conditioned and ideal for a hot, rainy afternoon." },
-      { n: "Golf at Mayakoba", dur: "Half day · ~20 min", w: "dry", d: "Tee off at El Camaleón, a former PGA Tour host, or another nearby course. Play early to beat the storms." },
-      { n: "Playa del Carmen — Fifth Ave", dur: "Half day · ~30 min", w: "dry", d: "A long pedestrian shopping-and-dining strip — an easy afternoon of browsing and people-watching." },
-      { n: "Las Coloradas pink lakes", dur: "Very long day · 3h+ each way", w: "dry", d: "Boat views of neon-pink salt lagoons and flamingos. Spectacular, but a brutal round-trip drive — only if the group loves a photo mission." }
-    ]},
-    { group: "Water — for the swimmers", items: [
-      { n: "Whale shark snorkel", dur: "Full day · 6–10h", w: "wet", d: "Swim alongside the world's largest fish off Isla Mujeres. July is peak season (~95% sightings) — the region's signature." },
-      { n: "Isla Mujeres catamaran & snorkel", dur: "6–8h", w: "wet", d: "Sail, snorkel a reef, and hit a beach club with an open bar." },
-      { n: "Puerto Morelos reef snorkel", dur: "2–3h", w: "wet", d: "The world's 2nd-largest reef sits ~15 min offshore — the closest water adventure." },
-      { n: "Cenote swim — Dos Ojos / Ruta de los Cenotes", dur: "~4h", w: "wet", d: "Swim and cliff-jump crystal-clear freshwater sinkholes; the cenote road starts right by Puerto Morelos." },
-      { n: "Cozumel snorkel & dive", dur: "Full day", w: "wet", d: "Ferry to Mexico's top dive island for reef snorkeling and diving." },
-      { n: "Rio Secreto", dur: "~half day", w: "wet", d: "Wade and float through a stunning half-flooded stalactite cave." },
-      { n: "Xel-Há", dur: "Full day", w: "wet", d: "An all-inclusive natural snorkeling lagoon and water park." }
+    { group: "Explore & day trips", items: [
+      { n: "Fort Morgan", dur: "Half day · west tip", w: "dry", d: "A well-preserved 1830s fort guarding Mobile Bay at the end of the peninsula — history, big views, and the Mobile Bay Ferry to Dauphin Island if you want a boat ride with the car." },
+      { n: "Alabama Gulf Coast Zoo", dur: "~2–3h · Gulf Shores", w: "dry", d: "'The little zoo that could' — a modern, walkable zoo with sloths, lemurs and interactive animal encounters. Good rainy-morning backup." },
+      { n: "National Naval Aviation Museum", dur: "Half day · Pensacola (~45 min)", w: "dry", d: "One of the best (and free) aviation museums anywhere, on NAS Pensacola — the Blue Angels' home. A hit with teens; bring photo ID for base access." },
+      { n: "Bon Secour National Wildlife Refuge", dur: "1–2h", w: "dry", d: "Quiet dune-and-maritime-forest trails to a pristine, undeveloped beach — the antidote to a busy holiday strip." },
+      { n: "The Wharf shops & marina", dur: "A few hours", w: "dry", d: "Browse the shops, grab ice cream, watch the boats — an easy low-key evening even if you skip the rides." }
     ]}
   ];
   // items: [label, recommended quantity for 6 nights]
   var PEOPLE = [
     { key: "shared", name: "Shared", sw: "--sea", cats: [
-      { name: "Documents & Money", items: [["Passports","×4"],["Flight confirmations","1 set"],["Hotel / transfer confirmation","1"],["Travel insurance","1"],["Credit / debit cards","2–3"],["Small US bills for tips","$60–80"],["Pesos for excursions","$50–100"],["Photocopies of passports","×4"]] },
-      { name: "Health & Beach", items: [["Reef-safe sunscreen","2–3 bottles"],["After-sun / aloe","1"],["Insect repellent","1–2"],["Lip balm with SPF","1–2"],["First-aid kit","1"],["Pepto / Imodium","1 each"],["Electrolyte packets","6–8"],["Motion-sickness pills (boat day)","1 pack"],["Snorkel masks (or rent there)","optional"],["Dry bag for phones","1–2"]] },
-      { name: "Tech", items: [["Phone chargers","×4"],["Power bank","1–2"],["Camera / GoPro","1"],["Headphones","×4"],["Charging cables","4–5"]] }
+      { name: "Documents & Money", items: [["Driver's licenses / IDs","×2"],["Rental confirmation + gate code","1"],["Car insurance & registration","1"],["Roadside assistance number","1"],["Credit / debit cards","2–3"],["Cash for tolls & tips","$40–60"],["Beach / parking passes (from rental)","as issued"]] },
+      { name: "Beach Gear", items: [["Beach chairs","×4–5"],["Beach umbrella or tent","×1–2"],["Beach cart / wagon","×1"],["Cooler + ice packs","×1"],["Boogie / skim boards","×2"],["Sand toys / football / cornhole","1 set"],["Beach towels","×6"],["Dry bag for phones","×1–2"],["Reusable water bottles","×5"]] },
+      { name: "Health & Sun", items: [["Sunscreen SPF 30–50","3–4 bottles"],["Aloe / after-sun","1"],["Bug spray","1"],["Lip balm with SPF","1–2"],["First-aid kit","1"],["Motion-sickness pills (boat day)","1 pack"],["Pain reliever / allergy meds","1 each"],["Hand sanitizer / wipes","1–2"],["Prescriptions","as needed"]] },
+      { name: "Condo & Tech", items: [["Coffee + filters","1"],["Trash bags & paper towels","1 each"],["Dish soap / sponge / Ziplocs","1 set"],["Beach-lunch & breakfast snacks","stock up"],["Phone chargers","×5"],["Power bank","1–2"],["Bluetooth speaker","1"],["Camera / GoPro","1"]] }
     ]},
-    { key: "me", name: "Bobby", sw: "--sea", cats: [
-      { name: "Clothing", items: [["T-shirts","×5"],["Shorts","×4"],["Swim trunks","×2"],["Collared / linen shirts (dinner)","×4"],["Long pants for dinner","×2"],["Underwear","×8"],["Socks","×3"],["Flip-flops","×1"],["Dress sandals / loafers","×1"],["Sneakers","×1"],["Sun hat","×1"],["Sunglasses","×1"],["Light rain shell","×1"]] },
+    { key: "me", name: "Bobby", sw: "--wave", cats: [
+      { name: "Clothing", items: [["T-shirts","×4"],["Shorts","×3"],["Swim trunks","×2"],["Collared shirt (nicer dinner)","×1"],["Underwear","×4"],["Flip-flops","×1"],["Sneakers","×1"],["Ball cap","×1"],["Sunglasses","×1"],["Light rain jacket","×1"]] },
       { name: "Toiletries", items: [["Toothbrush & paste","1"],["Deodorant","1"],["Razor","1"],["Shampoo / body wash","1"],["Contacts / glasses","1"]] }
     ]},
     { key: "wife", name: "Vanessa", sw: "--hibiscus", cats: [
-      { name: "Clothing", items: [["Sundresses","×4"],["Swimsuits","×3"],["Beach cover-up","×2"],["Shorts","×3"],["Tops","×5"],["Dinner dresses / nice pants","×3"],["Sandals","×2"],["Wedges / nicer shoes","×1"],["Sun hat","×1"],["Sunglasses","×2"],["Light cardigan","×1"]] },
+      { name: "Clothing", items: [["Sundresses","×2"],["Swimsuits","×3"],["Beach cover-up","×2"],["Shorts","×2"],["Tops","×4"],["Nice dinner outfit","×1"],["Sandals","×2"],["Sun hat","×1"],["Sunglasses","×1"],["Light cardigan","×1"]] },
       { name: "Toiletries", items: [["Makeup","1 kit"],["Skincare","1 set"],["Toothbrush & paste","1"],["Hairbrush & ties","1"],["Feminine products","as needed"],["Perfume","1"]] }
     ]},
     { key: "kid", name: "Ella", sw: "--sun", cats: [
-      { name: "Clothing", items: [["Swimsuits","×3"],["Beach cover-up","×2"],["Sun hat","×1"],["Tops & shorts / dresses","5–6"],["Dinner / going-out outfits","×4"],["Underwear","×8"],["Pajamas","×2"],["Sandals","×2"],["Sneakers","×1"],["Sunglasses","×2"]] },
-      { name: "Essentials", items: [["Sunscreen","1"],["Phone charger","1"],["Camera / GoPro","1"],["Headphones","1"],["Skincare & makeup","1 set"],["Toiletries","1 set"],["Reusable water bottle","1"],["Any meds","as needed"]] }
+      { name: "Clothing", items: [["Swimsuits","×3"],["Beach cover-up","×1"],["Sun hat","×1"],["Tops & shorts","4–5"],["Dinner / going-out outfits","×2"],["Underwear","×4"],["Pajamas","×2"],["Sandals","×2"],["Sneakers","×1"],["Sunglasses","×1"]] },
+      { name: "Essentials", items: [["Sunscreen","1"],["Phone / tablet charger","1"],["Headphones","1"],["Beach toys","1 set"],["Comfort item / stuffed animal","1"],["Toiletries","1 set"],["Reusable water bottle","1"],["Any meds","as needed"]] }
+    ]},
+    { key: "max", name: "Max", sw: "--good", cats: [
+      { name: "Clothing", items: [["T-shirts","×4"],["Tank tops","×2"],["Shorts","×3"],["Swim trunks","×2"],["Collared shirt (nicer dinner)","×1"],["Underwear","×4"],["Sneakers","×1"],["Flip-flops / slides","×1"],["Ball cap","×1"],["Sunglasses","×1"]] },
+      { name: "Essentials", items: [["Phone charger + cable","1"],["Portable charger","1"],["Earbuds / headphones","1"],["GoPro / camera","1"],["Sunscreen","1"],["Deodorant & toiletries","1 set"],["Spending money (Wharf / arcade)","$40–60"],["Any meds","as needed"]] }
     ]}
   ];
   var FACTS = [
-    { num: "6", s: "", k: "Nights" }, { num: "18<small>+</small>", s: "", k: "Adults-only" },
-    { num: "440", s: "", k: "All-suites" }, { num: "12", s: "", k: "Restaurants" },
-    { num: "6", s: "", k: "Pools" }, { num: "~15<small>m</small>", s: "", k: "From CUN" }
+    { num: "3", s: "", k: "Nights" }, { num: "84<small>°F</small>", s: "", k: "Gulf water" },
+    { num: "32<small>mi</small>", s: "", k: "of beach" }, { num: "1,540<small>ft</small>", s: "", k: "State pier" },
+    { num: "28<small>mi</small>", s: "", k: "Bike trails" }, { num: "2", s: "", k: "Beach towns" }
   ];
   var INFO = [
-    { h: "Getting there", k: "≈15 min from CUN", p: "Per the resort, it's only about 15 minutes south of Cancún airport (CUN), just past Puerto Morelos — one of the closest good resorts to the airport. Arrange a transfer in advance; the resort can set one up." },
-    { h: "Money & tipping", k: "Tips included", p: "US dollars are accepted everywhere on property and across the Riviera Maya; you don't need pesos for the resort. Gratuities are already included, so tipping is optional — but small US bills ($1–$5) for standout service go a long way." },
-    { h: "Dinner dress code", k: "Enforced", p: "Breakfast & lunch are casual (beachwear fine). At dinner it's resort-elegant: men need long pants and a collared shirt (no tanks, no beach flip-flops); women wear a dress, skirt or nice pants. No swimwear indoors. Chez Isabelle is dressiest." },
-    { h: "WiFi & room service", k: "Included", p: "Free WiFi resort-wide and free calls to the US & Canada. Room service runs 24/7, and every suite has an espresso machine and a stocked minibar (beer, soft drinks, water, snacks and premium liquor)." },
-    { h: "Weather — late July", k: "Hot & humid", p: "Highs around 88–93°F with high humidity; expect short afternoon showers rather than all-day rain. July hurricane risk is statistically low, but travel insurance is smart." },
-    { h: "Staying safe", k: "Low-key & gated", p: "The resort is gated, well-staffed and consistently rated safe, with on-site medical facilities and a laptop-size in-room safe. Puerto Morelos is a mellow fishing village. Normal beach caution — sun, rip currents, marked areas." }
+    { h: "Getting there — driving", k: "Beat the Saturday rush", p: "You're driving in. From I-10, the Foley Beach Express (a ~$5–6 toll bridge) is the fast way onto the island and skips the Hwy 59 backup that clogs on summer Saturdays. Fill up before you cross — gas runs pricier at the beach — and time arrival for after the 3–4 PM check-in. (Tell me your start city and I'll add exact drive time.)" },
+    { h: "Beach flags — read them", k: "Safety first", p: "The single most important habit: check the colored flag before anyone gets in. Green = calm, yellow = moderate surf/currents (caution), red = strong current (high hazard), double red = water CLOSED, purple = dangerous marine life (jellyfish). Rip currents are the real danger — don't fight one; swim parallel to shore to get out, and stay near a lifeguard stand." },
+    { h: "Condo check-in & parking", k: "3–4 PM", p: "Most rentals check in mid-afternoon and issue a gate code and 1–2 parking passes per unit — confirm how many you get before you load two cars. High-rise elevators crawl at peak beach hours, so a beach cart and a little patience help. Pack a day-one beach bag; you'll likely arrive before the unit's ready." },
+    { h: "Weather — early September", k: "Hot, quick storms", p: "Highs in the upper 80s, humid, water around 84°F, with fast pop-up afternoon thunderstorms that usually blow through in an hour. It's also peak hurricane season — most storms miss, but watch the tropics the week before and favor a refundable booking or travel insurance for a big group." },
+    { h: "Groceries & supplies", k: "Stock up on arrival", p: "Condos are self-catered, so groceries save real money. There's a Publix and Winn-Dixie in Gulf Shores and a Walmart Supercenter in Foley — do one big run on the way in for breakfast, snacks, drinks and beach lunches, plus coffee, trash bags and paper towels." },
+    { h: "Beach etiquette & the little stuff", k: "Leave it better", p: "No glass on the sand, and it's sea-turtle nesting season — fill in any holes and take all gear off the beach at night (leftover chairs and tents trap hatchlings; 'Share the Beach'). Shuffle your feet in the shallows to shoo stingrays, rinse off at the boardwalk stations, and grab a bushwhacker at least once." }
   ];
-  var PHRASES = [["Hola","Hello"],["Gracias","Thank you"],["Por favor","Please"],["Salud","Cheers"],["La cuenta, por favor","The check, please"],["¿Cuánto cuesta?","How much?"],["Dos cervezas","Two beers"],["¿Dónde está el baño?","Where's the bathroom?"],["Buenos días","Good morning"]];
+  var PHRASES = [["🟢 Green","Calm — low hazard"],["🟡 Yellow","Medium surf & currents — caution"],["🔴 Red","High hazard — strong current"],["🔴🔴 Double red","Water closed — stay out"],["🟣 Purple","Dangerous marine life (jellyfish)"],["Rip current","Swim parallel to shore to escape it"],["Shuffle your feet","Slides stingrays out of your way"],["Fill the holes","Turtle season — level sand & pack up at night"]];
 
-  var DATES = [["Sun","Jul 19"],["Mon","Jul 20"],["Tue","Jul 21"],["Wed","Jul 22"],["Thu","Jul 23"]];
+  var DATES = [["Sat","Sep 5"],["Sun","Sep 6"]];
   var TRAVEL_DAYS = {
-    arrive: { dow:"Sat", date:"Jul 18", title:"Arrival", note:"Land at Cancún, take the ~30-minute transfer, check in and unpack. Keep it easy — a first dinner at The Kitchen Table and a nightcap at the Martini Bar. Nothing planned." },
-    depart: { dow:"Fri", date:"Jul 24", title:"Departure", note:"Breakfast, one last dip, check out and transfer back to Cancún for the flight home. Nothing planned — just the goodbye." }
+    arrive: { dow:"Fri", date:"Sep 4", title:"Arrival & first sunset", note:"Drive in, do the big grocery run on the way, and check in mid-afternoon. Toss on swimsuits and get everyone's toes in the sand for the first sunset — an easy pizza-or-takeout night while you unpack. No agenda." },
+    depart: { dow:"Mon", date:"Sep 7", title:"Departure", note:"One last beach walk and a coffee on the balcony, then pack up, wipe down the condo and hit the road before the checkout time. Beat the Labor Day traffic by leaving earlier rather than later." }
   };
   var PLANS = [
-    { key:"d19", tag:"Resort day", tk:"sea", theme:"Settle in & unwind", slots:[
-      ["Morning","Land-day recovery — sleep in, a long breakfast, claim your pool chairs, and book the week's spa treatments before the good slots go."],
-      ["Afternoon","Pool, beach and the swim-up bar; wander the grounds and scope out the restaurants."],
-      ["Evening","An easy first dinner at The Kitchen Table, then drinks at the Martini Bar."]
+    { key:"sat", tag:"Beach + boat", tk:"sea", theme:"Beach morning, water fun after", slots:[
+      ["Morning","Get to the sand early to claim a good spot before the holiday crowd — swim, boogie boards, sandcastles, and read that flag before anyone goes in."],
+      ["Afternoon","The big water activity: a dolphin cruise everyone agrees on, or split up — jet skis and parasailing for Max (and whoever's brave), pool time for the rest."],
+      ["Evening","Dinner and live music at LuLu's or The Hangout, then ice cream and a walk."]
     ]},
-    { key:"d20", tag:"Swim-free", tk:"good", theme:"Jungle ruins morning", slots:[
-      ["Morning","One easy outing, all together: Cobá and the newly reopened Nohoch Mul pyramid, then wild spider monkeys at Punta Laguna — jungle shade, no water."],
-      ["Afternoon","Back by mid-afternoon; cool off at the pool or the Miilé Spa hydrotherapy circuit."],
-      ["Evening","Spice — grab seats at the teppanyaki counter for the show."]
-    ]},
-    { key:"d21", tag:"All together", tk:"sea", theme:"Family day out — whale sharks (or dry)", slots:[
-      ["Morning","Everyone goes together for the whale-shark tour (July is peak). Vanessa and the girls snorkel; Bobby rides along on the boat — no need to get in the water to watch. Not into the boat? Swap it for a dry family day: Croco Cun, the Aktun Chen cave, or another pool day."],
-      ["Afternoon","Back to the resort to dry off, regroup at the pool."],
-      ["Evening","Dress up together for Chez Isabelle."]
-    ]},
-    { key:"d22", tag:"Resort day", tk:"sea", theme:"A whole day at the resort", slots:[
-      ["Morning","No alarms. Breakfast, then the pool or the Miilé Spa hydrotherapy circuit."],
-      ["Afternoon","Beach, a long lunch, water aerobics or just a lounger and a book."],
-      ["Evening","The Lobster House, then the nightly show or the silent party."]
-    ]},
-    { key:"d23", tag:"Your call", tk:"sun", theme:"Last day — big finish or one more by the pool", slots:[
-      ["Morning","Go out with a bang at Xcaret — a huge, swim-optional park the whole family can do together — or keep it slow with one last resort morning and Croco Cun next door."],
-      ["Afternoon","Xcaret's jungle trails and wildlife, or a final spa-and-pool afternoon."],
-      ["Evening","Xcaret's “México Espectacular” night show, or a farewell dinner at Agave."]
+    { key:"sun", tag:"Explore", tk:"sun", theme:"Pier, park & The Wharf", slots:[
+      ["Morning","Mix it up: bike the Backcountry Trail or walk out on the Gulf State Park pier for dolphins — or just sleep in and hit the beach again. Keep a rainy-day backup (zoo, Tropic Falls) in your pocket."],
+      ["Afternoon","More beach, or beat the heat at Waterville's water park / The Track go-karts."],
+      ["Evening","Sunset dinner at Fisher's or The Gulf, then The Wharf — SkyWheel, arcade and the zip line for the kids."]
     ]}
   ];
   var ALLEXC = (function(){ var a=[{name:DRY_HERO.name,w:"opt"},{name:WET_HERO.name,w:"wet"}]; EXCURSIONS.forEach(function(g){ g.items.forEach(function(it){ if(!a.some(function(x){return x.name===it.n;})) a.push({name:it.n,w:it.w}); }); }); return a; })();
@@ -565,39 +534,37 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
 
   var PREP = [
     { when:"Do these now", items:[
-      "Book the airport transfer (CUN ⇄ resort)",
-      "Book the whale-shark tour — it sells out in July",
-      "Check all four passports are valid 6+ months out",
-      "Buy travel insurance (include Ella's friend)",
-      "Get a medical-OK letter from the friend's parents",
-      "Save the friend's parents' emergency contact",
-      "Pre-book any must-do spa treatments"
+      "Book the condo / beach house — Labor Day sells out",
+      "Reserve a dolphin or sunset cruise for the group",
+      "Book jet skis / parasailing if you want a set time",
+      "Book a fishing charter (check red-snapper season)",
+      "Confirm the rental's cancellation policy (hurricane season)",
+      "Ask how many parking passes come with the unit"
     ]},
     { when:"The week before", items:[
-      "Tell your bank & card company you're headed to Mexico",
-      "Set aside a no-foreign-fee card",
-      "Add an international phone plan or eSIM",
-      "Confirm flights & pick seats",
+      "Service the car — tires, oil, wipers for the drive",
       "Refill prescriptions (pack a few extra days)",
-      "Get $60–80 in small US bills for tips",
-      "Get $50–100 in pesos for excursions",
-      "Print & cloud-save passports, insurance & confirmations",
+      "Plan the grocery run (Publix in Gulf Shores)",
+      "Get cash for tolls, tips & the kids' arcade money",
+      "Confirm check-in time, gate code & directions",
+      "Watch the tropical-weather forecast",
+      "Charge the beach speaker & power banks",
       "Run the Packing lists"
     ]},
     { when:"Day before & day of", items:[
-      "Check in online & save the boarding passes",
-      "Download offline Google Maps for the Riviera Maya",
-      "Download shows, music & books for the girls",
-      "Charge phones, power banks & the camera",
-      "Screenshot the resort address & confirmation",
-      "Turn on WiFi calling",
-      "Grab chargers — no plug adapter needed for Mexico"
+      "Load the car the night before",
+      "Pack a day-one beach bag (you'll beat check-in)",
+      "Fill the cooler with drinks & road snacks",
+      "Download playlists, shows & audiobooks for the drive",
+      "Screenshot the rental address, gate code & confirmation",
+      "Save offline maps & the local beach-flag/weather app",
+      "Arrange pet care & set the out-of-office"
     ]}
   ];
 
   var SECTIONS = [
     { key: "overview", label: "Overview" }, { key: "itin", label: "Itinerary" }, { key: "dining", label: "Dining" },
-    { key: "do", label: "The Resort" }, { key: "excursions", label: "Excursions" },
+    { key: "do", label: "The Beach" }, { key: "excursions", label: "Do & Cruises" },
     { key: "pack", label: "Packing" }, { key: "prep", label: "Before You Go" }, { key: "info", label: "Good to Know" }
   ];
 
@@ -629,7 +596,7 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
 
   function renderNav(){
     navInner.innerHTML = "";
-    var brand = el("span","brand","ERC ’26"); navInner.appendChild(brand);
+    var brand = el("span","brand","Gulf ’26"); navInner.appendChild(brand);
     SECTIONS.forEach(function(s){
       var b = el("button","navbtn"); b.setAttribute("aria-current", activeSection===s.key?"true":"false");
       b.appendChild(el("span",null,s.label));
@@ -688,16 +655,16 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
   }
 
   function ovw(w){
-    w.appendChild(leadBlock("The itinerary at a glance","A week on the <em>Caribbean</em>","Excellence Riviera Cancun — a 440-suite, adults-only hideaway on a long white-sand beach just past Puerto Morelos, halfway between Cancún and Playa del Carmen. Six pools, a dozen restaurants and a dozen bars, and a serious spa."));
+    w.appendChild(leadBlock("The long weekend at a glance","Toes in the <em>Gulf</em>","Gulf Shores and Orange Beach — twin towns on Alabama's sugar-white coast, an easy drive and built for exactly this: a beach out front, a condo pool out back, dolphin cruises and go-karts, fresh seafood, and a Ferris wheel at The Wharf. Three nights, no passports, all of us."));
     var stats = el("div","stats r");
     FACTS.forEach(function(f){ var s=el("div","stat"); var n=el("div","num"); n.innerHTML=f.num; s.appendChild(n); s.appendChild(el("div","k",f.k)); stats.appendChild(s); });
     w.appendChild(stats);
     var cards = el("div","cards"); cards.style.marginTop = "34px";
     var items = [
-      { k:"Where we're staying", h:"Adults-only, all-inclusive", p:"Every room is a suite. It's calmer and more polished than the Cancún party zone — think honeymooners and long lazy pool days. No wristbands, and no reservations needed for the à-la-carte restaurants." },
-      { k:"Don't miss", h:"Whale sharks are in season", p:"July is peak whale-shark season — the one excursion to book early. Then sit at Spice's teppanyaki counter, get a Lobster House dinner in, and book spa treatments on day one." },
-      { k:"How this works", h:"Tap through, tick things off", p:"Browse Dining, plan the Resort days and Excursions, then run the per-person Packing lists. Star restaurants, shortlist tours, check off packing — it all saves in your browser." },
-      { k:"The one catch", h:"Watch the seaweed", p:"Summer sargassum can wash up on the beach. July's usually lighter but variable — check each morning and lean on the six pools when it's heavy. Pack reef-safe sunscreen and boat-day motion-sickness pills." }
+      { k:"Where we're staying", h:"A beach condo, your way", p:"A self-catered high-rise on the sand — pool, balcony and a full kitchen. Come and go on your own clock, cook in or eat out, and spread out more than a hotel room. (Not booked yet — that's the first to-do.)" },
+      { k:"Don't miss", h:"A cruise and a sunset", p:"Book one dolphin or sunset cruise the whole family does together — it's the easy crowd-pleaser. Then build at least one evening around sunset, and give Max a Wharf night (SkyWheel, zip line, arcade)." },
+      { k:"How this works", h:"Tap through, tick things off", p:"Browse Dining, plan the two beach days, shortlist cruises & activities, then run the per-person Packing lists. Stars, shortlists and checkmarks all save in your browser." },
+      { k:"The one catch", h:"Watch the flag & the tropics", p:"Early September is peak hurricane season and the surf can turn. Read the beach flag every morning before anyone swims, keep a rainy-day backup handy, and book a rental you can cancel." }
     ];
     items.forEach(function(o){ var c=el("div","card"); c.appendChild(el("div","kicker",o.k)); c.appendChild(el("h3",null,o.h)); c.appendChild(el("p",null,o.p)); cards.appendChild(c); });
     w.appendChild(cards);
@@ -705,18 +672,18 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
   }
 
   function din(w){
-    w.appendChild(leadBlock("A dozen kitchens, no reservations","Dining, <em>at your leisure</em>","Tap the star to save a table you want. No dinner reservations required, and there's a vegetarian menu at every dinner. Hours rotate seasonally — treat meal times as typical and confirm on the resort's daily program."));
+    w.appendChild(leadBlock("Seafood, and plenty of it","Where we'll <em>eat</em>","Tap the star to save the spots you want to hit. It's a holiday weekend, so the good places get a wait — put your name in early or call ahead, and lean on the condo kitchen for lazy breakfasts."));
     var favs = RESTAURANTS.filter(function(r){ return r.tags.indexOf("fav")>=0; });
     var feat = el("div","feature");
     favs.forEach(function(r,i){ feat.appendChild(restaurantFeat(r,i+1)); });
     w.appendChild(feat); stagger([].slice.call(feat.children));
-    w.appendChild(subhead("The full table","À la carte & buffet"));
+    w.appendChild(subhead("The full table","Casual to dressy"));
     var others = RESTAURANTS.filter(function(r){ return r.tags.indexOf("fav")<0; });
     var list = el("div","dlist r");
     others.forEach(function(r){ list.appendChild(restaurantRow(r)); });
     w.appendChild(list);
-    var snack = el("div","aside r"); snack.style.margin="30px 0 0"; snack.appendChild(el("div","kicker","Around the clock")); snack.appendChild(el("p","body-ink",SNACKS)); w.appendChild(snack);
-    w.appendChild(subhead("Bars & lounges","All drinks included"));
+    var snack = el("div","aside r"); snack.style.margin="30px 0 0"; snack.appendChild(el("div","kicker","Sweet stuff & quick bites")); snack.appendChild(el("p","body-ink",SNACKS)); w.appendChild(snack);
+    w.appendChild(subhead("Bars & live music","Bushwhackers & bands"));
     var dl = el("dl","deflist r");
     BARS.forEach(function(b){ var row=el("div","defrow"); row.appendChild(el("dt",null,b.name)); row.appendChild(el("dd",null,b.d)); dl.appendChild(row); });
     w.appendChild(dl);
@@ -748,20 +715,20 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
   function chip(txt,kind){ return el("span","chip"+(kind?" "+kind:""),txt); }
 
   function doo(w){
-    w.appendChild(leadBlock("Beyond the beach towel","The <em>resort</em>, unpacked","Six pools, a Caribbean beach, one of the region's biggest spas, and something on the activity board from sunrise yoga to a midnight silent party."));
+    w.appendChild(leadBlock("Home base","The <em>beach</em> &amp; around it","The sand out front, the pool out back, and the easy wins nearby — Gulf State Park, the pier, the bike trails and the sunset. The stuff you'll do without even planning it."));
     var cards = el("div","cards");
     DO_CARDS.forEach(function(o){ var c=el("div","card"); c.appendChild(el("div","kicker",o.k)); c.appendChild(el("h3",null,o.h)); c.appendChild(el("p",null,o.p)); cards.appendChild(c); });
     w.appendChild(cards); stagger([].slice.call(cards.children));
   }
 
-  function waterChip(w){ if(w==="dry") return chip("Swim-free","good"); if(w==="opt") return chip("Optional dip","sun"); return chip("In the water","wave"); }
+  function waterChip(w){ if(w==="dry") return chip("On land","good"); if(w==="opt") return chip("Optional splash","sun"); return chip("On the water","wave"); }
   function exShortlisted(){ var n=0; for(var k in state.checked){ if(k.indexOf("exc::")===0 && state.checked[k]) n++; } return n; }
   function updateExCount(){ var c=document.getElementById("exCount"); if(c) c.textContent=exShortlisted()+" shortlisted"; }
 
   function exc(w){
-    w.appendChild(leadBlock("Off-resort adventures","Worth leaving <em>paradise</em> for","Beyond the beach: ancient ruins, jungle wildlife, ziplines and colonial towns, plus the big eco-park shows. Not a fan of the water? Tap Swim-free and every snorkel trip drops away."));
+    w.appendChild(leadBlock("Cruises, thrills & day trips","Beyond the <em>beach towel</em>","Dolphin cruises and jet skis, go-karts and a Ferris wheel, deep-sea fishing and a couple of great day trips. Not into the water? Tap On land and every boat drops away. Shortlist what you like, then drop it onto a day."));
     var seg=el("div","seg r");
-    [["all","Everything"],["dry","Swim-free"],["wet","In the water"]].forEach(function(f){
+    [["all","Everything"],["dry","On land"],["wet","On the water"]].forEach(function(f){
       var b=el("button","segbtn"); b.setAttribute("aria-selected", exFilter===f[0]?"true":"false");
       b.appendChild(el("span",null,f[1]));
       b.addEventListener("click", function(){ exFilter=f[0]; exc(clearWrap(w)); observeReveals(); });
@@ -805,7 +772,7 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
   }
 
   function pak(w){
-    w.appendChild(leadBlock("Six nights, one carry-on","<em>Packing</em>, sorted","One list each, plus a shared bag for documents and beach gear. The grey badges are suggested quantities, sized for six nights with no laundry — re-wear pants and shoes, and the resort has paid laundry if you overrun. Tick as you go; it all saves on your phone."));
+    w.appendChild(leadBlock("Three nights, one bag each","<em>Packing</em>, sorted","One list per person, plus a big shared load for beach gear, the cooler and the condo kitchen — the stuff that makes a rental feel easy. Grey badges are suggested counts for three nights (re-wear the shorts). Tick as you go; it all saves on your phone."));
     var seg=el("div","seg r");
     PEOPLE.forEach(function(p){ var s=personStats(p); var b=el("button","segbtn"); b.setAttribute("aria-selected", activePerson===p.key?"true":"false"); b.style.setProperty("--sw","var("+p.sw+")"); b.appendChild(el("span","sw")); b.appendChild(el("span",null,state.names[p.key]||p.name)); b.appendChild(el("span","c",s.done+"/"+s.total)); b.addEventListener("click", function(){ activePerson=p.key; pak(clearWrap(w)); observeReveals(); }); seg.appendChild(b); });
     w.appendChild(seg);
@@ -849,7 +816,7 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
 
   function planState(){ if(!state.plan)state.plan={}; var keys=PLANS.map(function(p){return p.key;}); var o=state.plan.order; if(!o||!o.length){ o=keys.slice(); } else { o=o.filter(function(k){return keys.indexOf(k)>=0;}); keys.forEach(function(k){ if(o.indexOf(k)<0)o.push(k); }); } state.plan.order=o; if(!state.plan.acts)state.plan.acts={}; if(!state.plan.dinner)state.plan.dinner={}; return state.plan; }
   function planByKey(k){ for(var i=0;i<PLANS.length;i++) if(PLANS[i].key===k) return PLANS[i]; return PLANS[0]; }
-  function excCatalog(){ var out=[]; EXCURSIONS.forEach(function(g){ var items=g.items.map(function(it){return {n:it.n,w:it.w};}); if(g.group.indexOf("Eco-parks")===0) items.unshift({n:DRY_HERO.name,w:"opt"}); out.push({group:g.group,items:items}); }); return out; }
+  function excCatalog(){ var out=[]; EXCURSIONS.forEach(function(g){ var items=g.items.map(function(it){return {n:it.n,w:it.w};}); if(g.group.indexOf("On the water")===0) items.unshift({n:WET_HERO.name,w:"wet"}); if(g.group.indexOf("Teens")===0) items.unshift({n:DRY_HERO.name,w:"dry"}); out.push({group:g.group,items:items}); }); return out; }
   function planStats(){ var ps=planState(),exc=0,sf=0,din=0; PLANS.forEach(function(p){ var a=ps.acts[p.key]||[]; exc+=a.length; a.forEach(function(n){ if((EXW[n]||"")==="dry")sf++; }); if(ps.dinner[p.key])din++; }); return {exc:exc,swimfree:sf,dinners:din}; }
   function scheduledSlugs(){ var s={},ps=planState(); PLANS.forEach(function(p){ (ps.acts[p.key]||[]).forEach(function(n){ s[slug(n)]=true; }); }); return s; }
   function shortlistedNames(){ var out=[]; for(var k in state.checked){ if(state.checked[k]&&k.indexOf("exc::")===0){ var nm=EXBYSLUG[k.slice(5)]; if(nm)out.push(nm); } } return out; }
@@ -862,7 +829,7 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
 
   function itin(w){
     planState();
-    w.appendChild(leadBlock("Seven days, your way","Build <em>your week</em>","A relaxed starting plan — plenty of pool days, the whole family together, only a couple of easy mornings out. Add excursions and dinners to any day, drag the handle or tap the arrows to reshuffle, and lean into the resort as much as you like. Travel days stay a wash."));
+    w.appendChild(leadBlock("Your long weekend, your way","Build <em>the days</em>","A relaxed starting plan for the two full days — beach mornings, one big water thing, a Wharf evening. Add cruises and dinners to a day, drag the handle or tap the arrows to reshuffle. Friday and Monday are drive days with beach time bolted on."));
     var st=planStats();
     var bar=el("div","planbar r");
     bar.appendChild(planStat(st.exc,"excursions")); bar.appendChild(planStat(st.swimfree,"swim-free")); bar.appendChild(planStat(st.dinners,"dinners"));
@@ -947,11 +914,11 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
   }
 
   function prepStats(){ var t=0,d=0; PREP.forEach(function(g){ g.items.forEach(function(l){ t++; if(state.checked["prep::"+slug(l)])d++; }); }); return {total:t,done:d}; }
-  function tripDays(){ var now=new Date(), y=now.getFullYear(); var start=new Date(y,6,18), end=new Date(y,6,24,23,59); if(now>end) start=new Date(y+1,6,18); var d0=new Date(now.getFullYear(),now.getMonth(),now.getDate()), s0=new Date(start.getFullYear(),start.getMonth(),start.getDate()); return Math.round((s0-d0)/86400000); }
+  function tripDays(){ var now=new Date(), y=now.getFullYear(); var start=new Date(y,8,4), end=new Date(y,8,7,23,59); if(now>end) start=new Date(y+1,8,4); var d0=new Date(now.getFullYear(),now.getMonth(),now.getDate()), s0=new Date(start.getFullYear(),start.getMonth(),start.getDate()); return Math.round((s0-d0)/86400000); }
   function prep(w){
-    w.appendChild(leadBlock("Before you go","The <em>pre-flight</em> checklist","The handful of things worth doing ahead — a few are time-sensitive, so they're up top: lock in the transfer and whale-shark tour early, and check those passports. Tick as you go; it saves on your phone."));
+    w.appendChild(leadBlock("Before you go","The <em>pre-trip</em> checklist","The handful of things worth doing ahead — a few are time-sensitive, so they're up top: lock in the rental and any boat trips before Labor Day fills up. Tick as you go; it saves on your phone."));
     var dleft=tripDays();
-    if(dleft>0 && dleft<=21){ var urg=el("div","nudge r"); urg.appendChild(el("b",null,"✈️ "+dleft+" day"+(dleft===1?"":"s")+" out — ")); urg.appendChild(document.createTextNode("the “Do these now” list is time-sensitive. Lock in the airport transfer and the whale-shark tour today; both book out fast in July.")); w.appendChild(urg); }
+    if(dleft>0 && dleft<=21){ var urg=el("div","nudge r"); urg.appendChild(el("b",null,"🏖️ "+dleft+" day"+(dleft===1?"":"s")+" out — ")); urg.appendChild(document.createTextNode("the “Do these now” list is time-sensitive. Lock in the rental and any dolphin cruise or charter today; holiday-weekend slots book out fast.")); w.appendChild(urg); }
     var st=prepStats();
     var pr=el("div","progress r"); var track=el("div","track"); var fill=el("i"); fill.style.width=(st.total?Math.round(st.done/st.total*100):0)+"%"; track.appendChild(fill); pr.appendChild(track);
     var pn=el("div","pnum"); pn.innerHTML=st.done+' <small>/ '+st.total+' done</small>'; pr.appendChild(pn); w.appendChild(pr);
@@ -978,22 +945,22 @@ footer.foot .reset:hover { background: rgba(255,255,255,.1); }
   }
 
   function inf(w){
-    w.appendChild(leadBlock("The practical stuff","Good to <em>know</em>","Transfer, money, the dinner dress code and a little Spanish — everything worth reading once before you go."));
+    w.appendChild(leadBlock("The practical stuff","Good to <em>know</em>","Getting there, the beach-flag safety rules, check-in, groceries and the weather — everything worth reading once before you go."));
     var cards=el("div","cards");
     INFO.forEach(function(o){ var c=el("div","card"); c.appendChild(el("div","kicker",o.k)); c.appendChild(el("h3",null,o.h)); c.appendChild(el("p",null,o.p)); cards.appendChild(c); });
     w.appendChild(cards); stagger([].slice.call(cards.children));
-    w.appendChild(subhead("A little Spanish","Goes a long way"));
+    w.appendChild(subhead("The beach flag key","Read it every morning"));
     var ph=el("div","phrases r"); PHRASES.forEach(function(p){ var d=el("div","phrase"); d.appendChild(el("b",null,p[0])); d.appendChild(el("span",null,p[1])); ph.appendChild(d); }); w.appendChild(ph);
   }
 
   function countdown(){
-    var now=new Date(), y=now.getFullYear(); var start=new Date(y,6,18), end=new Date(y,6,24,23,59); if(now>end) start=new Date(y+1,6,18);
+    var now=new Date(), y=now.getFullYear(); var start=new Date(y,8,4), end=new Date(y,8,7,23,59); if(now>end) start=new Date(y+1,8,4);
     var d0=new Date(now.getFullYear(),now.getMonth(),now.getDate()), s0=new Date(start.getFullYear(),start.getMonth(),start.getDate());
     var days=Math.round((s0-d0)/86400000);
     var num=document.getElementById("heroNum"), lbl=document.getElementById("heroLbl"), mini=document.getElementById("heroMini");
-    var onTrip = now>=new Date(y,6,18) && now<=end;
-    if(onTrip){ num.textContent="¡Salud!"; num.style.fontSize="clamp(38px,7vw,60px)"; lbl.textContent="we're here"; mini.textContent="On the trip"; }
-    else if(days===0){ num.textContent="Today"; lbl.textContent="we fly out"; mini.textContent="Today!"; }
+    var onTrip = now>=new Date(y,8,4) && now<=end;
+    if(onTrip){ num.textContent="Toes in!"; num.style.fontSize="clamp(38px,7vw,60px)"; lbl.textContent="we're here"; mini.textContent="On the trip"; }
+    else if(days===0){ num.textContent="Today"; lbl.textContent="we head out"; mini.textContent="Today!"; }
     else { num.textContent=days; lbl.textContent = days===1?"day away":"days away"; mini.textContent=days+" days away"; }
   }
 
