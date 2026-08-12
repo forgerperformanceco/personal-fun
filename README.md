@@ -17,4 +17,4 @@ Open `index.html`. Everything is a single self-contained page; your picks and ch
 
 ## Also in here
 
-- **`workout.html`** — *The V-Taper Week*, six men's physique routines formatted for entry into the Hevy app: exercise names, sets, rep ranges, rest timers and a cue per lift, plus a weekly volume breakdown, progression rules, and a toggle that switches the cardio/posing/nutrition guidance between off-season and contest prep. Tick exercises off as you build each routine.
+- **`workout.html`** — *The V-Taper Week*, six men's physique routines formatted for entry into the Hevy app: exercise names, sets, rep ranges, rest timers and a cue per lift, plus a weekly volume breakdown, progression rules, and a phase switch — maintenance, bulk, prep — that moves the food, cardio and volume dial with it. Tick exercises off as you build each routine.

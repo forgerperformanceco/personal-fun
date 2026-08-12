@@ -602,10 +602,55 @@
 
   ul.clean li strong { color: var(--ink); }
 
-  .phase-block { display: flex; flex-direction: column; gap: 0.7rem; }
-  .phase-block[data-when="prep"] { display: none; }
-  body[data-phase="prep"] .phase-block[data-when="off"] { display: none; }
+  .phase-block { display: none; flex-direction: column; gap: 0.7rem; }
+  .phase-block[data-when="maint"] { display: flex; }
+  body[data-phase="bulk"] .phase-block[data-when="maint"],
+  body[data-phase="prep"] .phase-block[data-when="maint"] { display: none; }
+  body[data-phase="bulk"] .phase-block[data-when="bulk"] { display: flex; }
   body[data-phase="prep"] .phase-block[data-when="prep"] { display: flex; }
+
+  /* ---------- timeline ---------- */
+
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 2px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+
+  .timeline > div {
+    background: var(--surface);
+    padding: 1.3rem 1.3rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border-top: 3px solid var(--rule-strong);
+  }
+
+  .timeline > div.now { border-top-color: var(--accent); background: var(--accent-wash); }
+  .timeline > div.build { border-top-color: var(--steel); }
+
+  .timeline .when {
+    font-family: var(--data);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  .timeline > div.now .when { color: var(--accent); }
+
+  .timeline .what {
+    font-family: var(--display);
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    letter-spacing: -0.01em;
+  }
+
+  .timeline p { font-size: 0.88rem; color: var(--ink-2); }
+  .timeline p strong { color: var(--ink); }
 
   .block-plan {
     display: grid;
@@ -692,11 +737,14 @@
       the same silhouette: wide delts, full upper chest, hard abs, and just enough
       lat to finish the V. Back is deliberately light — one real pulling day plus a
       lat finisher. Legs get one honest, brutal session and then stay out of the way.</p>
+      <p>The same six routines carry you from maintenance through the winter bulk to a
+      cut. Flip the phase and the food, the cardio and the volume dial move with it.</p>
       <div class="phase">
         <span class="phase-label">Phase</span>
         <div class="switch" role="group" aria-label="Training phase">
-          <button type="button" data-phase="off" aria-pressed="true">Off-season</button>
-          <button type="button" data-phase="prep" aria-pressed="false">Contest prep</button>
+          <button type="button" data-phase="maint" aria-pressed="true">Maintenance</button>
+          <button type="button" data-phase="bulk" aria-pressed="false">Bulk</button>
+          <button type="button" data-phase="prep" aria-pressed="false">Prep</button>
         </div>
       </div>
     </div>
@@ -1000,16 +1048,79 @@
 
   <section>
     <div class="sec-head">
-      <h2>Cardio, abs &amp; the waist</h2>
-      <span class="eyebrow">Switches with phase</span>
+      <h2>The next six months</h2>
+      <span class="eyebrow">You are here → winter bulk</span>
+    </div>
+    <div class="timeline">
+      <div class="now">
+        <span class="when">Aug – Oct · Now</span>
+        <span class="what">Sharpen</span>
+        <p>Maintenance. Three jobs: <strong>start the bulk lean</strong>, build the work
+        capacity to survive 133 sets a week, and get honest baseline numbers into Hevy
+        so winter has something to beat.</p>
+        <p>If you're carrying more than about 15%, a short six-week mini-cut now is the
+        highest-leverage thing you can do — a leaner start means more of the surplus
+        goes to muscle and the bulk runs longer before it turns into a cut.</p>
+      </div>
+      <div class="build">
+        <span class="when">Nov – Mar</span>
+        <span class="what">Build</span>
+        <p>The bulk. Full volume, aggressive anchors, and this is where the weak-point
+        block goes — pick one, give it 4–6 extra sets, run it for two full blocks.</p>
+        <p>Everything you want on stage or on a beach is bought here. Nothing about
+        the routines changes; the food does.</p>
+      </div>
+      <div>
+        <span class="when">Apr onward</span>
+        <span class="what">Reveal</span>
+        <p>The cut. Same six routines, same loads, less food and more cardio. If
+        there's a show, count back 16–20 weeks from the date and start there.</p>
+      </div>
+    </div>
+    <p><em>The training doesn't change much across those three. Volume dials down a
+    notch when you aren't eating for it and everything else stays put — which is the
+    point of running one program through all three phases instead of chasing a new
+    split every time your calories move.</em></p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <h2>Fuel, cardio &amp; the dial</h2>
+      <span class="eyebrow">Switches with the phase above</span>
     </div>
     <div class="cols">
       <article>
+        <h3>Fuel</h3>
+        <div class="phase-block" data-when="maint">
+          <p><strong>Maintenance.</strong> Eat at your true maintenance and hold weight
+          within a two-pound band across a whole month. Protein 1 g per pound, don't
+          drop it. Most people think they're maintaining while drifting up a pound a
+          month — weigh daily, judge on the weekly average.</p>
+        </div>
+        <div class="phase-block" data-when="bulk">
+          <p><strong>Bulk.</strong> Add roughly 250–350 calories over maintenance,
+          mostly carbs. Target <strong>0.25–0.5 lb a week</strong> — about 2 lb a month,
+          no more. Faster than that and you're buying fat you'll pay for in April.
+          Recheck the average every two weeks and adjust by 100–150 calories.</p>
+        </div>
+        <div class="phase-block" data-when="prep">
+          <p><strong>Prep.</strong> Give yourself 16–20 weeks. Aim for 0.5–1% of
+          bodyweight a week; hold protein, pull carbs and fats. Keep carbs highest on
+          Monday and Friday — those are the two sessions worth protecting.</p>
+        </div>
+      </article>
+      <article>
         <h3>Cardio</h3>
-        <div class="phase-block" data-when="off">
-          <p><strong>Off-season.</strong> 2–3 sessions of 20–25 minutes easy work, after
-          lifting or on Sunday. 8–10k steps a day. Enough to keep conditioning and
-          appetite honest, not enough to eat into recovery.</p>
+        <div class="phase-block" data-when="maint">
+          <p><strong>Maintenance.</strong> 2–3 sessions of 20–25 minutes easy work and
+          8–10k steps a day. Keeps conditioning and appetite honest without eating into
+          recovery.</p>
+        </div>
+        <div class="phase-block" data-when="bulk">
+          <p><strong>Bulk.</strong> Keep it — 2–3 × 20 minutes, minimum. Cutting cardio
+          entirely is the classic winter mistake: you lose the conditioning base, your
+          appetite regulation goes, and April's cut starts from a worse place with no
+          room left to add cardio as a lever.</p>
         </div>
         <div class="phase-block" data-when="prep">
           <p><strong>Prep.</strong> Start at 3 × 30 min steady-state and <em>add
@@ -1018,12 +1129,54 @@
         </div>
       </article>
       <article>
+        <h3>The volume dial</h3>
+        <div class="phase-block" data-when="maint">
+          <p><strong>Maintenance.</strong> Run the trimmed week — last exercise off each
+          routine, about <strong>112 sets</strong>. You can't recover from maximum volume
+          on maintenance calories, and you don't need to. Hold your loads, sharpen
+          technique, and build the tolerance for what's coming.</p>
+        </div>
+        <div class="phase-block" data-when="bulk">
+          <p><strong>Bulk.</strong> Full week, all <strong>133 sets</strong>, plus the
+          weak-point block on top. This is the only phase where you should be adding
+          volume, because it's the only one where you can recover from it.</p>
+        </div>
+        <div class="phase-block" data-when="prep">
+          <p><strong>Prep.</strong> Hold the sets and hold the loads — dropping either
+          is how you diet away muscle. What comes out is the intensity techniques:
+          drops and myo-reps go first as recovery falls.</p>
+        </div>
+      </article>
+      <article>
+        <h3>What to expect</h3>
+        <div class="phase-block" data-when="maint">
+          <p><strong>Maintenance.</strong> Anchors will creep, not climb. Winning here
+          looks like an extra rep or cleaner execution at the same weight — if you're
+          adding plates every week on maintenance calories, you were undertrained, and
+          enjoy it while it lasts.</p>
+        </div>
+        <div class="phase-block" data-when="bulk">
+          <p><strong>Bulk.</strong> Real load progression on every anchor, most weeks.
+          If the bar isn't moving by week three of a surplus, the problem is sleep or
+          the surplus is smaller than you think.</p>
+        </div>
+        <div class="phase-block" data-when="prep">
+          <p><strong>Prep.</strong> Strength holds for the first half, then slides —
+          that's normal and not a reason to add food. Judge the phase on the mirror and
+          the scale trend, not on your top set.</p>
+        </div>
+      </article>
+    </div>
+    <div class="cols">
+      <article>
         <h3>The waist</h3>
         <p>No weighted side bends, no loaded twists, no heavy carries — all three
         thicken the obliques and every millimetre there costs you taper. Keep direct ab
         work flexion-based, which is what all twelve sets here are. Add five minutes of
         stomach vacuums most days: it trains the transverse to hold the midsection
         flat, and it's the same control you need holding a pose.</p>
+        <p>This matters more in a bulk than anywhere else. A winter of heavy eating
+        plus loaded oblique work is how a good taper quietly turns into a blocky one.</p>
       </article>
       <article>
         <h3>Abs actually showing</h3>
@@ -1031,28 +1184,27 @@
         question — for most guys the top row appears in the low teens body-fat and the
         bottom row somewhere under 10%. Train them like a muscle, with load and
         progression, and let the diet reveal them.</p>
+        <p>Expect them to go quiet over the winter. Build them anyway — abs you didn't
+        train in the bulk are abs you can't reveal in the cut.</p>
       </article>
       <article>
-        <h3>Fuel</h3>
-        <div class="phase-block" data-when="off">
-          <p><strong>Off-season.</strong> Protein around 1 g per pound of bodyweight, a
-          small surplus — a quarter to half a pound a week. Carbs around training.</p>
+        <h3>Posing</h3>
+        <div class="phase-block" data-when="maint">
+          <p>10 minutes, three times a week — quarter turns and the relaxed front. It's
+          cheap now, and it exposes weak points a mirror won't. Do it before the bulk so
+          you know what to spend the winter on.</p>
+        </div>
+        <div class="phase-block" data-when="bulk">
+          <p>Keep 10 minutes twice a week even while you're covered. It's a skill that
+          decays, and it's the cheapest way to notice a lagging body part while there's
+          still time to grow it.</p>
         </div>
         <div class="phase-block" data-when="prep">
-          <p><strong>Prep.</strong> Give yourself 16–20 weeks. Aim for 0.5–1% of
-          bodyweight a week; hold protein, pull carbs and fats. Keep carbs highest on
-          Monday and Friday — those are the two sessions worth protecting.</p>
+          <p>15–20 minutes daily once you're inside 16 weeks, plus two filmed
+          run-throughs a week from the front and both sides. Holding a pose is trained,
+          not natural — conditioning you can't present doesn't score.</p>
         </div>
       </article>
-    </div>
-    <div class="phase-block" data-when="prep">
-      <p><strong>Posing.</strong> 15–20 minutes daily once you're inside 16 weeks, plus
-      two filmed run-throughs a week from the front and both sides. Holding a pose is
-      trained, not natural — conditioning you can't present doesn't score.</p>
-    </div>
-    <div class="phase-block" data-when="off">
-      <p><strong>Posing.</strong> 10 minutes, three times a week — quarter turns and
-      the relaxed front. It's cheap now, and it exposes weak points a mirror won't.</p>
     </div>
   </section>
 
@@ -1073,9 +1225,14 @@
       <li><strong>Lats still lagging after a block?</strong> Add back the second pulling
       day rather than piling more onto Wednesday — but only once shoulders and chest
       are where you want them.</li>
-      <li><strong>Not recovering?</strong> The week is ~133 hard sets. Cut the last
+      <li><strong>Not recovering?</strong> The full week is ~133 hard sets. Cut the last
       exercise from each routine before you cut a day; that puts it near 112 and
-      usually fixes things inside two weeks.</li>
+      usually fixes things inside two weeks. On maintenance calories that trimmed
+      version isn't a fallback — it's the plan.</li>
+      <li><strong>Build the routines at full length anyway.</strong> Enter all 133 sets
+      into Hevy now and skip the last exercise while you're maintaining. When the
+      surplus starts in November you just stop skipping, instead of rebuilding six
+      routines in the app.</li>
       <li><strong>One weak point per block.</strong> Add 4–6 sets to it and take those
       sets out of your best body part. Chasing three at once means recovering from
       none of them.</li>
@@ -1143,7 +1300,7 @@
         document.body.setAttribute("data-phase", btn.dataset.phase);
       });
     });
-    document.body.setAttribute("data-phase", "off");
+    document.body.setAttribute("data-phase", "maint");
   })();
 </script>
 </body>
