@@ -17,4 +17,4 @@ Open `index.html`. Everything is a single self-contained page; your picks and ch
 
 ## Also in here
 
-- **`workout.html`** — *The V-Taper Cycle*, a men's physique push/pull/legs rotation on an 8-day cycle (rest every 4th day), written as six Hevy routines: exercise names, sets, rep ranges, rest timers and a cue per lift, plus a weekly volume breakdown, progression rules, and a phase switch — maintenance, bulk, prep — that moves the food, cardio and volume dial with it. Tick exercises off as you build each routine.
+- **`workout.html`** — *The V-Taper Cycle*, a men's physique push/pull/legs rotation on an 8-day cycle — plain P/P/L with the rest day every 4th, run as A and B variations — written as six Hevy routines: exercise names, sets, rep ranges, rest timers and a cue per lift, plus a weekly volume breakdown, progression rules, and a phase switch — maintenance, bulk, prep — that moves the food, cardio and volume dial with it. Tick exercises off as you build each routine.
