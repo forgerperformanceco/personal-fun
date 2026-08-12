@@ -126,7 +126,13 @@
   strong { font-weight: 700; }
   em { font-style: italic; color: var(--ink-2); }
 
-  a { color: var(--accent); }
+  code {
+    font-family: var(--data);
+    font-size: 0.85em;
+    background: var(--surface-2);
+    padding: 0.1em 0.35em;
+    color: var(--ink);
+  }
 
   /* ---------- masthead ---------- */
 
@@ -231,9 +237,39 @@
     gap: 1rem;
     border-bottom: 1px solid var(--rule-strong);
     padding-bottom: 0.6rem;
+    flex-wrap: wrap;
   }
 
   .sec-head .eyebrow { margin-left: auto; }
+
+  /* ---------- setup ---------- */
+
+  .setup {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 2px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+
+  .setup > div {
+    background: var(--surface);
+    padding: 1.3rem 1.3rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  .setup .field {
+    font-family: var(--data);
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .setup p { font-size: 0.9rem; color: var(--ink-2); }
+  .setup p strong { color: var(--ink); }
 
   /* ---------- week grid ---------- */
 
@@ -287,7 +323,7 @@
     .week div { min-height: 0; }
   }
 
-  /* ---------- day cards ---------- */
+  /* ---------- routine cards ---------- */
 
   .days { display: flex; flex-direction: column; gap: 2.5rem; }
 
@@ -335,11 +371,23 @@
 
   .tag.hot { color: var(--accent); background: var(--accent-wash); }
 
+  .built {
+    margin-left: auto;
+    font-family: var(--data);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .built.done { color: var(--accent); }
+
   .day-note {
     flex-basis: 100%;
     font-size: 0.9rem;
     color: var(--ink-2);
-    max-width: var(--read);
+    max-width: 46rem;
   }
 
   .scroller { overflow-x: auto; }
@@ -348,7 +396,7 @@
     width: 100%;
     border-collapse: collapse;
     font-size: 0.9rem;
-    min-width: 40rem;
+    min-width: 42rem;
   }
 
   th {
@@ -371,19 +419,48 @@
 
   tr:last-child td { border-bottom: none; }
 
-  td:first-child, th:first-child { padding-left: 1.25rem; }
+  th.chk, td.chk {
+    width: 2.75rem;
+    padding-left: 1.25rem;
+    padding-right: 0;
+  }
+
+  td.chk input {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 1.05rem;
+    height: 1.05rem;
+    border: 1px solid var(--rule-strong);
+    background: var(--surface);
+    cursor: pointer;
+    display: block;
+    margin-top: 0.15rem;
+  }
+
+  td.chk input:checked {
+    background: var(--accent);
+    border-color: var(--accent);
+    box-shadow: inset 0 0 0 3px var(--surface);
+  }
+
+  td.chk input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  tr.added .lift, tr.added .num-col { opacity: 0.45; }
+
   td:last-child, th:last-child { padding-right: 1.25rem; }
 
-  .lift { font-weight: 700; }
+  .lift { font-family: var(--data); font-weight: 500; letter-spacing: -0.02em; }
+
   .lift small {
     display: block;
-    font-family: var(--data);
-    font-size: 0.68rem;
+    font-family: var(--body);
+    font-size: 0.85rem;
     font-weight: 400;
-    color: var(--ink-3);
-    letter-spacing: -0.01em;
+    color: var(--ink-2);
+    letter-spacing: 0;
     line-height: 1.4;
-    margin-top: 0.15rem;
+    margin-top: 0.2rem;
+    max-width: 26rem;
   }
 
   .num-col {
@@ -510,7 +587,7 @@
   ul.clean li {
     padding-left: 1.1rem;
     position: relative;
-    max-width: var(--read);
+    max-width: 44rem;
   }
 
   ul.clean li::before {
@@ -583,9 +660,17 @@
     color: var(--ink-3);
   }
 
-  @media (prefers-reduced-motion: no-preference) {
-    .fill { transition: width 0.4s ease; }
+  footer button {
+    font: inherit;
+    background: none;
+    border: 1px solid var(--rule-strong);
+    color: var(--ink-3);
+    padding: 0.3rem 0.6rem;
+    cursor: pointer;
   }
+
+  footer button:hover { color: var(--ink); border-color: var(--ink-3); }
+  footer button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 </style>
 </head>
 <body>
@@ -596,17 +681,17 @@
     <div class="mast-top">
       <h1>The<br>V-Taper<br>Week</h1>
       <div class="spec">
-        <div><b>6</b><span>Training days</span></div>
-        <div><b>19</b><span>Side-delt sets</span></div>
-        <div><b>26</b><span>Back sets</span></div>
-        <div><b>7</b><span>Week block</span></div>
+        <div><b>6</b><span>Hevy routines</span></div>
+        <div><b>23</b><span>Chest sets</span></div>
+        <div><b>17</b><span>Side-delt sets</span></div>
+        <div><b>1</b><span>Leg day</span></div>
       </div>
     </div>
     <div class="mast-sub">
-      <p>A six-day split built for the men's physique standard: shoulders wide, back
-      wide, waist small, everything tied together and dry. Legs are trained hard
-      enough to be healthy and balanced — not hard enough to fight the board shorts
-      for width at the hips.</p>
+      <p>Six routines built to be typed straight into Hevy. Everything is pointed at
+      the same silhouette: wide delts, full upper chest, hard abs, and just enough
+      lat to finish the V. Back is deliberately light — one real pulling day plus a
+      lat finisher. Legs get one honest, brutal session and then stay out of the way.</p>
       <div class="phase">
         <span class="phase-label">Phase</span>
         <div class="switch" role="group" aria-label="Training phase">
@@ -619,21 +704,57 @@
 
   <section>
     <div class="sec-head">
+      <h2>Building it in Hevy</h2>
+      <span class="eyebrow">Six routines, one folder</span>
+    </div>
+    <p>Make a folder called <code>V-Taper</code> and add six routines named as below.
+    Tick each exercise off as you enter it — the checkmarks save in this browser.</p>
+    <div class="setup">
+      <div>
+        <span class="field">Exercise</span>
+        <p>Names use Hevy's <strong>Movement (Equipment)</strong> convention, so search
+        the first word or two. If your gym or the library doesn't have the exact
+        machine, take the closest match — the note under each line says what the
+        exercise has to <em>do</em>, which is what actually matters.</p>
+      </div>
+      <div>
+        <span class="field">Sets &amp; reps</span>
+        <p>Enter the set count, then set the rep range in the routine builder. Log
+        ramp-up sets as <strong>warm-up sets</strong> so they don't pollute your working
+        volume or your PR history.</p>
+      </div>
+      <div>
+        <span class="field">Rest timer</span>
+        <p>Set it per exercise — the values here aren't decoration. Three minutes on a
+        heavy press is the difference between progressive overload and cardio with
+        dumbbells.</p>
+      </div>
+      <div>
+        <span class="field">Notes</span>
+        <p>Paste the cue into the exercise note field and put the RIR target at the end
+        of it. If you have RPE logging switched on, RIR 1 is RPE 9 and RIR 0 is
+        RPE 10.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
       <h2>The week</h2>
-      <span class="eyebrow">Delts hit 4× · Back 2×</span>
+      <span class="eyebrow">Chest 2× · Delts 4× · Back 1½×</span>
     </div>
     <div class="week">
-      <div><span class="num">Mon</span><span class="what">Back<br>Width</span><span class="why">Vertical pulls</span></div>
-      <div><span class="num">Tue</span><span class="what">Chest<br>Triceps</span><span class="why">Upper-chest bias</span></div>
-      <div><span class="num">Wed</span><span class="what">Legs</span><span class="why">Quads + posterior</span></div>
-      <div class="hot"><span class="num">Thu</span><span class="what">Delts</span><span class="why">Priority day</span></div>
-      <div><span class="num">Fri</span><span class="what">Arms<br>Core</span><span class="why">Direct arm work</span></div>
-      <div><span class="num">Sat</span><span class="what">Back<br>Thickness</span><span class="why">Rows + rear delts</span></div>
+      <div class="hot"><span class="num">Mon</span><span class="what">Delts<br>Abs</span><span class="why">Priority day</span></div>
+      <div><span class="num">Tue</span><span class="what">Chest<br>Triceps</span><span class="why">Incline-led</span></div>
+      <div><span class="num">Wed</span><span class="what">Back<br>Biceps</span><span class="why">Width only</span></div>
+      <div><span class="num">Thu</span><span class="what">Legs</span><span class="why">The one day</span></div>
+      <div class="hot"><span class="num">Fri</span><span class="what">Chest<br>Delts</span><span class="why">Upper push #2</span></div>
+      <div><span class="num">Sat</span><span class="what">Arms<br>Lats · Abs</span><span class="why">Beach day</span></div>
       <div class="rest"><span class="num">Sun</span><span class="what">Rest</span><span class="why">Posing + steps</span></div>
     </div>
-    <p><em>Two hard pulling days sit at opposite ends of the week, and every one of
-    them carries a set of lateral raises. Side delts are the widest-leverage muscle
-    on a physique stage, so they get worked at some dose four days out of six.</em></p>
+    <p><em>Legs sit on Thursday on purpose — far enough from Monday's shoulder work
+    that nothing competes, and it leaves Friday and Saturday for the two sessions
+    that build what people actually see.</em></p>
   </section>
 
   <section>
@@ -642,187 +763,196 @@
       <span class="eyebrow">Hard sets per muscle</span>
     </div>
     <div class="chart">
-      <div class="bar-row"><span class="name">Back / lats</span><span class="track"><span class="fill" style="width: 100%"></span></span><span class="val">26</span></div>
-      <div class="bar-row"><span class="name">Side delts</span><span class="track"><span class="fill" style="width: 73%"></span></span><span class="val">19</span></div>
-      <div class="bar-row"><span class="name">Triceps</span><span class="track"><span class="fill sub" style="width: 62%"></span></span><span class="val">16</span></div>
-      <div class="bar-row"><span class="name">Rear delts</span><span class="track"><span class="fill" style="width: 50%"></span></span><span class="val">13</span></div>
-      <div class="bar-row"><span class="name">Chest</span><span class="track"><span class="fill sub" style="width: 50%"></span></span><span class="val">13</span></div>
-      <div class="bar-row"><span class="name">Biceps</span><span class="track"><span class="fill sub" style="width: 38%"></span></span><span class="val">10</span></div>
-      <div class="bar-row"><span class="name">Quads</span><span class="track"><span class="fill sub" style="width: 38%"></span></span><span class="val">10</span></div>
-      <div class="bar-row"><span class="name">Abs</span><span class="track"><span class="fill sub" style="width: 35%"></span></span><span class="val">9</span></div>
-      <div class="bar-row"><span class="name">Hamstrings</span><span class="track"><span class="fill sub" style="width: 23%"></span></span><span class="val">6</span></div>
-      <div class="bar-row"><span class="name">Calves</span><span class="track"><span class="fill sub" style="width: 15%"></span></span><span class="val">4</span></div>
-      <div class="bar-row"><span class="name">Traps</span><span class="track"><span class="fill sub" style="width: 8%"></span></span><span class="val">2</span></div>
+      <div class="bar-row"><span class="name">Chest</span><span class="track"><span class="fill" style="width: 100%"></span></span><span class="val">23</span></div>
+      <div class="bar-row"><span class="name">Side delts</span><span class="track"><span class="fill" style="width: 74%"></span></span><span class="val">17</span></div>
+      <div class="bar-row"><span class="name">Triceps</span><span class="track"><span class="fill sub" style="width: 70%"></span></span><span class="val">16</span></div>
+      <div class="bar-row"><span class="name">Back / lats</span><span class="track"><span class="fill" style="width: 61%"></span></span><span class="val">14</span></div>
+      <div class="bar-row"><span class="name">Abs</span><span class="track"><span class="fill" style="width: 52%"></span></span><span class="val">12</span></div>
+      <div class="bar-row"><span class="name">Biceps</span><span class="track"><span class="fill sub" style="width: 52%"></span></span><span class="val">12</span></div>
+      <div class="bar-row"><span class="name">Rear delts</span><span class="track"><span class="fill" style="width: 43%"></span></span><span class="val">10</span></div>
+      <div class="bar-row"><span class="name">Quads</span><span class="track"><span class="fill sub" style="width: 43%"></span></span><span class="val">10</span></div>
+      <div class="bar-row"><span class="name">Hamstrings</span><span class="track"><span class="fill sub" style="width: 26%"></span></span><span class="val">6</span></div>
+      <div class="bar-row"><span class="name">Calves</span><span class="track"><span class="fill sub" style="width: 26%"></span></span><span class="val">6</span></div>
+      <div class="bar-row"><span class="name">Traps</span><span class="track"><span class="fill sub" style="width: 0%"></span></span><span class="val">0</span></div>
       <div class="chart-foot">
-        <span class="key"><i></i> V-taper driver</span>
+        <span class="key"><i></i> Silhouette</span>
         <span class="key"><i class="sub"></i> Supporting</span>
         <span>Warm-ups not counted</span>
       </div>
     </div>
-    <p>Traps sit at the bottom on purpose. Heavy shrugging fills the gap between
-    neck and delt and visually narrows the shoulder line — the opposite of what
-    quarter turns reward. Two light sets keep the yoke healthy without building it.</p>
-    <p>Back at 26 is above the usual ceiling and it's a deliberate bet — it's split
-    across two sessions and it's the second-biggest lever on the taper. If your
-    pulling numbers stall two weeks running, take a set off each row before you
-    touch anything else.</p>
+    <p>Back is down to 14 sets — one pulling day of ten, plus four lat sets on
+    Saturday. That's still enough to widen, because the taper is now being built from
+    the <em>top</em>: 17 side-delt sets and 10 rear-delt sets move shoulder-to-waist
+    ratio further than another row ever will.</p>
+    <p>Traps get nothing direct, on purpose. Heavy shrugging fills the gap between
+    neck and delt and visually narrows the shoulder line — the one muscle on this
+    physique where growth works against you. They'll get plenty from the pulls.</p>
   </section>
 
   <section>
     <div class="sec-head">
-      <h2>The sessions</h2>
-      <span class="eyebrow">RIR = reps in reserve</span>
+      <h2>The routines</h2>
+      <span class="eyebrow">Tick as you build</span>
     </div>
 
     <div class="days">
 
-      <article class="day">
+      <article class="day priority" data-day="1">
         <div class="day-head">
-          <span class="daynum">Day 1 · Mon</span>
-          <span class="dayname">Back — Width</span>
-          <span class="tag">Vertical pull</span>
-          <p class="day-note">Everything here runs from a long, stretched lat. Let the
-          shoulder blade travel up at the top of every rep and pull the elbow down and
-          into your hip, not back behind you.</p>
+          <span class="daynum">Mon</span>
+          <span class="dayname">1 · Delts &amp; Abs</span>
+          <span class="tag hot">Priority</span>
+          <span class="built">0 / 7 added</span>
+          <p class="day-note">The day that sets the width. One press for structure, then
+          a long run of laterals and rear work in the 12–20 range taken to the point
+          where the delt genuinely quits. Abs go last, superset, while you're already
+          warm.</p>
         </div>
         <div class="scroller">
           <table>
-            <thead><tr><th>Exercise</th><th>Sets × reps</th><th>RIR</th><th>Rest</th></tr></thead>
+            <thead><tr><th class="chk"><span class="eyebrow">✓</span></th><th>Hevy exercise</th><th>Sets</th><th>Reps</th><th>Rest</th></tr></thead>
             <tbody>
-              <tr><td class="lift">Weighted pull-up<span class="anchor">ANCHOR</span><small>Wide-ish pronated. Add load once you clear 10.</small></td><td class="num-col load">4 × 6–10</td><td class="num-col">1</td><td class="num-col">3:00</td></tr>
-              <tr><td class="lift">Lat pulldown, neutral wide<small>Lean back 10°, drive elbows to the floor.</small></td><td class="num-col load">3 × 10–12</td><td class="num-col">1</td><td class="num-col">2:00</td></tr>
-              <tr><td class="lift">Chest-supported row<small>Elbows at 45°. Chest stays glued to the pad.</small></td><td class="num-col load">3 × 8–12</td><td class="num-col">1</td><td class="num-col">2:00</td></tr>
-              <tr><td class="lift">Single-arm cable pullover<small>Full reach overhead, squeeze at the hip.</small></td><td class="num-col load">3 × 12–15</td><td class="num-col">0–1</td><td class="num-col">1:30</td></tr>
-              <tr><td class="lift">Reverse pec-deck<small>Thumbs pointed slightly down.</small></td><td class="num-col load">3 × 15–20</td><td class="num-col">0</td><td class="num-col">1:00</td></tr>
-              <tr><td class="lift">Cable lateral raise<small>Delt frequency filler. Leave it in.</small></td><td class="num-col load">3 × 12–15</td><td class="num-col">0</td><td class="num-col">1:00</td></tr>
+              <tr><td class="chk"><input type="checkbox"></td><td class="lift">Shoulder Press (Dumbbell)<span class="anchor">ANCHOR</span><small>Seated, bench at 85°. No arch, no leg drive. RIR 1.</small></td><td class="num-col load">4</td><td class="num-col">6–10</td><td class="num-col">2:30</td></tr>
+              <tr><td class="chk"><input type="checkbox"></td><td class="lift">Lateral Raise (Cable)<small>One arm, cable behind your back. Lead with the elbow. RIR 0–1.</small></td><td class="num-col load">4</td><td class="num-col">12–15</td><td class="num-col">1:15</td></tr>
+              <tr><td class="chk"><input type="checkbox"></td><td class="lift">Rear Delt Reverse Fly (Machine)<small>Thumbs slightly down, wide arc. RIR 0.</small></td><td class="num-col load">4</td><td class="num-col">15–20</td><td class="num-col">1:00</td></tr>
+              <tr><td class="chk"><input type="checkbox"></td><td class="lift">Lateral Raise (Dumbbell)<small>Double drop on the last set, no rest between drops. RIR 0.</small></td><td class="num-col load">3</td><td class="num-col">15–20</td><td class="num-col">1:00</td></tr>
+              <tr><td class="chk"><input type="checkbox"></td><td class="lift">Face Pull<small>High anchor, externally rotate at the finish. RIR 0–1.</small></td><td class="num-col load">3</td><td class="num-col">15–20</td><td class="num-col">1:00</td></tr>
+              <tr><td class="chk"><input type="checkbox"></td><td class="lift">Cable Crunch<small>Superset with the next one. Round the spine, ribs to pelvis. RIR 0–1.</small></td><td class="num-col load">3</td><td class="num-col">12–15</td><td class="num-col">0:30</td></tr>
+              <tr><td class="chk"><input type="checkbox"></td><td class="lift">Hanging Leg Raise<small>Posterior pelvic tilt at the top. No swing. RIR 1.</small></td><td class="num-col load">3</td><td class="num-col">10–15</td><td class="num-col">1:00</td></tr>
             </tbody>
           </table>
         </div>
       </article>
 
-      <article class="day">
+      <article class="day" data-day="2">
         <div class="day-head">
-          <span class="daynum">Day 2 · Tue</span>
-          <span class="dayname">Chest &amp; Triceps</span>
-          <span class="tag">Upper-chest bias</span>
-          <p class="day-note">Physique lines want a full upper chest and a clean
-          separation from the delt, not a heavy, low, blocky press. Incline leads;
-          flat pressing is done on a machine so the shoulder stays fresh for Thursday.</p>
+          <span class="daynum">Tue</span>
+          <span class="dayname">2 · Chest &amp; Triceps</span>
+          <span class="tag">Incline-led</span>
+          <span class="built">0 / 7 added</span>
+          <p class="day-note">Upper chest first, every week. A full clavicular head is
+          what separates the chest from the delt in a relaxed pose and it's the piece
+          most people are missing. Flat pressing is on a machine so Friday's session
+          isn't paying for it.</p>
         </div>
         <div class="scroller">
           <table>
-            <thead><tr><th>Exercise</th><th>Sets × reps</th><th>RIR</th><th>Rest</th></tr></thead>
+            <thead><tr><th class="chk"><span class="eyebrow">✓</span></th><th>Hevy exercise</th><th>Sets</th><th>Reps</th><th>Rest</th></tr></thead>
             <tbody>
-              <tr><td class="lift">Incline dumbbell press, 30°<span class="anchor">ANCHOR</span><small>Elbows tucked to ~50°, stretch under control.</small></td><td class="num-col load">4 × 6–10</td><td class="num-col">1</td><td class="num-col">3:00</td></tr>
-              <tr><td class="lift">Flat machine or Smith press<small>Pause a beat on the chest.</small></td><td class="num-col load">3 × 8–12</td><td class="num-col">1</td><td class="num-col">2:00</td></tr>
-              <tr><td class="lift">High-to-low cable fly<small>Hands finish crossed at the hip line.</small></td><td class="num-col load">3 × 12–15</td><td class="num-col">0–1</td><td class="num-col">1:30</td></tr>
-              <tr><td class="lift">Weighted dip, torso forward<small>Chest and triceps. Stop 2" above lockout.</small></td><td class="num-col load">3 × 8–12</td><td class="num-col">1</td><td class="num-col">2:00</td></tr>
-              <tr><td class="lift">Overhead EZ-bar extension<small>Long-head stretch. Elbows narrow.</small></td><td class="num-col load">3 × 10–12</td><td class="num-col">1</td><td class="num-col">1:30</td></tr>
-              <tr><td class="lift">Rope pressdown<small>Double drop on the last set.</small></td><td class="num-col load">3 × 12–15</td><td class="num-col">0</td><td class="num-col">1:00</td></tr>
-              <tr><td class="lift">Cable Y-raise<small>Second delt exposure of the week.</small></td><td class="num-col load">3 × 15–20</td><td class="num-col">0</td><td class="num-col">0:45</td></tr>
+              <tr><td class="chk"><input type="checkbox"></td><td class="lift">Incline Bench Press (Dumbbell)<span class="anchor">ANCHOR</span><small>30° bench. Elbows ~50°, slow stretch, no bounce. RIR 1.</small></td><td class="num-col load">4</td><td class="num-col">6–10</td><td class="num-col">3:00</td></tr>
+              <tr><td class="chk"><input type="checkbox"></td><td class="lift">Chest Press (Machine)<small>Pause a beat at the bottom of every rep. RIR 1.</small></td><td class="num-col load">3</td><td class="num-col">8–12</td><td class="num-col">2:00</td></tr>
+              <tr><td class="chk"><input type="checkbox"></td><td class="lift">Cable Fly (High to Low)<small>Hands finish crossed at hip height. RIR 0–1.</small></td><td class="num-col load">3</td><td class="num-col">12–15</td><td class="num-col">1:30</td></tr>
+              <tr><td class="chk"><input type="checkbox"></td><td class="lift">Chest Dip<small>Torso leaned forward, stop 2" shy of lockout. Add weight when you clear 12. RIR 1.</small></td><td class="num-col load">3</td><td class="num-col">8–12</td><td class="num-col">2:00</td></tr>
+              <tr><td class="chk"><input type="checkbox"></td><td class="lift">Triceps Extension (Cable)<small>Overhead, elbows narrow and high. Long-head stretch. RIR 1.</small></td><td class="num-col load">3</td><td class="num-col">10–12</td><td class="num-col">1:30</td></tr>
+              <tr><td class="chk"><input type="checkbox"></td><td class="lift">Triceps Pushdown (Rope)<small>Drop set on the last one. RIR 0.</small></td><td class="num-col load">3</td><td class="num-col">12–15</td><td class="num-col">1:00</td></tr>
+              <tr><td class="chk"><input type="checkbox"></td><td class="lift">Lateral Raise (Cable)<small>Delt exposure #2. Cheap, do it anyway. RIR 0.</small></td><td class="num-col load">3</td><td class="num-col">15–20</td><td class="num-col">0:45</td></tr>
             </tbody>
           </table>
         </div>
       </article>
 
-      <article class="day">
+      <article class="day" data-day="3">
         <div class="day-head">
-          <span class="daynum">Day 3 · Wed</span>
-          <span class="dayname">Legs</span>
-          <span class="tag">Balance, not bulk</span>
-          <p class="day-note">Judged in board shorts, so this day exists for hamstrings,
-          glutes, posture and health — plus enough quad to hold the whole structure up.
-          Machine-based on purpose: less axial fatigue, less hip and waist thickening
-          than heavy back squats and conventional pulls.</p>
+          <span class="daynum">Wed</span>
+          <span class="dayname">3 · Back &amp; Biceps</span>
+          <span class="tag">Width only</span>
+          <span class="built">0 / 6 added</span>
+          <p class="day-note">The trimmed version — three back movements, ten sets, all
+          biased to width. Two vertical pulls for the flare and one row, kept at the
+          upper back rather than heavy and low, because thickness through the middle is
+          exactly what a taper doesn't need. Arms take the rest of the session.</p>
         </div>
         <div class="scroller">
           <table>
-            <thead><tr><th>Exercise</th><th>Sets × reps</th><th>RIR</th><th>Rest</th></tr></thead>
+            <thead><tr><th class="chk"><span class="eyebrow">✓</span></th><th>Hevy exercise</th><th>Sets</th><th>Reps</th><th>Rest</th></tr></thead>
             <tbody>
-              <tr><td class="lift">Hack squat or leg press<span class="anchor">ANCHOR</span><small>Feet mid-platform, full depth you can control.</small></td><td class="num-col load">4 × 8–12</td><td class="num-col">1–2</td><td class="num-col">3:00</td></tr>
-              <tr><td class="lift">Romanian deadlift<small>Dumbbells or bar. Hips back, ribs down.</small></td><td class="num-col load">3 × 8–10</td><td class="num-col">2</td><td class="num-col">2:30</td></tr>
-              <tr><td class="lift">Walking lunge or Bulgarian split squat<small>Per leg. Torso upright for quad bias.</small></td><td class="num-col load">3 × 10</td><td class="num-col">1–2</td><td class="num-col">2:00</td></tr>
-              <tr><td class="lift">Seated leg curl<small>Best hamstring stretch position there is.</small></td><td class="num-col load">3 × 12–15</td><td class="num-col">0–1</td><td class="num-col">1:30</td></tr>
-              <tr><td class="lift">Leg extension<small>Last set: myo-reps, 4 × 4 after failure.</small></td><td class="num-col load">3 × 15–20</td><td class="num-col">0</td><td class="num-col">1:30</td></tr>
-              <tr><td class="lift">Standing calf raise<small>Three-count stretch at the bottom.</small></td><td class="num-col load">4 × 10–15</td><td class="num-col">0–1</td><td class="num-col">1:00</td></tr>
-              <tr><td class="lift">Hanging leg raise<small>Posterior pelvic tilt, no swing.</small></td><td class="num-col load">3 × 10–15</td><td class="num-col">1</td><td class="num-col">1:00</td></tr>
+              <tr><td class="chk"><input type="checkbox"></td><td class="lift">Pull Up (Weighted)<span class="anchor">ANCHOR</span><small>Wide-ish pronated. Bodyweight until you clear 10, then add load. RIR 1.</small></td><td class="num-col load">4</td><td class="num-col">6–10</td><td class="num-col">3:00</td></tr>
+              <tr><td class="chk"><input type="checkbox"></td><td class="lift">Lat Pulldown (Cable)<small>Neutral wide grip, lean back 10°, drive elbows to the floor. RIR 1.</small></td><td class="num-col load">3</td><td class="num-col">10–12</td><td class="num-col">2:00</td></tr>
+              <tr><td class="chk"><input type="checkbox"></td><td class="lift">Seated Row (Cable)<small>Wide neutral grip, elbows flared to 45°. Upper back, not lower. RIR 1.</small></td><td class="num-col load">3</td><td class="num-col">10–12</td><td class="num-col">2:00</td></tr>
+              <tr><td class="chk"><input type="checkbox"></td><td class="lift">Bicep Curl (EZ Bar)<span class="anchor">ANCHOR</span><small>Strict, elbows pinned to the ribs. No swing. RIR 1.</small></td><td class="num-col load">3</td><td class="num-col">8–10</td><td class="num-col">2:00</td></tr>
+              <tr><td class="chk"><input type="checkbox"></td><td class="lift">Incline Curl (Dumbbell)<small>Arm hangs behind the body — full long-head stretch. RIR 0–1.</small></td><td class="num-col load">3</td><td class="num-col">10–12</td><td class="num-col">1:30</td></tr>
+              <tr><td class="chk"><input type="checkbox"></td><td class="lift">Hammer Curl (Dumbbell)<small>Brachialis — it pushes the bicep peak up. RIR 0.</small></td><td class="num-col load">3</td><td class="num-col">12–15</td><td class="num-col">1:00</td></tr>
             </tbody>
           </table>
         </div>
       </article>
 
-      <article class="day priority">
+      <article class="day" data-day="4">
         <div class="day-head">
-          <span class="daynum">Day 4 · Thu</span>
-          <span class="dayname">Delts</span>
-          <span class="tag hot">Priority day</span>
-          <p class="day-note">The day that wins the class. One press for size and
-          structure, then a long stretch of lateral and rear work in the 12–20 range,
-          taken to the point where the delt is genuinely done. Traps get two light sets
-          and nothing more.</p>
+          <span class="daynum">Thu</span>
+          <span class="dayname">4 · Legs</span>
+          <span class="tag">The one day</span>
+          <span class="built">0 / 6 added</span>
+          <p class="day-note">One session, so it earns its place: six movements, every
+          working set taken to RIR 0–1, hamstrings and glutes weighted over quads
+          because that's what holds posture and fills the back of the shorts. Machine
+          and split-stance work over heavy barbell squats and pulls — same stimulus,
+          far less thickening through the waist and far less fatigue to carry into
+          Friday.</p>
         </div>
         <div class="scroller">
           <table>
-            <thead><tr><th>Exercise</th><th>Sets × reps</th><th>RIR</th><th>Rest</th></tr></thead>
+            <thead><tr><th class="chk"><span class="eyebrow">✓</span></th><th>Hevy exercise</th><th>Sets</th><th>Reps</th><th>Rest</th></tr></thead>
             <tbody>
-              <tr><td class="lift">Seated dumbbell or machine press<span class="anchor">ANCHOR</span><small>Slight forward lean of the bench, no arch.</small></td><td class="num-col load">4 × 6–10</td><td class="num-col">1</td><td class="num-col">2:30</td></tr>
-              <tr><td class="lift">Single-arm cable lateral raise<small>Cable behind the back, lead with the elbow.</small></td><td class="num-col load">4 × 12–15</td><td class="num-col">0–1</td><td class="num-col">1:15</td></tr>
-              <tr><td class="lift">Dumbbell lateral raise<small>Last set: double drop, no rest between.</small></td><td class="num-col load">3 × 15–20</td><td class="num-col">0</td><td class="num-col">1:00</td></tr>
-              <tr><td class="lift">Machine reverse fly<small>Rear delts are half the width illusion.</small></td><td class="num-col load">4 × 15–20</td><td class="num-col">0</td><td class="num-col">1:00</td></tr>
-              <tr><td class="lift">Face pull, high anchor<small>Externally rotate at the finish.</small></td><td class="num-col load">3 × 15–20</td><td class="num-col">0–1</td><td class="num-col">1:00</td></tr>
-              <tr><td class="lift">Wide-grip cable upright row<small>Only to sternum height. Stop if it pinches.</small></td><td class="num-col load">3 × 12–15</td><td class="num-col">0–1</td><td class="num-col">1:00</td></tr>
-              <tr><td class="lift">Dumbbell shrug, light<small>Health work. Do not chase load here.</small></td><td class="num-col load">2 × 15–20</td><td class="num-col">2</td><td class="num-col">1:00</td></tr>
+              <tr><td class="chk"><input type="checkbox"></td><td class="lift">Hack Squat<span class="anchor">ANCHOR</span><small>Or Leg Press. Feet mid-platform, full depth you can control. RIR 1.</small></td><td class="num-col load">4</td><td class="num-col">8–12</td><td class="num-col">3:00</td></tr>
+              <tr><td class="chk"><input type="checkbox"></td><td class="lift">Romanian Deadlift (Dumbbell)<small>Hips back, ribs down, stretch until the hamstring says stop. RIR 1–2.</small></td><td class="num-col load">3</td><td class="num-col">8–10</td><td class="num-col">2:30</td></tr>
+              <tr><td class="chk"><input type="checkbox"></td><td class="lift">Bulgarian Split Squat<small>Per leg. Torso upright. This is the one that hurts. RIR 1.</small></td><td class="num-col load">3</td><td class="num-col">10–12</td><td class="num-col">2:00</td></tr>
+              <tr><td class="chk"><input type="checkbox"></td><td class="lift">Seated Leg Curl (Machine)<small>Best hamstring stretch there is. Slow negative. RIR 0.</small></td><td class="num-col load">3</td><td class="num-col">12–15</td><td class="num-col">1:30</td></tr>
+              <tr><td class="chk"><input type="checkbox"></td><td class="lift">Leg Extension (Machine)<small>Last set: myo-reps — failure, then 4 mini-sets of 4 with 15s rest.</small></td><td class="num-col load">3</td><td class="num-col">15–20</td><td class="num-col">1:30</td></tr>
+              <tr><td class="chk"><input type="checkbox"></td><td class="lift">Standing Calf Raise (Machine)<small>Three-count stretch at the bottom of every rep. RIR 0.</small></td><td class="num-col load">6</td><td class="num-col">10–15</td><td class="num-col">1:00</td></tr>
             </tbody>
           </table>
         </div>
       </article>
 
-      <article class="day">
+      <article class="day priority" data-day="5">
         <div class="day-head">
-          <span class="daynum">Day 5 · Fri</span>
-          <span class="dayname">Arms &amp; Core</span>
-          <span class="tag">Detail work</span>
-          <p class="day-note">Arms are on display in every mandatory turn. Train the
-          long heads in a stretched position — incline curls, overhead extensions —
-          because that's where the fullness in a relaxed pose comes from.</p>
+          <span class="daynum">Fri</span>
+          <span class="dayname">5 · Chest &amp; Delts</span>
+          <span class="tag hot">Silhouette</span>
+          <span class="built">0 / 7 added</span>
+          <p class="day-note">The second push day, run in a higher rep range than
+          Tuesday and built around machines and cables so you can chase the pump
+          without needing three minutes between sets. This is the session that shows up
+          in a mirror on Saturday morning.</p>
         </div>
         <div class="scroller">
           <table>
-            <thead><tr><th>Exercise</th><th>Sets × reps</th><th>RIR</th><th>Rest</th></tr></thead>
+            <thead><tr><th class="chk"><span class="eyebrow">✓</span></th><th>Hevy exercise</th><th>Sets</th><th>Reps</th><th>Rest</th></tr></thead>
             <tbody>
-              <tr><td class="lift">EZ-bar curl<span class="anchor">ANCHOR</span><small>Strict. Elbows pinned to the ribs.</small></td><td class="num-col load">4 × 6–10</td><td class="num-col">1</td><td class="num-col">2:00</td></tr>
-              <tr><td class="lift">Close-grip bench or dip<span class="anchor">ANCHOR</span><small>Shoulder-width grip, elbows tight.</small></td><td class="num-col load">4 × 8–10</td><td class="num-col">1</td><td class="num-col">2:00</td></tr>
-              <tr><td class="lift">Incline dumbbell curl<small>Arm behind the body — full long-head stretch.</small></td><td class="num-col load">3 × 10–12</td><td class="num-col">0–1</td><td class="num-col">1:30</td></tr>
-              <tr><td class="lift">Overhead cable extension<small>Lean into it, elbows high and still.</small></td><td class="num-col load">3 × 10–12</td><td class="num-col">0–1</td><td class="num-col">1:30</td></tr>
-              <tr><td class="lift">Hammer curl, rope or dumbbell<small>Brachialis — it pushes the bicep up.</small></td><td class="num-col load">3 × 12–15</td><td class="num-col">0</td><td class="num-col">1:00</td></tr>
-              <tr><td class="lift">Straight-bar pressdown<small>Drop set on the last one.</small></td><td class="num-col load">3 × 15–20</td><td class="num-col">0</td><td class="num-col">1:00</td></tr>
-              <tr><td class="lift">Cable crunch<small>Round the spine, pull ribs to pelvis.</small></td><td class="num-col load">3 × 12–15</td><td class="num-col">0–1</td><td class="num-col">1:00</td></tr>
-              <tr><td class="lift">Ab wheel or hanging knee raise<small>Slow eccentric, no lower-back arch.</small></td><td class="num-col load">3 × 10–15</td><td class="num-col">1</td><td class="num-col">1:00</td></tr>
+              <tr><td class="chk"><input type="checkbox"></td><td class="lift">Incline Chest Press (Machine)<span class="anchor">ANCHOR</span><small>Or Smith incline. Squeeze at the top, control the stretch. RIR 1.</small></td><td class="num-col load">4</td><td class="num-col">8–12</td><td class="num-col">2:30</td></tr>
+              <tr><td class="chk"><input type="checkbox"></td><td class="lift">Bench Press (Dumbbell)<small>Flat, neutral-ish grip. Deep stretch, stop short of lockout. RIR 1.</small></td><td class="num-col load">3</td><td class="num-col">10–12</td><td class="num-col">2:00</td></tr>
+              <tr><td class="chk"><input type="checkbox"></td><td class="lift">Chest Fly (Machine)<small>Pause one second at full squeeze. Last set drop. RIR 0.</small></td><td class="num-col load">3</td><td class="num-col">12–15</td><td class="num-col">1:30</td></tr>
+              <tr><td class="chk"><input type="checkbox"></td><td class="lift">Lateral Raise (Dumbbell)<small>Seated so you can't cheat. Delt exposure #3. RIR 0.</small></td><td class="num-col load">4</td><td class="num-col">12–15</td><td class="num-col">1:00</td></tr>
+              <tr><td class="chk"><input type="checkbox"></td><td class="lift">Shoulder Press (Machine)<small>Higher reps than Monday, less load. RIR 1.</small></td><td class="num-col load">3</td><td class="num-col">10–12</td><td class="num-col">1:30</td></tr>
+              <tr><td class="chk"><input type="checkbox"></td><td class="lift">Rear Delt Reverse Fly (Cable)<small>High pulleys, wide arc, squeeze. RIR 0.</small></td><td class="num-col load">3</td><td class="num-col">15–20</td><td class="num-col">1:00</td></tr>
+              <tr><td class="chk"><input type="checkbox"></td><td class="lift">Ab Wheel Rollout<small>Slow eccentric, no lower-back arch. RIR 1.</small></td><td class="num-col load">3</td><td class="num-col">10–15</td><td class="num-col">1:00</td></tr>
             </tbody>
           </table>
         </div>
       </article>
 
-      <article class="day">
+      <article class="day" data-day="6">
         <div class="day-head">
-          <span class="daynum">Day 6 · Sat</span>
-          <span class="dayname">Back — Thickness</span>
-          <span class="tag">Horizontal pull</span>
-          <p class="day-note">Monday built the sweep; today builds what sits between the
-          shoulder blades and holds the rear double-bicep together. Ends with a delt
-          finisher because that's the fourth exposure and it costs almost nothing.</p>
+          <span class="daynum">Sat</span>
+          <span class="dayname">6 · Arms, Lats &amp; Abs</span>
+          <span class="tag">Beach day</span>
+          <span class="built">0 / 7 added</span>
+          <p class="day-note">Everything that reads in a photo. Arms get the volume,
+          lats get their second exposure without a full back day, and the week finishes
+          on abs. Short rests, high reps, get a pump and get out.</p>
         </div>
         <div class="scroller">
           <table>
-            <thead><tr><th>Exercise</th><th>Sets × reps</th><th>RIR</th><th>Rest</th></tr></thead>
+            <thead><tr><th class="chk"><span class="eyebrow">✓</span></th><th>Hevy exercise</th><th>Sets</th><th>Reps</th><th>Rest</th></tr></thead>
             <tbody>
-              <tr><td class="lift">Chest-supported T-bar row<span class="anchor">ANCHOR</span><small>Or Meadows row. Full stretch each rep.</small></td><td class="num-col load">4 × 8–12</td><td class="num-col">1</td><td class="num-col">2:30</td></tr>
-              <tr><td class="lift">Seated cable row, wide neutral<small>Ribs down, no torso rocking.</small></td><td class="num-col load">3 × 10–12</td><td class="num-col">1</td><td class="num-col">2:00</td></tr>
-              <tr><td class="lift">Half-kneeling single-arm pulldown<small>Reach long, finish at the hip.</small></td><td class="num-col load">3 × 12–15</td><td class="num-col">0–1</td><td class="num-col">1:30</td></tr>
-              <tr><td class="lift">Straight-arm pulldown or machine pullover<small>Pure lat, no elbow bend.</small></td><td class="num-col load">3 × 15–20</td><td class="num-col">0</td><td class="num-col">1:00</td></tr>
-              <tr><td class="lift">Rear-delt cable crossover<small>High pulleys, wide arc.</small></td><td class="num-col load">3 × 15–20</td><td class="num-col">0</td><td class="num-col">1:00</td></tr>
-              <tr><td class="lift">Lateral raise, any variation<small>Run it as a drop set to finish.</small></td><td class="num-col load">3 × 15–20</td><td class="num-col">0</td><td class="num-col">0:45</td></tr>
-              <tr><td class="lift">45° back extension or hip thrust<small>Glutes and spinal erectors, controlled.</small></td><td class="num-col load">3 × 10–15</td><td class="num-col">1–2</td><td class="num-col">1:30</td></tr>
+              <tr><td class="chk"><input type="checkbox"></td><td class="lift">Bench Press (Close Grip)<span class="anchor">ANCHOR</span><small>Shoulder-width, elbows tight to the body. RIR 1.</small></td><td class="num-col load">4</td><td class="num-col">8–10</td><td class="num-col">2:00</td></tr>
+              <tr><td class="chk"><input type="checkbox"></td><td class="lift">Skullcrusher (EZ Bar)<small>Lower behind the head, not to the forehead. RIR 0–1.</small></td><td class="num-col load">3</td><td class="num-col">10–12</td><td class="num-col">1:30</td></tr>
+              <tr><td class="chk"><input type="checkbox"></td><td class="lift">Triceps Pushdown (Cable)<small>Straight bar. Drop set to finish. RIR 0.</small></td><td class="num-col load">3</td><td class="num-col">15–20</td><td class="num-col">1:00</td></tr>
+              <tr><td class="chk"><input type="checkbox"></td><td class="lift">Preacher Curl (Machine)<small>Or cable curl. Full stretch at the bottom every rep. RIR 0.</small></td><td class="num-col load">3</td><td class="num-col">12–15</td><td class="num-col">1:15</td></tr>
+              <tr><td class="chk"><input type="checkbox"></td><td class="lift">Lat Pulldown (Single Arm)<small>Half-kneeling. Reach long overhead, finish at the hip. RIR 0–1.</small></td><td class="num-col load">4</td><td class="num-col">12–15</td><td class="num-col">1:30</td></tr>
+              <tr><td class="chk"><input type="checkbox"></td><td class="lift">Lateral Raise (Machine)<small>Delt exposure #4. Run it as one long drop set. RIR 0.</small></td><td class="num-col load">3</td><td class="num-col">15–20</td><td class="num-col">0:45</td></tr>
+              <tr><td class="chk"><input type="checkbox"></td><td class="lift">Cable Crunch<small>Superset with hanging knee raises if you have time. RIR 0.</small></td><td class="num-col load">3</td><td class="num-col">12–15</td><td class="num-col">1:00</td></tr>
             </tbody>
           </table>
         </div>
@@ -840,130 +970,181 @@
       <article>
         <h3>Anchors</h3>
         <p>The lift marked <strong>ANCHOR</strong> is the one you chase. Hit the top of
-        the rep range on <strong>every</strong> set at RIR 1 and add load next session
-        — 5 lb upper body, 10 lb lower. Then work back up the range.</p>
+        the rep range on <strong>every</strong> set at RIR 1 and add load next time —
+        5 lb upper body, 10 lb lower. Then climb the range again.</p>
       </article>
       <article>
-        <h3>Accessories</h3>
-        <p>Add reps before load. When all sets sit at the top of the range and the
-        pump is still there, take the smallest jump the stack allows and rebuild.</p>
+        <h3>Everything else</h3>
+        <p>Add reps before load. When all sets sit at the top of the range and the pump
+        is still there, take the smallest jump the stack allows and rebuild.</p>
       </article>
       <article>
-        <h3>Log everything</h3>
-        <p>Load, reps, and RIR for every set. A program you can't compare week to week
-        isn't a program — it's a workout you happened to do.</p>
+        <h3>Let Hevy do the work</h3>
+        <p>Your last session's numbers show up as targets. Beat one of them — a rep or
+        a plate — on every working set. If you can't, that's data, not failure.</p>
       </article>
       <article>
         <h3>When you stall</h3>
-        <p>Two sessions with no progress on an anchor means the problem is recovery,
-        not the exercise. Sleep and food first, then swap the variation.</p>
+        <p>Two sessions with no progress on an anchor means recovery, not exercise
+        selection. Sleep and food first, then swap the variation.</p>
       </article>
     </div>
 
     <div class="block-plan">
-      <div><span class="wk">Weeks 1–3</span><span class="what">Accumulate</span><p>RIR 2 falling to 1. No intensity techniques. Add reps, add load, keep every session repeatable.</p></div>
-      <div class="peak"><span class="wk">Weeks 4–6</span><span class="what">Intensify</span><p>RIR 1 falling to 0 on final sets. Drop sets and myo-reps where they're marked. This is where the week bites.</p></div>
-      <div class="deload"><span class="wk">Week 7</span><span class="what">Deload</span><p>Half the sets, same loads, RIR 3–4. Keep cardio and posing. You come back stronger, not rusty.</p></div>
-      <div><span class="wk">Week 8+</span><span class="what">Reset</span><p>Swap each anchor for its cousin — hack squat to pendulum, incline dumbbell to incline machine — and start the block again.</p></div>
+      <div><span class="wk">Weeks 1–3</span><span class="what">Accumulate</span><p>RIR 2 falling to 1. Skip the drop sets and myo-reps. Add reps, add load, keep every session repeatable.</p></div>
+      <div class="peak"><span class="wk">Weeks 4–6</span><span class="what">Intensify</span><p>RIR 1 falling to 0 on final sets. Every intensity technique in the notes is live. This is where it bites.</p></div>
+      <div class="deload"><span class="wk">Week 7</span><span class="what">Deload</span><p>Half the sets, same loads, RIR 3–4. Keep cardio and posing. Duplicate the routines in Hevy and halve them.</p></div>
+      <div><span class="wk">Week 8+</span><span class="what">Reset</span><p>Swap each anchor for its cousin — hack squat to pendulum, incline dumbbell to incline barbell — and run it again.</p></div>
     </div>
   </section>
 
   <section>
     <div class="sec-head">
-      <h2>Cardio &amp; conditioning</h2>
+      <h2>Cardio, abs &amp; the waist</h2>
       <span class="eyebrow">Switches with phase</span>
     </div>
     <div class="cols">
       <article>
         <h3>Cardio</h3>
         <div class="phase-block" data-when="off">
-          <p><strong>Off-season.</strong> 2–3 sessions of 20–25 min low-intensity work,
-          after lifting or on Sunday. 8–10k steps a day. Enough to keep conditioning
-          and appetite honest, not enough to eat into recovery.</p>
+          <p><strong>Off-season.</strong> 2–3 sessions of 20–25 minutes easy work, after
+          lifting or on Sunday. 8–10k steps a day. Enough to keep conditioning and
+          appetite honest, not enough to eat into recovery.</p>
         </div>
         <div class="phase-block" data-when="prep">
-          <p><strong>Prep.</strong> Start at 3 × 30 min low-intensity and add sessions
-          before you cut calories again — up to 5–6 × 30–45 min, plus 1–2 short bike or
-          sled intervals. 10–14k steps a day, tracked.</p>
+          <p><strong>Prep.</strong> Start at 3 × 30 min steady-state and <em>add
+          sessions before you cut calories again</em> — up to 5–6 × 30–45 min plus one
+          or two short bike or sled intervals. 10–14k steps, tracked daily.</p>
         </div>
       </article>
       <article>
-        <h3>Posing</h3>
-        <div class="phase-block" data-when="off">
-          <p><strong>Off-season.</strong> 10 minutes, 3× a week — quarter turns and the
-          relaxed front. It's cheap now and it exposes weak points a mirror won't.</p>
-        </div>
-        <div class="phase-block" data-when="prep">
-          <p><strong>Prep.</strong> 15–20 minutes daily, plus two full run-throughs a
-          week filmed from the front and both sides. Holding a pose is a trained skill;
-          conditioning you can't present doesn't score.</p>
-        </div>
+        <h3>The waist</h3>
+        <p>No weighted side bends, no loaded twists, no heavy carries — all three
+        thicken the obliques and every millimetre there costs you taper. Keep direct ab
+        work flexion-based, which is what all twelve sets here are. Add five minutes of
+        stomach vacuums most days: it trains the transverse to hold the midsection
+        flat, and it's the same control you need holding a pose.</p>
+      </article>
+      <article>
+        <h3>Abs actually showing</h3>
+        <p>Twelve sets a week will build them. Whether anyone sees them is a kitchen
+        question — for most guys the top row appears in the low teens body-fat and the
+        bottom row somewhere under 10%. Train them like a muscle, with load and
+        progression, and let the diet reveal them.</p>
       </article>
       <article>
         <h3>Fuel</h3>
         <div class="phase-block" data-when="off">
-          <p><strong>Off-season.</strong> Protein around 1 g per pound of bodyweight,
-          a small surplus — a quarter to half a pound a week. Carbs around training.</p>
+          <p><strong>Off-season.</strong> Protein around 1 g per pound of bodyweight, a
+          small surplus — a quarter to half a pound a week. Carbs around training.</p>
         </div>
         <div class="phase-block" data-when="prep">
           <p><strong>Prep.</strong> Give yourself 16–20 weeks. Aim for 0.5–1% of
-          bodyweight a week; hold protein, pull carbs and fats. Keep carbs on Thursday
-          and both back days — those are the sessions worth protecting.</p>
+          bodyweight a week; hold protein, pull carbs and fats. Keep carbs highest on
+          Monday and Friday — those are the two sessions worth protecting.</p>
         </div>
       </article>
-      <article>
-        <h3>Waist</h3>
-        <p>No weighted side bends, no loaded twists, no heavy carries. Direct ab work
-        stays flexion-based and moderate. Add five minutes of stomach vacuums most
-        days — it trains the transverse to hold the midsection in <em>and</em> is
-        exactly the control you need on stage.</p>
-      </article>
+    </div>
+    <div class="phase-block" data-when="prep">
+      <p><strong>Posing.</strong> 15–20 minutes daily once you're inside 16 weeks, plus
+      two filmed run-throughs a week from the front and both sides. Holding a pose is
+      trained, not natural — conditioning you can't present doesn't score.</p>
+    </div>
+    <div class="phase-block" data-when="off">
+      <p><strong>Posing.</strong> 10 minutes, three times a week — quarter turns and
+      the relaxed front. It's cheap now, and it exposes weak points a mirror won't.</p>
     </div>
   </section>
 
   <section>
     <div class="sec-head">
       <h2>Adjusting it</h2>
-      <span class="eyebrow">Read this before you change anything</span>
+      <span class="eyebrow">Read before you change anything</span>
     </div>
     <ul class="clean">
+      <li><strong>Only five days?</strong> Drop Saturday and move the single-arm
+      pulldown onto Wednesday. Never drop Monday or Friday — those two are the
+      program.</li>
+      <li><strong>Shoulders sore or clicking?</strong> Cut the machine shoulder press on
+      Friday first, then the dips. Lateral raises stay.</li>
+      <li><strong>Chest not growing?</strong> It isn't volume at 23 sets — it's range of
+      motion. Go lighter on the inclines and get a genuine stretch at the bottom of
+      every single rep.</li>
+      <li><strong>Lats still lagging after a block?</strong> Add back the second pulling
+      day rather than piling more onto Wednesday — but only once shoulders and chest
+      are where you want them.</li>
+      <li><strong>Not recovering?</strong> The week is ~133 hard sets. Cut the last
+      exercise from each routine before you cut a day; that puts it near 112 and
+      usually fixes things inside two weeks.</li>
       <li><strong>One weak point per block.</strong> Add 4–6 sets to it and take those
-      sets out of your best body part. Chasing three weak points at once means
-      recovering from none of them.</li>
-      <li><strong>Only five days available?</strong> Fold Day 5 into the others —
-      biceps onto Day 6, triceps onto Day 2. Never cut Thursday.</li>
-      <li><strong>Shoulders sore or clicking?</strong> Drop the upright row and the
-      weighted dip first. Both are optional; lateral raises are not.</li>
-      <li><strong>Not recovering?</strong> The full week is ~135 hard sets, which is a
-      lot. Cut the last accessory from each day before you cut a day — that drops it to
-      ~118 and usually fixes things inside two weeks.</li>
-      <li><strong>Lower back cooked from Day 3?</strong> Swap the Romanian deadlift for
-      a lying leg curl and the back extension for a reverse hyper.</li>
-      <li><strong>Hips already wide?</strong> Keep legs at the prescribed volume and
-      don't add. Width at the shoulder is what scores; width at the hip is what it's
-      measured against.</li>
-      <li><strong>Warm up properly.</strong> Five minutes of general work, then two to
-      three ramping sets on the first exercise of each muscle. Ramp-ups don't count
-      toward the set totals.</li>
+      sets out of your best body part. Chasing three at once means recovering from
+      none of them.</li>
+      <li><strong>Warm up properly.</strong> Five minutes general, then two or three
+      ramping sets on the first exercise of each muscle — logged as warm-up sets so
+      Hevy keeps them out of your volume.</li>
     </ul>
   </section>
 
   <footer>
-    <span>The V-Taper Week · 6-day men's physique split</span>
-    <span>7-week block · repeat with new anchors</span>
+    <span>The V-Taper Week · 6 routines · 7-week block</span>
+    <button type="button" id="reset">Clear checkmarks</button>
   </footer>
 
 </div>
 
 <script>
-  const buttons = document.querySelectorAll(".switch button");
-  buttons.forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      buttons.forEach(function (b) { b.setAttribute("aria-pressed", String(b === btn)); });
-      document.body.setAttribute("data-phase", btn.dataset.phase);
+  (function () {
+    var KEY = "vtaper-hevy-built";
+    var state = {};
+    try { state = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) { state = {}; }
+
+    var days = document.querySelectorAll(".day");
+
+    function refresh(day) {
+      var boxes = day.querySelectorAll('input[type="checkbox"]');
+      var done = 0;
+      boxes.forEach(function (b) {
+        if (b.checked) { done++; b.closest("tr").classList.add("added"); }
+        else { b.closest("tr").classList.remove("added"); }
+      });
+      var label = day.querySelector(".built");
+      label.textContent = done + " / " + boxes.length + " added";
+      label.classList.toggle("done", done === boxes.length);
+    }
+
+    days.forEach(function (day) {
+      var d = day.dataset.day;
+      day.querySelectorAll('input[type="checkbox"]').forEach(function (box, i) {
+        var id = d + "-" + i;
+        box.setAttribute("aria-label", "Added to Hevy");
+        if (state[id]) box.checked = true;
+        box.addEventListener("change", function () {
+          state[id] = box.checked;
+          try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+          refresh(day);
+        });
+      });
+      refresh(day);
     });
-  });
-  document.body.setAttribute("data-phase", "off");
+
+    document.getElementById("reset").addEventListener("click", function () {
+      state = {};
+      try { localStorage.removeItem(KEY); } catch (e) {}
+      days.forEach(function (day) {
+        day.querySelectorAll('input[type="checkbox"]').forEach(function (b) { b.checked = false; });
+        refresh(day);
+      });
+    });
+
+    var buttons = document.querySelectorAll(".switch button");
+    buttons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        buttons.forEach(function (b) { b.setAttribute("aria-pressed", String(b === btn)); });
+        document.body.setAttribute("data-phase", btn.dataset.phase);
+      });
+    });
+    document.body.setAttribute("data-phase", "off");
+  })();
 </script>
 </body>
 </html>
