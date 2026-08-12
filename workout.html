@@ -1,0 +1,969 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The V-Taper Week</title>
+<style>
+  :root {
+    --ground: #EEF0F2;
+    --surface: #FBFBFC;
+    --surface-2: #E4E7EA;
+    --ink: #14171B;
+    --ink-2: #495159;
+    --ink-3: #79828B;
+    --rule: #D3D8DD;
+    --rule-strong: #B6BEC6;
+    --accent: #94581A;
+    --accent-bright: #B26F26;
+    --accent-wash: rgba(148, 88, 26, 0.10);
+    --steel: #3A5872;
+    --steel-wash: rgba(58, 88, 114, 0.10);
+
+    --display: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --body: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    --data: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+
+    --shell: 68rem;
+    --read: 34rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #0D0F12;
+      --surface: #15181C;
+      --surface-2: #1D2126;
+      --ink: #E8EBEE;
+      --ink-2: #A5ADB6;
+      --ink-3: #79828B;
+      --rule: #262B31;
+      --rule-strong: #384048;
+      --accent: #D3974E;
+      --accent-bright: #E4AC66;
+      --accent-wash: rgba(211, 151, 78, 0.12);
+      --steel: #7FA4C4;
+      --steel-wash: rgba(127, 164, 196, 0.12);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground: #0D0F12;
+    --surface: #15181C;
+    --surface-2: #1D2126;
+    --ink: #E8EBEE;
+    --ink-2: #A5ADB6;
+    --ink-3: #79828B;
+    --rule: #262B31;
+    --rule-strong: #384048;
+    --accent: #D3974E;
+    --accent-bright: #E4AC66;
+    --accent-wash: rgba(211, 151, 78, 0.12);
+    --steel: #7FA4C4;
+    --steel-wash: rgba(127, 164, 196, 0.12);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .shell {
+    max-width: var(--shell);
+    margin: 0 auto;
+    padding: 0 1.5rem 5rem;
+  }
+
+  /* ---------- type ---------- */
+
+  h1, h2, h3, .eyebrow, .tag, th, .dayname {
+    font-family: var(--display);
+  }
+
+  h1 {
+    font-size: clamp(2.6rem, 8vw, 5rem);
+    line-height: 0.92;
+    letter-spacing: -0.035em;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  h2 {
+    font-size: clamp(1.35rem, 3vw, 1.75rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  h3 {
+    font-size: 0.95rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin: 0;
+    color: var(--ink);
+  }
+
+  p { margin: 0; max-width: var(--read); }
+
+  .eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--ink-3);
+  }
+
+  strong { font-weight: 700; }
+  em { font-style: italic; color: var(--ink-2); }
+
+  a { color: var(--accent); }
+
+  /* ---------- masthead ---------- */
+
+  header.mast {
+    border-bottom: 2px solid var(--ink);
+    padding: 3.5rem 0 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .mast-top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.75rem 2rem;
+  }
+
+  .mast-sub {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem 2.5rem;
+    align-items: flex-start;
+  }
+
+  .mast-sub p { flex: 1 1 20rem; color: var(--ink-2); }
+
+  .spec {
+    display: flex;
+    gap: 1.75rem;
+    font-family: var(--data);
+    font-size: 0.78rem;
+    color: var(--ink-2);
+    flex-wrap: wrap;
+  }
+
+  .spec b {
+    display: block;
+    font-family: var(--display);
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .spec span { text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.65rem; color: var(--ink-3); }
+
+  /* ---------- phase switch ---------- */
+
+  .phase {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .phase-label {
+    font-family: var(--data);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  .switch {
+    display: inline-flex;
+    border: 1px solid var(--rule-strong);
+    background: var(--surface);
+  }
+
+  .switch button {
+    font-family: var(--display);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.5rem 0.9rem;
+    background: none;
+    border: none;
+    color: var(--ink-2);
+    cursor: pointer;
+  }
+
+  .switch button + button { border-left: 1px solid var(--rule-strong); }
+  .switch button[aria-pressed="true"] { background: var(--ink); color: var(--ground); }
+  .switch button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* ---------- sections ---------- */
+
+  section {
+    padding-top: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .sec-head {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    border-bottom: 1px solid var(--rule-strong);
+    padding-bottom: 0.6rem;
+  }
+
+  .sec-head .eyebrow { margin-left: auto; }
+
+  /* ---------- week grid ---------- */
+
+  .week {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 2px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+
+  .week div {
+    background: var(--surface);
+    padding: 0.85rem 0.7rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    min-height: 7.5rem;
+  }
+
+  .week .num {
+    font-family: var(--data);
+    font-size: 0.65rem;
+    color: var(--ink-3);
+    letter-spacing: 0.1em;
+  }
+
+  .week .what {
+    font-family: var(--display);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    font-size: 0.95rem;
+    line-height: 1.05;
+  }
+
+  .week .why {
+    font-size: 0.78rem;
+    line-height: 1.35;
+    color: var(--ink-2);
+    font-family: var(--data);
+    letter-spacing: -0.01em;
+  }
+
+  .week .rest { background: var(--surface-2); }
+  .week .rest .what { color: var(--ink-3); }
+  .week .hot { box-shadow: inset 0 4px 0 var(--accent); }
+
+  @media (max-width: 720px) {
+    .week { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .week div { min-height: 0; }
+  }
+
+  /* ---------- day cards ---------- */
+
+  .days { display: flex; flex-direction: column; gap: 2.5rem; }
+
+  .day {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--steel);
+  }
+
+  .day.priority { border-left-color: var(--accent); }
+
+  .day-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem 1rem;
+    padding: 1.1rem 1.25rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .dayname {
+    font-size: 1.3rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+  }
+
+  .daynum {
+    font-family: var(--data);
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    color: var(--ink-3);
+    text-transform: uppercase;
+  }
+
+  .tag {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.5rem;
+    color: var(--steel);
+    background: var(--steel-wash);
+  }
+
+  .tag.hot { color: var(--accent); background: var(--accent-wash); }
+
+  .day-note {
+    flex-basis: 100%;
+    font-size: 0.9rem;
+    color: var(--ink-2);
+    max-width: var(--read);
+  }
+
+  .scroller { overflow-x: auto; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    min-width: 40rem;
+  }
+
+  th {
+    text-align: left;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    padding: 0.65rem 0.75rem;
+    border-bottom: 1px solid var(--rule);
+    white-space: nowrap;
+  }
+
+  td {
+    padding: 0.7rem 0.75rem;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+
+  tr:last-child td { border-bottom: none; }
+
+  td:first-child, th:first-child { padding-left: 1.25rem; }
+  td:last-child, th:last-child { padding-right: 1.25rem; }
+
+  .lift { font-weight: 700; }
+  .lift small {
+    display: block;
+    font-family: var(--data);
+    font-size: 0.68rem;
+    font-weight: 400;
+    color: var(--ink-3);
+    letter-spacing: -0.01em;
+    line-height: 1.4;
+    margin-top: 0.15rem;
+  }
+
+  .num-col {
+    font-family: var(--data);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    color: var(--ink-2);
+  }
+
+  .num-col.load { color: var(--ink); font-weight: 500; }
+
+  .anchor {
+    display: inline-block;
+    font-family: var(--data);
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 0 0.25rem;
+    margin-left: 0.4rem;
+    vertical-align: 1px;
+  }
+
+  /* ---------- volume chart ---------- */
+
+  .chart {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    padding: 1.5rem 1.25rem;
+  }
+
+  .bar-row {
+    display: grid;
+    grid-template-columns: 9.5rem 1fr 2.75rem;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .bar-row .name {
+    font-family: var(--data);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--ink-2);
+    text-align: right;
+  }
+
+  .track { display: block; height: 14px; background: var(--surface-2); }
+
+  .fill {
+    display: block;
+    height: 100%;
+    background: var(--accent);
+    border-radius: 0 4px 4px 0;
+  }
+
+  .fill.sub { background: var(--steel); }
+
+  .bar-row .val {
+    font-family: var(--data);
+    font-variant-numeric: tabular-nums;
+    font-size: 0.8rem;
+    color: var(--ink);
+  }
+
+  .chart-foot {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    font-family: var(--data);
+    font-size: 0.68rem;
+    color: var(--ink-3);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border-top: 1px solid var(--rule);
+    padding-top: 0.85rem;
+    margin-top: 0.5rem;
+  }
+
+  .key { display: inline-flex; align-items: center; gap: 0.4rem; }
+  .key i { width: 10px; height: 10px; display: block; background: var(--accent); }
+  .key i.sub { background: var(--steel); }
+
+  @media (max-width: 560px) {
+    .bar-row { grid-template-columns: 7rem 1fr 2.5rem; gap: 0.5rem; }
+    .bar-row .name { font-size: 0.68rem; }
+  }
+
+  /* ---------- rule blocks ---------- */
+
+  .cols {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: 2px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+
+  .cols > article {
+    background: var(--surface);
+    padding: 1.4rem 1.35rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .cols p { font-size: 0.92rem; color: var(--ink-2); }
+  .cols p strong { color: var(--ink); }
+
+  ul.clean {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    font-size: 0.92rem;
+    color: var(--ink-2);
+  }
+
+  ul.clean li {
+    padding-left: 1.1rem;
+    position: relative;
+    max-width: var(--read);
+  }
+
+  ul.clean li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.62em;
+    width: 0.45rem;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  ul.clean li strong { color: var(--ink); }
+
+  .phase-block { display: flex; flex-direction: column; gap: 0.7rem; }
+  .phase-block[data-when="prep"] { display: none; }
+  body[data-phase="prep"] .phase-block[data-when="off"] { display: none; }
+  body[data-phase="prep"] .phase-block[data-when="prep"] { display: flex; }
+
+  .block-plan {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+    gap: 2px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+
+  .block-plan > div {
+    background: var(--surface);
+    padding: 1.2rem 1.2rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    border-top: 3px solid var(--rule-strong);
+  }
+
+  .block-plan > div.deload { border-top-color: var(--steel); }
+  .block-plan > div.peak { border-top-color: var(--accent); }
+
+  .block-plan .wk {
+    font-family: var(--data);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  .block-plan .what {
+    font-family: var(--display);
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
+  }
+
+  .block-plan p { font-size: 0.86rem; color: var(--ink-2); }
+
+  footer {
+    margin-top: 4rem;
+    border-top: 2px solid var(--ink);
+    padding-top: 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-family: var(--data);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .fill { transition: width 0.4s ease; }
+  }
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <header class="mast">
+    <div class="mast-top">
+      <h1>The<br>V-Taper<br>Week</h1>
+      <div class="spec">
+        <div><b>6</b><span>Training days</span></div>
+        <div><b>19</b><span>Side-delt sets</span></div>
+        <div><b>26</b><span>Back sets</span></div>
+        <div><b>7</b><span>Week block</span></div>
+      </div>
+    </div>
+    <div class="mast-sub">
+      <p>A six-day split built for the men's physique standard: shoulders wide, back
+      wide, waist small, everything tied together and dry. Legs are trained hard
+      enough to be healthy and balanced — not hard enough to fight the board shorts
+      for width at the hips.</p>
+      <div class="phase">
+        <span class="phase-label">Phase</span>
+        <div class="switch" role="group" aria-label="Training phase">
+          <button type="button" data-phase="off" aria-pressed="true">Off-season</button>
+          <button type="button" data-phase="prep" aria-pressed="false">Contest prep</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="sec-head">
+      <h2>The week</h2>
+      <span class="eyebrow">Delts hit 4× · Back 2×</span>
+    </div>
+    <div class="week">
+      <div><span class="num">Mon</span><span class="what">Back<br>Width</span><span class="why">Vertical pulls</span></div>
+      <div><span class="num">Tue</span><span class="what">Chest<br>Triceps</span><span class="why">Upper-chest bias</span></div>
+      <div><span class="num">Wed</span><span class="what">Legs</span><span class="why">Quads + posterior</span></div>
+      <div class="hot"><span class="num">Thu</span><span class="what">Delts</span><span class="why">Priority day</span></div>
+      <div><span class="num">Fri</span><span class="what">Arms<br>Core</span><span class="why">Direct arm work</span></div>
+      <div><span class="num">Sat</span><span class="what">Back<br>Thickness</span><span class="why">Rows + rear delts</span></div>
+      <div class="rest"><span class="num">Sun</span><span class="what">Rest</span><span class="why">Posing + steps</span></div>
+    </div>
+    <p><em>Two hard pulling days sit at opposite ends of the week, and every one of
+    them carries a set of lateral raises. Side delts are the widest-leverage muscle
+    on a physique stage, so they get worked at some dose four days out of six.</em></p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <h2>Weekly volume</h2>
+      <span class="eyebrow">Hard sets per muscle</span>
+    </div>
+    <div class="chart">
+      <div class="bar-row"><span class="name">Back / lats</span><span class="track"><span class="fill" style="width: 100%"></span></span><span class="val">26</span></div>
+      <div class="bar-row"><span class="name">Side delts</span><span class="track"><span class="fill" style="width: 73%"></span></span><span class="val">19</span></div>
+      <div class="bar-row"><span class="name">Triceps</span><span class="track"><span class="fill sub" style="width: 62%"></span></span><span class="val">16</span></div>
+      <div class="bar-row"><span class="name">Rear delts</span><span class="track"><span class="fill" style="width: 50%"></span></span><span class="val">13</span></div>
+      <div class="bar-row"><span class="name">Chest</span><span class="track"><span class="fill sub" style="width: 50%"></span></span><span class="val">13</span></div>
+      <div class="bar-row"><span class="name">Biceps</span><span class="track"><span class="fill sub" style="width: 38%"></span></span><span class="val">10</span></div>
+      <div class="bar-row"><span class="name">Quads</span><span class="track"><span class="fill sub" style="width: 38%"></span></span><span class="val">10</span></div>
+      <div class="bar-row"><span class="name">Abs</span><span class="track"><span class="fill sub" style="width: 35%"></span></span><span class="val">9</span></div>
+      <div class="bar-row"><span class="name">Hamstrings</span><span class="track"><span class="fill sub" style="width: 23%"></span></span><span class="val">6</span></div>
+      <div class="bar-row"><span class="name">Calves</span><span class="track"><span class="fill sub" style="width: 15%"></span></span><span class="val">4</span></div>
+      <div class="bar-row"><span class="name">Traps</span><span class="track"><span class="fill sub" style="width: 8%"></span></span><span class="val">2</span></div>
+      <div class="chart-foot">
+        <span class="key"><i></i> V-taper driver</span>
+        <span class="key"><i class="sub"></i> Supporting</span>
+        <span>Warm-ups not counted</span>
+      </div>
+    </div>
+    <p>Traps sit at the bottom on purpose. Heavy shrugging fills the gap between
+    neck and delt and visually narrows the shoulder line — the opposite of what
+    quarter turns reward. Two light sets keep the yoke healthy without building it.</p>
+    <p>Back at 26 is above the usual ceiling and it's a deliberate bet — it's split
+    across two sessions and it's the second-biggest lever on the taper. If your
+    pulling numbers stall two weeks running, take a set off each row before you
+    touch anything else.</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <h2>The sessions</h2>
+      <span class="eyebrow">RIR = reps in reserve</span>
+    </div>
+
+    <div class="days">
+
+      <article class="day">
+        <div class="day-head">
+          <span class="daynum">Day 1 · Mon</span>
+          <span class="dayname">Back — Width</span>
+          <span class="tag">Vertical pull</span>
+          <p class="day-note">Everything here runs from a long, stretched lat. Let the
+          shoulder blade travel up at the top of every rep and pull the elbow down and
+          into your hip, not back behind you.</p>
+        </div>
+        <div class="scroller">
+          <table>
+            <thead><tr><th>Exercise</th><th>Sets × reps</th><th>RIR</th><th>Rest</th></tr></thead>
+            <tbody>
+              <tr><td class="lift">Weighted pull-up<span class="anchor">ANCHOR</span><small>Wide-ish pronated. Add load once you clear 10.</small></td><td class="num-col load">4 × 6–10</td><td class="num-col">1</td><td class="num-col">3:00</td></tr>
+              <tr><td class="lift">Lat pulldown, neutral wide<small>Lean back 10°, drive elbows to the floor.</small></td><td class="num-col load">3 × 10–12</td><td class="num-col">1</td><td class="num-col">2:00</td></tr>
+              <tr><td class="lift">Chest-supported row<small>Elbows at 45°. Chest stays glued to the pad.</small></td><td class="num-col load">3 × 8–12</td><td class="num-col">1</td><td class="num-col">2:00</td></tr>
+              <tr><td class="lift">Single-arm cable pullover<small>Full reach overhead, squeeze at the hip.</small></td><td class="num-col load">3 × 12–15</td><td class="num-col">0–1</td><td class="num-col">1:30</td></tr>
+              <tr><td class="lift">Reverse pec-deck<small>Thumbs pointed slightly down.</small></td><td class="num-col load">3 × 15–20</td><td class="num-col">0</td><td class="num-col">1:00</td></tr>
+              <tr><td class="lift">Cable lateral raise<small>Delt frequency filler. Leave it in.</small></td><td class="num-col load">3 × 12–15</td><td class="num-col">0</td><td class="num-col">1:00</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="day">
+        <div class="day-head">
+          <span class="daynum">Day 2 · Tue</span>
+          <span class="dayname">Chest &amp; Triceps</span>
+          <span class="tag">Upper-chest bias</span>
+          <p class="day-note">Physique lines want a full upper chest and a clean
+          separation from the delt, not a heavy, low, blocky press. Incline leads;
+          flat pressing is done on a machine so the shoulder stays fresh for Thursday.</p>
+        </div>
+        <div class="scroller">
+          <table>
+            <thead><tr><th>Exercise</th><th>Sets × reps</th><th>RIR</th><th>Rest</th></tr></thead>
+            <tbody>
+              <tr><td class="lift">Incline dumbbell press, 30°<span class="anchor">ANCHOR</span><small>Elbows tucked to ~50°, stretch under control.</small></td><td class="num-col load">4 × 6–10</td><td class="num-col">1</td><td class="num-col">3:00</td></tr>
+              <tr><td class="lift">Flat machine or Smith press<small>Pause a beat on the chest.</small></td><td class="num-col load">3 × 8–12</td><td class="num-col">1</td><td class="num-col">2:00</td></tr>
+              <tr><td class="lift">High-to-low cable fly<small>Hands finish crossed at the hip line.</small></td><td class="num-col load">3 × 12–15</td><td class="num-col">0–1</td><td class="num-col">1:30</td></tr>
+              <tr><td class="lift">Weighted dip, torso forward<small>Chest and triceps. Stop 2" above lockout.</small></td><td class="num-col load">3 × 8–12</td><td class="num-col">1</td><td class="num-col">2:00</td></tr>
+              <tr><td class="lift">Overhead EZ-bar extension<small>Long-head stretch. Elbows narrow.</small></td><td class="num-col load">3 × 10–12</td><td class="num-col">1</td><td class="num-col">1:30</td></tr>
+              <tr><td class="lift">Rope pressdown<small>Double drop on the last set.</small></td><td class="num-col load">3 × 12–15</td><td class="num-col">0</td><td class="num-col">1:00</td></tr>
+              <tr><td class="lift">Cable Y-raise<small>Second delt exposure of the week.</small></td><td class="num-col load">3 × 15–20</td><td class="num-col">0</td><td class="num-col">0:45</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="day">
+        <div class="day-head">
+          <span class="daynum">Day 3 · Wed</span>
+          <span class="dayname">Legs</span>
+          <span class="tag">Balance, not bulk</span>
+          <p class="day-note">Judged in board shorts, so this day exists for hamstrings,
+          glutes, posture and health — plus enough quad to hold the whole structure up.
+          Machine-based on purpose: less axial fatigue, less hip and waist thickening
+          than heavy back squats and conventional pulls.</p>
+        </div>
+        <div class="scroller">
+          <table>
+            <thead><tr><th>Exercise</th><th>Sets × reps</th><th>RIR</th><th>Rest</th></tr></thead>
+            <tbody>
+              <tr><td class="lift">Hack squat or leg press<span class="anchor">ANCHOR</span><small>Feet mid-platform, full depth you can control.</small></td><td class="num-col load">4 × 8–12</td><td class="num-col">1–2</td><td class="num-col">3:00</td></tr>
+              <tr><td class="lift">Romanian deadlift<small>Dumbbells or bar. Hips back, ribs down.</small></td><td class="num-col load">3 × 8–10</td><td class="num-col">2</td><td class="num-col">2:30</td></tr>
+              <tr><td class="lift">Walking lunge or Bulgarian split squat<small>Per leg. Torso upright for quad bias.</small></td><td class="num-col load">3 × 10</td><td class="num-col">1–2</td><td class="num-col">2:00</td></tr>
+              <tr><td class="lift">Seated leg curl<small>Best hamstring stretch position there is.</small></td><td class="num-col load">3 × 12–15</td><td class="num-col">0–1</td><td class="num-col">1:30</td></tr>
+              <tr><td class="lift">Leg extension<small>Last set: myo-reps, 4 × 4 after failure.</small></td><td class="num-col load">3 × 15–20</td><td class="num-col">0</td><td class="num-col">1:30</td></tr>
+              <tr><td class="lift">Standing calf raise<small>Three-count stretch at the bottom.</small></td><td class="num-col load">4 × 10–15</td><td class="num-col">0–1</td><td class="num-col">1:00</td></tr>
+              <tr><td class="lift">Hanging leg raise<small>Posterior pelvic tilt, no swing.</small></td><td class="num-col load">3 × 10–15</td><td class="num-col">1</td><td class="num-col">1:00</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="day priority">
+        <div class="day-head">
+          <span class="daynum">Day 4 · Thu</span>
+          <span class="dayname">Delts</span>
+          <span class="tag hot">Priority day</span>
+          <p class="day-note">The day that wins the class. One press for size and
+          structure, then a long stretch of lateral and rear work in the 12–20 range,
+          taken to the point where the delt is genuinely done. Traps get two light sets
+          and nothing more.</p>
+        </div>
+        <div class="scroller">
+          <table>
+            <thead><tr><th>Exercise</th><th>Sets × reps</th><th>RIR</th><th>Rest</th></tr></thead>
+            <tbody>
+              <tr><td class="lift">Seated dumbbell or machine press<span class="anchor">ANCHOR</span><small>Slight forward lean of the bench, no arch.</small></td><td class="num-col load">4 × 6–10</td><td class="num-col">1</td><td class="num-col">2:30</td></tr>
+              <tr><td class="lift">Single-arm cable lateral raise<small>Cable behind the back, lead with the elbow.</small></td><td class="num-col load">4 × 12–15</td><td class="num-col">0–1</td><td class="num-col">1:15</td></tr>
+              <tr><td class="lift">Dumbbell lateral raise<small>Last set: double drop, no rest between.</small></td><td class="num-col load">3 × 15–20</td><td class="num-col">0</td><td class="num-col">1:00</td></tr>
+              <tr><td class="lift">Machine reverse fly<small>Rear delts are half the width illusion.</small></td><td class="num-col load">4 × 15–20</td><td class="num-col">0</td><td class="num-col">1:00</td></tr>
+              <tr><td class="lift">Face pull, high anchor<small>Externally rotate at the finish.</small></td><td class="num-col load">3 × 15–20</td><td class="num-col">0–1</td><td class="num-col">1:00</td></tr>
+              <tr><td class="lift">Wide-grip cable upright row<small>Only to sternum height. Stop if it pinches.</small></td><td class="num-col load">3 × 12–15</td><td class="num-col">0–1</td><td class="num-col">1:00</td></tr>
+              <tr><td class="lift">Dumbbell shrug, light<small>Health work. Do not chase load here.</small></td><td class="num-col load">2 × 15–20</td><td class="num-col">2</td><td class="num-col">1:00</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="day">
+        <div class="day-head">
+          <span class="daynum">Day 5 · Fri</span>
+          <span class="dayname">Arms &amp; Core</span>
+          <span class="tag">Detail work</span>
+          <p class="day-note">Arms are on display in every mandatory turn. Train the
+          long heads in a stretched position — incline curls, overhead extensions —
+          because that's where the fullness in a relaxed pose comes from.</p>
+        </div>
+        <div class="scroller">
+          <table>
+            <thead><tr><th>Exercise</th><th>Sets × reps</th><th>RIR</th><th>Rest</th></tr></thead>
+            <tbody>
+              <tr><td class="lift">EZ-bar curl<span class="anchor">ANCHOR</span><small>Strict. Elbows pinned to the ribs.</small></td><td class="num-col load">4 × 6–10</td><td class="num-col">1</td><td class="num-col">2:00</td></tr>
+              <tr><td class="lift">Close-grip bench or dip<span class="anchor">ANCHOR</span><small>Shoulder-width grip, elbows tight.</small></td><td class="num-col load">4 × 8–10</td><td class="num-col">1</td><td class="num-col">2:00</td></tr>
+              <tr><td class="lift">Incline dumbbell curl<small>Arm behind the body — full long-head stretch.</small></td><td class="num-col load">3 × 10–12</td><td class="num-col">0–1</td><td class="num-col">1:30</td></tr>
+              <tr><td class="lift">Overhead cable extension<small>Lean into it, elbows high and still.</small></td><td class="num-col load">3 × 10–12</td><td class="num-col">0–1</td><td class="num-col">1:30</td></tr>
+              <tr><td class="lift">Hammer curl, rope or dumbbell<small>Brachialis — it pushes the bicep up.</small></td><td class="num-col load">3 × 12–15</td><td class="num-col">0</td><td class="num-col">1:00</td></tr>
+              <tr><td class="lift">Straight-bar pressdown<small>Drop set on the last one.</small></td><td class="num-col load">3 × 15–20</td><td class="num-col">0</td><td class="num-col">1:00</td></tr>
+              <tr><td class="lift">Cable crunch<small>Round the spine, pull ribs to pelvis.</small></td><td class="num-col load">3 × 12–15</td><td class="num-col">0–1</td><td class="num-col">1:00</td></tr>
+              <tr><td class="lift">Ab wheel or hanging knee raise<small>Slow eccentric, no lower-back arch.</small></td><td class="num-col load">3 × 10–15</td><td class="num-col">1</td><td class="num-col">1:00</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="day">
+        <div class="day-head">
+          <span class="daynum">Day 6 · Sat</span>
+          <span class="dayname">Back — Thickness</span>
+          <span class="tag">Horizontal pull</span>
+          <p class="day-note">Monday built the sweep; today builds what sits between the
+          shoulder blades and holds the rear double-bicep together. Ends with a delt
+          finisher because that's the fourth exposure and it costs almost nothing.</p>
+        </div>
+        <div class="scroller">
+          <table>
+            <thead><tr><th>Exercise</th><th>Sets × reps</th><th>RIR</th><th>Rest</th></tr></thead>
+            <tbody>
+              <tr><td class="lift">Chest-supported T-bar row<span class="anchor">ANCHOR</span><small>Or Meadows row. Full stretch each rep.</small></td><td class="num-col load">4 × 8–12</td><td class="num-col">1</td><td class="num-col">2:30</td></tr>
+              <tr><td class="lift">Seated cable row, wide neutral<small>Ribs down, no torso rocking.</small></td><td class="num-col load">3 × 10–12</td><td class="num-col">1</td><td class="num-col">2:00</td></tr>
+              <tr><td class="lift">Half-kneeling single-arm pulldown<small>Reach long, finish at the hip.</small></td><td class="num-col load">3 × 12–15</td><td class="num-col">0–1</td><td class="num-col">1:30</td></tr>
+              <tr><td class="lift">Straight-arm pulldown or machine pullover<small>Pure lat, no elbow bend.</small></td><td class="num-col load">3 × 15–20</td><td class="num-col">0</td><td class="num-col">1:00</td></tr>
+              <tr><td class="lift">Rear-delt cable crossover<small>High pulleys, wide arc.</small></td><td class="num-col load">3 × 15–20</td><td class="num-col">0</td><td class="num-col">1:00</td></tr>
+              <tr><td class="lift">Lateral raise, any variation<small>Run it as a drop set to finish.</small></td><td class="num-col load">3 × 15–20</td><td class="num-col">0</td><td class="num-col">0:45</td></tr>
+              <tr><td class="lift">45° back extension or hip thrust<small>Glutes and spinal erectors, controlled.</small></td><td class="num-col load">3 × 10–15</td><td class="num-col">1–2</td><td class="num-col">1:30</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <h2>How it progresses</h2>
+      <span class="eyebrow">Double progression</span>
+    </div>
+    <div class="cols">
+      <article>
+        <h3>Anchors</h3>
+        <p>The lift marked <strong>ANCHOR</strong> is the one you chase. Hit the top of
+        the rep range on <strong>every</strong> set at RIR 1 and add load next session
+        — 5 lb upper body, 10 lb lower. Then work back up the range.</p>
+      </article>
+      <article>
+        <h3>Accessories</h3>
+        <p>Add reps before load. When all sets sit at the top of the range and the
+        pump is still there, take the smallest jump the stack allows and rebuild.</p>
+      </article>
+      <article>
+        <h3>Log everything</h3>
+        <p>Load, reps, and RIR for every set. A program you can't compare week to week
+        isn't a program — it's a workout you happened to do.</p>
+      </article>
+      <article>
+        <h3>When you stall</h3>
+        <p>Two sessions with no progress on an anchor means the problem is recovery,
+        not the exercise. Sleep and food first, then swap the variation.</p>
+      </article>
+    </div>
+
+    <div class="block-plan">
+      <div><span class="wk">Weeks 1–3</span><span class="what">Accumulate</span><p>RIR 2 falling to 1. No intensity techniques. Add reps, add load, keep every session repeatable.</p></div>
+      <div class="peak"><span class="wk">Weeks 4–6</span><span class="what">Intensify</span><p>RIR 1 falling to 0 on final sets. Drop sets and myo-reps where they're marked. This is where the week bites.</p></div>
+      <div class="deload"><span class="wk">Week 7</span><span class="what">Deload</span><p>Half the sets, same loads, RIR 3–4. Keep cardio and posing. You come back stronger, not rusty.</p></div>
+      <div><span class="wk">Week 8+</span><span class="what">Reset</span><p>Swap each anchor for its cousin — hack squat to pendulum, incline dumbbell to incline machine — and start the block again.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <h2>Cardio &amp; conditioning</h2>
+      <span class="eyebrow">Switches with phase</span>
+    </div>
+    <div class="cols">
+      <article>
+        <h3>Cardio</h3>
+        <div class="phase-block" data-when="off">
+          <p><strong>Off-season.</strong> 2–3 sessions of 20–25 min low-intensity work,
+          after lifting or on Sunday. 8–10k steps a day. Enough to keep conditioning
+          and appetite honest, not enough to eat into recovery.</p>
+        </div>
+        <div class="phase-block" data-when="prep">
+          <p><strong>Prep.</strong> Start at 3 × 30 min low-intensity and add sessions
+          before you cut calories again — up to 5–6 × 30–45 min, plus 1–2 short bike or
+          sled intervals. 10–14k steps a day, tracked.</p>
+        </div>
+      </article>
+      <article>
+        <h3>Posing</h3>
+        <div class="phase-block" data-when="off">
+          <p><strong>Off-season.</strong> 10 minutes, 3× a week — quarter turns and the
+          relaxed front. It's cheap now and it exposes weak points a mirror won't.</p>
+        </div>
+        <div class="phase-block" data-when="prep">
+          <p><strong>Prep.</strong> 15–20 minutes daily, plus two full run-throughs a
+          week filmed from the front and both sides. Holding a pose is a trained skill;
+          conditioning you can't present doesn't score.</p>
+        </div>
+      </article>
+      <article>
+        <h3>Fuel</h3>
+        <div class="phase-block" data-when="off">
+          <p><strong>Off-season.</strong> Protein around 1 g per pound of bodyweight,
+          a small surplus — a quarter to half a pound a week. Carbs around training.</p>
+        </div>
+        <div class="phase-block" data-when="prep">
+          <p><strong>Prep.</strong> Give yourself 16–20 weeks. Aim for 0.5–1% of
+          bodyweight a week; hold protein, pull carbs and fats. Keep carbs on Thursday
+          and both back days — those are the sessions worth protecting.</p>
+        </div>
+      </article>
+      <article>
+        <h3>Waist</h3>
+        <p>No weighted side bends, no loaded twists, no heavy carries. Direct ab work
+        stays flexion-based and moderate. Add five minutes of stomach vacuums most
+        days — it trains the transverse to hold the midsection in <em>and</em> is
+        exactly the control you need on stage.</p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <h2>Adjusting it</h2>
+      <span class="eyebrow">Read this before you change anything</span>
+    </div>
+    <ul class="clean">
+      <li><strong>One weak point per block.</strong> Add 4–6 sets to it and take those
+      sets out of your best body part. Chasing three weak points at once means
+      recovering from none of them.</li>
+      <li><strong>Only five days available?</strong> Fold Day 5 into the others —
+      biceps onto Day 6, triceps onto Day 2. Never cut Thursday.</li>
+      <li><strong>Shoulders sore or clicking?</strong> Drop the upright row and the
+      weighted dip first. Both are optional; lateral raises are not.</li>
+      <li><strong>Not recovering?</strong> The full week is ~135 hard sets, which is a
+      lot. Cut the last accessory from each day before you cut a day — that drops it to
+      ~118 and usually fixes things inside two weeks.</li>
+      <li><strong>Lower back cooked from Day 3?</strong> Swap the Romanian deadlift for
+      a lying leg curl and the back extension for a reverse hyper.</li>
+      <li><strong>Hips already wide?</strong> Keep legs at the prescribed volume and
+      don't add. Width at the shoulder is what scores; width at the hip is what it's
+      measured against.</li>
+      <li><strong>Warm up properly.</strong> Five minutes of general work, then two to
+      three ramping sets on the first exercise of each muscle. Ramp-ups don't count
+      toward the set totals.</li>
+    </ul>
+  </section>
+
+  <footer>
+    <span>The V-Taper Week · 6-day men's physique split</span>
+    <span>7-week block · repeat with new anchors</span>
+  </footer>
+
+</div>
+
+<script>
+  const buttons = document.querySelectorAll(".switch button");
+  buttons.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      buttons.forEach(function (b) { b.setAttribute("aria-pressed", String(b === btn)); });
+      document.body.setAttribute("data-phase", btn.dataset.phase);
+    });
+  });
+  document.body.setAttribute("data-phase", "off");
+</script>
+</body>
+</html>

@@ -12,3 +12,9 @@ Six sections:
 - **Good to Know** — airport transfer, money & tipping, dress code, WiFi, safety, Spanish phrases
 
 Open `index.html`. Everything is a single self-contained page; your picks and checkmarks save in your browser. Published via **GitHub Pages**.
+
+---
+
+## Also in here
+
+- **`workout.html`** — *The V-Taper Week*, a six-day men's physique training split: full session tables (sets, reps, RIR, rest), weekly volume by muscle, progression rules, and a toggle that switches the cardio/posing/nutrition guidance between off-season and contest prep.
